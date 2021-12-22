@@ -31,3 +31,17 @@ you have to execute the command:
 pip install torch==1.4.0
 ```
 
+## READ-TASK SEPARATION
+
+Daniele:
+- resnet
+- step1
+Kylie:
+- main
+- optimizer
+Tommaso
+- step2
+- eval_target
+Ehsan:
+- dataset
+- data_helper
