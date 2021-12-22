@@ -36,12 +36,15 @@ pip install torch==1.4.0
 Daniele:
 - resnet
 - step1
+
 Kylie:
 - main
 - optimizer
+
 Tommaso
 - step2
 - eval_target
+
 Ehsan:
 - dataset
 - data_helper
