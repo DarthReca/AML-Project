@@ -72,7 +72,7 @@ def _do_epoch(args,feature_extractor,rot_cls,obj_cls,source_loader,target_loader
         #update network's parameters
         optimizer.step()
 
-        #TODO: store predicted class and rotation
+        #TODO: store predicted class and rotation#TODO: compute the loss of the class and the rotation classification tasks
         _, cls_pred = ...
         _, rot_pred = ...
 

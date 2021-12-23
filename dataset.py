@@ -28,7 +28,7 @@ class Dataset(data.Dataset):
         self._image_transformer = img_transformer
 
     def __getitem__(self, index):
-
+        #TODO: get item with image and image rotation
 
         return img, int(self.labels[index]), img_rot, index_rot
 
@@ -46,7 +46,7 @@ class TestDataset(data.Dataset):
 
     def __getitem__(self, index):
 
-
+        #TODO: get item with image and image rotation
         return img, int(self.labels[index]), img_rot, index_rot
 
     def __len__(self):

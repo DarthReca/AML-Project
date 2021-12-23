@@ -50,6 +50,7 @@ def _do_epoch(
         Accuracy for rotation recognition
     """
     criterion = nn.CrossEntropyLoss()
+    #TODO: rotate images
     feature_extractor.train()
     obj_cls.train()
     rot_cls.train()
@@ -63,6 +64,7 @@ def _do_epoch(
         )
         optimizer.zero_grad()
 
+        #TODO: compute the loss of the class and the rotation classification tasks
         class_loss = ...
         rot_loss = ...
 
@@ -72,9 +74,11 @@ def _do_epoch(
 
         optimizer.step()
 
+        #TODO: store predicted class and rotation#TODO: compute the loss of the class and the rotation classification tasks
         _, cls_pred = ...
         _, rot_pred = ...
 
+    #TODO: compute accuracy on class and rotation predictions
     acc_cls = ...
     acc_rot = ...
 
