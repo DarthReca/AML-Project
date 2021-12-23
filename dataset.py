@@ -4,7 +4,11 @@ from random import random
 import random
 import torchvision.transforms.functional as TF
 
+"""
+_dataset_info() -> filename , label
+It will be used in data_helper to retrieve sample's name and associated label.
 
+"""
 
 def _dataset_info(txt_labels):
     with open(txt_labels, 'r') as f:
@@ -19,7 +23,7 @@ def _dataset_info(txt_labels):
 
     return file_names, labels
 
-
+#It return train_dataset
 class Dataset(data.Dataset):
     def __init__(self, names, labels, path_dataset,img_transformer=None):
         self.data_path = path_dataset
@@ -36,7 +40,7 @@ class Dataset(data.Dataset):
         return len(self.names)
 
 
-
+#It return test_dataset
 class TestDataset(data.Dataset):
     def __init__(self, names, labels, path_dataset,img_transformer=None):
         self.data_path = path_dataset
