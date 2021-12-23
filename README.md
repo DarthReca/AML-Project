@@ -14,7 +14,6 @@ OfficeHome/Art/Soda/00028.jpg 55
 ...
 ```
 
-
 ## Environment
 
 To run the code you have to install all the required libraries listed in the "requirements.txt" file.
@@ -34,13 +33,22 @@ pip install torch==1.4.0
 ## READ-TASK SEPARATION
 
 Daniele:
+
 - losses, class predictions and accuracies in step1... .py
 
 Kylie:
+
 - losses, class predictions and accuracies in step2... .py
 
 Tommaso:
+
 - normality score, threshold, output storage on files in eval_target.py
 
 Ehsan:
+
 - rotation in getItem in dataset.py
+
+## DOCS
+
+https://github.com/silvia1993/ROS
+https://github.com/gidariss/FeatureLearningRotNet
