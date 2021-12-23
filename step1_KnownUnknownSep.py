@@ -74,7 +74,8 @@ def _do_epoch(
 
         optimizer.step()
 
-        #TODO: store predicted class and rotation#TODO: compute the loss of the class and the rotation classification tasks
+        #TODO: store predicted class and rotation
+        #TODO: compute the loss of the class and the rotation classification tasks
         _, cls_pred = ...
         _, rot_pred = ...
 

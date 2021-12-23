@@ -34,17 +34,13 @@ pip install torch==1.4.0
 ## READ-TASK SEPARATION
 
 Daniele:
-- resnet
-- step1
+- losses, class predictions and accuracies in step1... .py
 
 Kylie:
-- main
-- optimizer
+- losses, class predictions and accuracies in step2... .py
 
-Tommaso
-- step2
-- eval_target
+Tommaso:
+- normality score, threshold, output storage on files in eval_target.py
 
 Ehsan:
-- dataset
-- data_helper
+- rotation in getItem in dataset.py
