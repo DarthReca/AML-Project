@@ -5,15 +5,16 @@ import torch
 from optimizer_helper import get_optim_and_scheduler
 from torch import nn
 from torch.utils.data import DataLoader
+from resnet import ResNet, Classifier
 
 #### Implement Step1
 
 
 def _do_epoch(
     args: argparse.Namespace,
-    feature_extractor: nn.Module,
-    rot_cls: nn.Module,
-    obj_cls: nn.Module,
+    feature_extractor: ResNet,
+    rot_cls: Classifier,
+    obj_cls: Classifier,
     source_loader: DataLoader,
     optimizer: torch.optim.Optimizer,
     device: Literal["cuda", "cpu"],
@@ -50,23 +51,33 @@ def _do_epoch(
         Accuracy for rotation recognition
     """
     criterion = nn.CrossEntropyLoss()
-    #TODO: rotate images
     feature_extractor.train()
     obj_cls.train()
     rot_cls.train()
 
-    for it, (data, class_l, data_rot, rot_l) in enumerate(source_loader):
-        data, class_l, data_rot, rot_l = (
+    correct_classes = 0
+    correct_rotations = 0
+    for _, (data, class_label, rotated_data, rotated_label) in enumerate(source_loader):
+        data, class_label, rotated_data, rotated_label = (
             data.to(device),
-            class_l.to(device),
-            data_rot.to(device),
-            rot_l.to(device),
+            class_label.to(device),
+            rotated_data.to(device),
+            rotated_label.to(device),
         )
         optimizer.zero_grad()
 
-        #TODO: compute the loss of the class and the rotation classification tasks
-        class_loss = ...
-        rot_loss = ...
+        # Extract features
+        original_features = feature_extractor(data)
+        rotated_features = feature_extractor(rotated_data)
+        # Pass features to classifiers
+        class_scores = obj_cls(original_features)
+        # Here we have to concatenate tensors as suggested by the architecture
+        rotation_scores = rot_cls(torch.cat([original_features, rotated_features], 1))
+
+        # Now we can check the losses
+        # TODO: Check if criterion is CrossEntropy
+        class_loss = criterion(class_scores, class_label)
+        rot_loss = criterion(rotation_scores, rotated_label)
 
         loss = class_loss + args.weight_RotTask_step1 * rot_loss
 
@@ -74,14 +85,15 @@ def _do_epoch(
 
         optimizer.step()
 
-        #TODO: store predicted class and rotation
-        #TODO: compute the loss of the class and the rotation classification tasks
-        _, cls_pred = ...
-        _, rot_pred = ...
+        # Find which is the index that corresponds to the highest "probability"
+        class_prediction = torch.argmax(class_scores, dim=1)
+        rotation_prediction = torch.argmax(rotation_scores, dim=1)
+        # Update counters
+        correct_classes += torch.sum(class_prediction == class_label).item()
+        correct_rotations += torch.sum(rotation_prediction == rotated_label).item()
 
-    #TODO: compute accuracy on class and rotation predictions
-    acc_cls = ...
-    acc_rot = ...
+    acc_cls = correct_classes / len(source_loader)
+    acc_rot = correct_rotations / len(source_loader)
 
     return class_loss, acc_cls, rot_loss, acc_rot
 
