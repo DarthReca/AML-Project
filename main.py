@@ -101,7 +101,7 @@ class Trainer:
         target_path_file = 'txt_list/' + args.target + '.txt'
         # Create two data loaders for the target dataset, one for training and one for evaluation.
         # (Probably this is a typo and the first one should be .get_train_dataloader as in step 2 below)
-        self.target_loader_train = data_helper.get_val_dataloader(args,target_path_file)
+        self.target_loader_train = data_helper.get_train_dataloader(args,target_path_file)
         self.target_loader_eval = data_helper.get_val_dataloader(args,target_path_file)
 
         print("Source: ",self.args.source," Target: ",self.args.target)
