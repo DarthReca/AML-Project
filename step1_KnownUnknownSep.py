@@ -26,14 +26,14 @@ def _do_epoch(
     ----------
     args : argparse.Namespace
         Namespace with various args.
-    feature_extractor : nn.Module
+    feature_extractor : ResNet
         Feature extractor for images.
-    rot_cls : nn.Module
+    rot_cls : Classifier
         Rotation classifier (?).
-    obj_cls : nn.Module
+    obj_cls : Classifier
         Object classifier (?).
     source_loader : DataLoader
-        DataLoader of the source domain (?).
+        DataLoader of the source domain.
     optimizer : torch.optim.Optimizer
         Our gradient optimizer.
     device : Literal["cuda", "cpu"]
@@ -57,7 +57,7 @@ def _do_epoch(
 
     correct_classes = 0
     correct_rotations = 0
-    for _, (data, class_label, rotated_data, rotated_label) in enumerate(source_loader):
+    for (data, class_label, rotated_data, rotated_label) in source_loader:
         data, class_label, rotated_data, rotated_label = (
             data.to(device),
             class_label.to(device),
@@ -75,8 +75,8 @@ def _do_epoch(
         rotation_scores = rot_cls(torch.cat([original_features, rotated_features], 1))
 
         # Now we can check the losses
-        # TODO: Check if criterion is CrossEntropy
         class_loss = criterion(class_scores, class_label)
+        # TODO: This needs CenterLoss to work better (see variation 3)
         rot_loss = criterion(rotation_scores, rotated_label)
 
         loss = class_loss + args.weight_RotTask_step1 * rot_loss
@@ -88,6 +88,7 @@ def _do_epoch(
         # Find which is the index that corresponds to the highest "probability"
         class_prediction = torch.argmax(class_scores, dim=1)
         rotation_prediction = torch.argmax(rotation_scores, dim=1)
+
         # Update counters
         correct_classes += torch.sum(class_prediction == class_label).item()
         correct_rotations += torch.sum(rotation_prediction == rotated_label).item()
