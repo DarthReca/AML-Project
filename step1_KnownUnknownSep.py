@@ -1,5 +1,5 @@
 import argparse
-from typing import Literal, Tuple
+from typing import Tuple
 
 import torch
 from optimizer_helper import get_optim_and_scheduler
@@ -17,7 +17,7 @@ def _do_epoch(
     obj_cls: Classifier,
     source_loader: DataLoader,
     optimizer: torch.optim.Optimizer,
-    device: Literal["cuda", "cpu"],
+    device: torch.device,
 ) -> Tuple[float, float, float, float]:
     """
     Ideally we do an epoch and return all useful losses and accuracies.
@@ -36,7 +36,7 @@ def _do_epoch(
         DataLoader of the source domain.
     optimizer : torch.optim.Optimizer
         Our gradient optimizer.
-    device : Literal["cuda", "cpu"]
+    device : torch.device
         Where to put tensors.
 
     Returns
@@ -105,7 +105,7 @@ def step1(
     rot_cls: nn.Module,
     obj_cls: nn.Module,
     source_loader: DataLoader,
-    device: Literal["cuda", "cpu"],
+    device: torch.device,
 ) -> None:
     optimizer, scheduler = get_optim_and_scheduler(
         feature_extractor,
