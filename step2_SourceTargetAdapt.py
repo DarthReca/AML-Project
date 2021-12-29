@@ -27,7 +27,7 @@ import numpy as np
         source_loader : list<data-type> -> {data_source, class_l_source, _, _}
             contains all the images of the source (data_source) and their assigned class (class_l_source)
         target_loader_train: list<data-type> -> {data_target, _, data_target_rot, rot_l_target}
-            contains the target image, the rotated target image and (?) the loss of the rotated target image (?)
+            contains the target image, the rotated target image and (?) the label of the rotated target image (?)
         target_loader_eval : list<data-type> -> {data_source, class_l_source, _, _}
             for each image contains: image, associated class
         optimizer
@@ -49,20 +49,35 @@ def _do_epoch(args,feature_extractor,rot_cls,obj_cls,source_loader,target_loader
     #make target_loader_train iterable
     target_loader_train = cycle(target_loader_train)
 
+    # Correct prediction counters
+    correct_classes = 0
+    correct_rotations = 0
+    
     #loop over source_loader AND target_loader_train at the same time
-    for it, (data_source, class_l_source, _, _) in enumerate(source_loader):
-        (data_target, _, data_target_rot, rot_l_target) = next(target_loader_train)
+    for it, (data_source, class_label_source, _, _) in enumerate(source_loader):
+        (data_target, _, data_target_rot, rot_label_target) = next(target_loader_train)
 
         #move tensors to GPU
-        data_source, class_l_source  = data_source.to(device), class_l_source.to(device)
-        data_target, data_target_rot, rot_l_target  = data_target.to(device), data_target_rot.to(device), rot_l_target.to(device)
+        data_source, class_label_source  = data_source.to(device), class_label_source.to(device)
+        data_target, data_target_rot, rot_label_target  = data_target.to(device), data_target_rot.to(device), rot_label_target.to(device)
 
         #set gradients of optimized tensors to 0
         optimizer.zero_grad()
+        
+        # Extract features
+        source_features = feature_extractor(data_source)
+        target_features = feature_extractor(data_target)
+        target_rotated_features = feature_extractor(data_target_rot)
+        #TODO: I don't see where the unknown target images come in, they don't seem to be an input?? maybe it's meant to be part of the source_loader already
+          
+        # Pass features to classifiers
+        class_scores = obj_cls(source_features)
+        # Here we have to concatenate tensors as suggested by the architecture
+        rotation_scores = rot_cls(torch.cat([target_features, target_rotated_features], 1))
 
-        #TODO: compute the loss of the class and the rotation classification tasks
-        class_loss = ....
-        rot_loss = ....
+        #compute the loss of the class and the rotation classification tasks
+        class_loss = criterion(class_scores, class_label_source)
+        rot_loss = criterion(rotation_scores, rot_label_target)
 
         loss = class_loss + args.weight_RotTask_step2*rot_loss
 
@@ -72,26 +87,56 @@ def _do_epoch(args,feature_extractor,rot_cls,obj_cls,source_loader,target_loader
         #update network's parameters
         optimizer.step()
 
-        #TODO: store predicted class and rotation#TODO: compute the loss of the class and the rotation classification tasks
-        _, cls_pred = ...
-        _, rot_pred = ...
+        # Find which is the index that corresponds to the highest "probability"
+        class_prediction = torch.argmax(class_scores, dim=1)
+        rotation_prediction = torch.argmax(rotation_scores, dim=1)
+        
+        # Update counters
+        correct_classes += torch.sum(class_prediction == class_label_source).item()
+        correct_rotations += torch.sum(rotation_prediction == rot_label_target).item()
 
-    #TODO: compute accuracy on class and rotation predictions
-    acc_cls = ...
-    acc_rot = ...
+    #compute accuracy on class and rotation predictions
+    acc_cls = correct_classes / len(source_loader)
+    acc_rot = correct_rotations / len(target_loader_train)
 
     print("Class Loss %.4f, Class Accuracy %.4f,Rot Loss %.4f, Rot Accuracy %.4f" % (class_loss.item(), acc_cls, rot_loss.item(), acc_rot))
-
 
     #### Implement the final evaluation step, computing OS*, UNK and HOS
     feature_extractor.eval()
     obj_cls.eval()
     rot_cls.eval()
+    
+    #TODO: Need to figure out how to evaluate recognition of the unknown category
+    
+    # Correct prediction counters
+    correct_classes_eval = 0
+    #correct_rotations_eval = 0
 
     #deactivate autograd engine for speedup during evaluation phase
     with torch.no_grad():
-        for it, (data, class_l,_,_) in enumerate(target_loader_eval):
+        for it, (data, class_label,_,_) in enumerate(target_loader_eval):
+            
+            #move tensors to GPU
+            data, class_label  = data.to(device), class_label.to(device)
+            
+            #Extract features
+            features = feature_extractor(data)
+            
+            # Pass features to classifiers
+            class_scores = obj_cls(features)
+            #rot_scores = rot_cls(features)
+        
+            # Get predictions
+            class_prediction = torch.argmax(class_scores, dim=1)
+            #rotation_prediction = torch.argmax(rotation_scores, dim=1)
+            
+            # Update counters
+            correct_classes_eval += torch.sum(class_prediction == class_label).item()
+            #correct_rotations_eval += torch.sum(rotation_prediction == rot_label_target).item()
 
+        #compute accuracy on class and rotation predictions
+        acc_cls = correct_classes_eval / len(target_loader_eval)
+        print('\nEvaluation Accuracy: {}'.format(acc_cls))
 
 """
     Method retrieves the optimizer and the scheduler 
