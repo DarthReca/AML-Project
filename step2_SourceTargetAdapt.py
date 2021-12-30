@@ -129,10 +129,10 @@ def _do_epoch(args,feature_extractor,rot_cls,obj_cls,source_loader,target_loader
             
             # Update counters
             if (class_label == args.n_classes_tot + 1): #Class label for unknown category is ? assuming args.n_classes_tot + 1 (i.e. 66) for now
-                total_classes_unknown++
+                total_classes_unknown += 1
                 correct_classes_unknown += torch.sum(class_prediction == class_label).item()
             else:
-                total_classes_known++
+                total_classes_known += 1
                 correct_classes_known += torch.sum(class_prediction == class_label).item()
 
         #compute accuracies
