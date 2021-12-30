@@ -35,15 +35,22 @@ class Dataset(data.Dataset):
         self.data_path = path_dataset
         self.names = names
         self.labels = labels
-        self._image_transformer = img_transformer
+        self.image_transformer = img_transformer
 
     def __getitem__(self, index):
         # TODO: get item with image and image rotation
         # get the image path
         image_path = self.data_path + "/" + self.names[index]
         # produce a random label between 0,1,2,3
-        img = TF.resize(TF.to_tensor(Image.open(image_path).convert("RGB")), [256, 256])
-
+        img = self.image_transformer(Image.open(image_path).convert("RGB"))
+        """
+        TF.to_tensor(
+                TF.resize(
+                    Image.open(image_path).convert("RGB") , 
+                    [224, 224]
+                    )
+                )
+        """
         index_rot = random.randrange(4)
         # The angles of rotation are 0°, 90°, 180°, 270° that correspond to labels 0, 1, 2, 3.
 
