@@ -68,7 +68,6 @@ def _do_epoch(args,feature_extractor,rot_cls,obj_cls,source_loader,target_loader
         source_features = feature_extractor(data_source)
         target_features = feature_extractor(data_target)
         target_rotated_features = feature_extractor(data_target_rot)
-        #TODO: I don't see where the unknown target images come in, they don't seem to be an input?? maybe it's meant to be part of the source_loader already
           
         # Pass features to classifiers
         class_scores = obj_cls(source_features)
@@ -106,11 +105,11 @@ def _do_epoch(args,feature_extractor,rot_cls,obj_cls,source_loader,target_loader
     obj_cls.eval()
     rot_cls.eval()
     
-    #TODO: Need to figure out how to evaluate recognition of the unknown category
-    
     # Correct prediction counters
-    correct_classes_eval = 0
-    #correct_rotations_eval = 0
+    correct_classes_known = 0
+    correct_classes_unknown = 0
+    total_classes_known = 0
+    total_classes_unknown = 0
 
     #deactivate autograd engine for speedup during evaluation phase
     with torch.no_grad():
@@ -124,19 +123,25 @@ def _do_epoch(args,feature_extractor,rot_cls,obj_cls,source_loader,target_loader
             
             # Pass features to classifiers
             class_scores = obj_cls(features)
-            #rot_scores = rot_cls(features)
         
             # Get predictions
             class_prediction = torch.argmax(class_scores, dim=1)
-            #rotation_prediction = torch.argmax(rotation_scores, dim=1)
             
             # Update counters
-            correct_classes_eval += torch.sum(class_prediction == class_label).item()
-            #correct_rotations_eval += torch.sum(rotation_prediction == rot_label_target).item()
+            if (class_label == args.n_classes_tot + 1): #Class label for unknown category is ? assuming args.n_classes_tot + 1 (i.e. 66) for now
+                total_classes_unknown++
+                correct_classes_unknown += torch.sum(class_prediction == class_label).item()
+            else:
+                total_classes_known++
+                correct_classes_known += torch.sum(class_prediction == class_label).item()
 
-        #compute accuracy on class and rotation predictions
-        acc_cls = correct_classes_eval / len(target_loader_eval)
-        print('\nEvaluation Accuracy: {}'.format(acc_cls))
+        #compute accuracies
+        if (total_classes_unknown == 0):
+            print("Error: No unknown images identitied. Probably the class label was not set correctly.")
+        acc_known = correct_classes_known / total_classes_known # OS*
+        acc_unknown = correct_classes_unknown / total_classes_unknown # UNK
+        hos = 2 * acc_known * acc_unknown / (acc_known + acc_unknown) # Harmonic mean, HOS
+        print("\nEvaluation: OS* %.4f, UNK %.4f, HOS %.4f" % (acc_known, acc_unknown, hos))
 
 """
     Method retrieves the optimizer and the scheduler 
