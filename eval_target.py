@@ -39,12 +39,12 @@ def evaluation(
     feature_extractor.eval()
     rot_cls.eval()
 
-    normality_score = []
-    ground_truth = []
+    normality_score = torch.empty(size=[len(target_loader_eval)], dtype=torch.float64)
+    ground_truth = torch.empty(size=[len(target_loader_eval)], dtype=torch.int32)
 
     with torch.no_grad():
         # iterate over the target images to compute normality scores (i.e. how sure we are of the predicted rotation)
-        for (data, class_l, data_rot, rot_l) in target_loader_eval:
+        for index, (data, class_l, data_rot, rot_l) in enumerate(target_loader_eval):
             data, class_l, data_rot, rot_l = (
                 data.to(device),
                 class_l.to(device),
@@ -60,11 +60,12 @@ def evaluation(
                 torch.cat([original_features, rotated_features], 1)
             )
             # normality score is maximum prediction of a class. e.g. if image is rotated 90° left with 70% probability, normality score = 0.7
-            normality_score.append(max(rotation_scores))
+            normality_score[index] = torch.max(rotation_scores)
             # ground truth is label of the actual rotation of the image
-            ground_truth.append(rot_l)
+            ground_truth[index] = rot_l
 
     # compute the AUROC score from the vector of target labels and the vector of normality scores. AUROC MUST be >0.5
+    # TODO: ask how it is working, for multiclass it is needed ovo or ovr and it necessary that Size(ground_truth) == n_samples && Size(normality_score) == (n_samples, n_classes)
     auroc = roc_auc_score(ground_truth, normality_score)  # type: float
     print("AUROC %.4f" % auroc)
 
