@@ -1,3 +1,4 @@
+from math import log
 from resnet import Classifier, ResNet
 import torch
 from sklearn.metrics import roc_auc_score
@@ -5,6 +6,13 @@ import random
 import argparse
 
 from torch.utils.data.dataloader import DataLoader
+
+
+def entropy_score(x: torch.Tensor, known_classes: int) -> float:
+    """Calculate entropy score of a tensor"""
+    x = torch.flatten(x)
+    return (x.dot(torch.log(x)) / log(known_classes)).item()
+
 
 #### Implement the evaluation on the target for the known/unknown separation
 def evaluation(
@@ -55,12 +63,25 @@ def evaluation(
             original_features = feature_extractor(data)
             rotated_features = feature_extractor(data_rot)
 
-            # Here we have to concatenate tensors as suggested by the architecture
-            rotation_scores = rot_cls(
-                torch.cat([original_features, rotated_features], 1)
-            )
+            entropy_losses = torch.zeros([4])
+            rotation_scores = torch.zeros([args.n_classes_known])
+            for i in range(1, 4):
+                rotated_features = feature_extractor(
+                    torch.rot90(data, k=i, dims=[2, 3])
+                )
+                rotation_probabilities = torch.nn.Softmax()(
+                    rot_cls(torch.cat([original_features, rotated_features], 1))
+                ).flatten()
+                entropy_losses[i - 1] = (
+                    rotation_probabilities.dot(torch.log(rotation_probabilities))
+                    / log(args.n_classes_known)
+                ).item()
+                rotation_scores[class_l] += rotation_probabilities[i - 1]
+
             # normality score is maximum prediction of a class. e.g. if image is rotated 90° left with 70% probability, normality score = 0.7
-            normality_score[index] = torch.max(rotation_scores)
+            normality_score[index] = torch.max(
+                torch.max(rotation_scores), 1 - torch.mean(entropy_losses)
+            )
             # ground truth is label of the actual rotation of the image
             ground_truth[index] = rot_l
 
