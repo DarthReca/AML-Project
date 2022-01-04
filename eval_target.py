@@ -7,13 +7,6 @@ import argparse
 
 from torch.utils.data.dataloader import DataLoader
 
-
-def entropy_score(x: torch.Tensor, known_classes: int) -> float:
-    """Calculate entropy score of a tensor"""
-    x = torch.flatten(x)
-    return (x.dot(torch.log(x)) / log(known_classes)).item()
-
-
 #### Implement the evaluation on the target for the known/unknown separation
 def evaluation(
     args: argparse.Namespace,
@@ -47,7 +40,9 @@ def evaluation(
     feature_extractor.eval()
     rot_cls.eval()
 
-    normality_score = torch.empty(size=[len(target_loader_eval)], dtype=torch.float64)
+    normality_score = torch.zeros(
+        size=[len(target_loader_eval), 4], dtype=torch.float32
+    )
     ground_truth = torch.empty(size=[len(target_loader_eval)], dtype=torch.int32)
 
     with torch.no_grad():
@@ -63,31 +58,36 @@ def evaluation(
             original_features = feature_extractor(data)
             rotated_features = feature_extractor(data_rot)
 
+            """ This version is with entropy
             entropy_losses = torch.zeros([4])
-            rotation_scores = torch.zeros([args.n_classes_known])
+            rotation_score = 0
             for i in range(1, 4):
                 rotated_features = feature_extractor(
                     torch.rot90(data, k=i, dims=[2, 3])
                 )
-                rotation_probabilities = torch.nn.Softmax()(
-                    rot_cls(torch.cat([original_features, rotated_features], 1))
-                ).flatten()
+                rotation_probabilities = torch.nn.Softmax(dim=0)(
+                    rot_cls(
+                        torch.cat([original_features, rotated_features], 1)
+                    ).flatten()
+                )
                 entropy_losses[i - 1] = (
-                    rotation_probabilities.dot(torch.log(rotation_probabilities))
-                    / log(args.n_classes_known)
+                    rotation_probabilities.dot(torch.log10(rotation_probabilities))
+                    / log(args.n_classes_known, 10)
                 ).item()
-                rotation_scores[class_l] += rotation_probabilities[i - 1]
-
-            # normality score is maximum prediction of a class. e.g. if image is rotated 90° left with 70% probability, normality score = 0.7
-            normality_score[index] = torch.max(
-                torch.max(rotation_scores), 1 - torch.mean(entropy_losses)
+                rotation_score += rotation_probabilities[i - 1]
+            """
+            rotation_scores = rot_cls(
+                torch.cat([original_features, rotated_features], 1)
             )
+            # normality score is maximum prediction of a class. e.g. if image is rotated 90° left with 70% probability, normality score = 0.7
+            normality_score[index] = torch.nn.Softmax(dim=1)(rotation_scores)
             # ground truth is label of the actual rotation of the image
             ground_truth[index] = rot_l
 
     # compute the AUROC score from the vector of target labels and the vector of normality scores. AUROC MUST be >0.5
-    # TODO: ask how it is working, for multiclass it is needed ovo or ovr and it necessary that Size(ground_truth) == n_samples && Size(normality_score) == (n_samples, n_classes)
-    auroc = roc_auc_score(ground_truth, normality_score)  # type: float
+    auroc = roc_auc_score(
+        ground_truth, normality_score, multi_class="ovo"
+    )  # type: float
     print("AUROC %.4f" % auroc)
 
     # create new txt files

@@ -187,7 +187,6 @@ class Trainer:
             self.source_loader,
             self.device,
         )
-
         # Evaluate the roation classifier on the target domain to split target into known and unknown classes.
         print("Target - Evaluation -- for known/unknown separation")
         # Returns a random integer (don't really understand why - just to add to the generated file names?)
