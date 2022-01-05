@@ -4,6 +4,7 @@ import torch
 from sklearn.metrics import roc_auc_score
 import random
 import argparse
+import os
 
 from torch.utils.data.dataloader import DataLoader
 
@@ -40,9 +41,7 @@ def evaluation(
     feature_extractor.eval()
     rot_cls.eval()
 
-    normality_score = torch.zeros(
-        size=[len(target_loader_eval), 4], dtype=torch.float32
-    )
+    normality_score = torch.empty(size=[len(target_loader_eval)], dtype=torch.float32)
     ground_truth = torch.empty(size=[len(target_loader_eval)], dtype=torch.int32)
 
     with torch.no_grad():
@@ -80,29 +79,26 @@ def evaluation(
                 torch.cat([original_features, rotated_features], 1)
             )
             # normality score is maximum prediction of a class. e.g. if image is rotated 90° left with 70% probability, normality score = 0.7
-            normality_score[index] = torch.nn.Softmax(dim=1)(rotation_scores)
-            # ground truth is label of the actual rotation of the image
-            ground_truth[index] = rot_l
+            normality_score[index] = torch.max(torch.nn.Softmax(dim=1)(rotation_scores))
+            # ground truth is label indicating known/unknown
+            ground_truth[index] = 0 if class_l >= args.n_classes_known else 1
 
     # compute the AUROC score from the vector of target labels and the vector of normality scores. AUROC MUST be >0.5
-    auroc = roc_auc_score(
-        ground_truth, normality_score, multi_class="ovo"
-    )  # type: float
+    auroc = roc_auc_score(ground_truth, normality_score)  # type: float
     print("AUROC %.4f" % auroc)
 
     # create new txt files
     rand = random.randint(0, 100000)
     print("Generated random number is :", rand)
 
+    if not os.is_dir("new_txt_list"):
+        os.mkdir("new_txt_list")
+
     # This txt files will have ??? -> the names of the source images and <- ??? the names of the target images selected as unknown
-    target_unknown = open(
-        "new_txt_list/" + args.source + "_known_" + str(rand) + ".txt", "w"
-    )
+    target_unknown = open(f"new_txt_list/{args.source}_known_{rand}.txt", "w+")
 
     # This txt files will have the names of the target images selected as known
-    target_known = open(
-        "new_txt_list/" + args.target + "_known_" + str(rand) + ".txt", "w"
-    )
+    target_known = open(f"new_txt_list/{args.target}_known_{rand}.txt", "w+")
 
     number_of_known_samples = 0
     number_of_unknown_samples = 0
@@ -110,11 +106,15 @@ def evaluation(
         for img_id, (data, class_l, data_rot, rot_l) in enumerate(target_loader_eval):
             if normality_score[img_id] >= args.threshold:
                 # we consider the domain of the image as known
-                target_known.write(target_loader_eval.dataset.names[img_id] + "\n")
+                target_known.write(
+                    f"{target_loader_eval.dataset.names[img_id]} {class_l.item()}\n"
+                )
                 number_of_known_samples += 1
             else:
                 # we consider the domain of the image as UNknown
-                target_unknown.write(target_loader_eval.dataset.names[img_id] + "\n")
+                target_unknown.write(
+                    f"{target_loader_eval.dataset.names[img_id]} {class_l.item()}\n"
+                )
                 number_of_unknown_samples += 1
 
     target_known.close()
