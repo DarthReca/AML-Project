@@ -91,7 +91,7 @@ def evaluation(
     rand = random.randint(0, 100000)
     print("Generated random number is :", rand)
 
-    if not os.is_dir("new_txt_list"):
+    if not os.path.isdir("new_txt_list"):
         os.mkdir("new_txt_list")
 
     # This txt files will have ??? -> the names of the source images and <- ??? the names of the target images selected as unknown
