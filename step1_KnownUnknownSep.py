@@ -93,8 +93,8 @@ def _do_epoch(
         correct_classes += torch.sum(class_prediction == class_label).item()
         correct_rotations += torch.sum(rotation_prediction == rotated_label).item()
 
-    acc_cls = correct_classes / len(source_loader)
-    acc_rot = correct_rotations / len(source_loader)
+    acc_cls = correct_classes / len(source_loader.dataset)
+    acc_rot = correct_rotations / len(source_loader.dataset)
 
     return class_loss, acc_cls, rot_loss, acc_rot
 
