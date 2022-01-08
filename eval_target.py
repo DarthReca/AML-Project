@@ -46,40 +46,36 @@ def evaluation(
 
     with torch.no_grad():
         # iterate over the target images to compute normality scores (i.e. how sure we are of the predicted rotation)
-        for index, (data, class_l, data_rot, rot_l) in enumerate(target_loader_eval):
-            data, class_l, data_rot, rot_l = (
+        for index, (data, class_l, _, _) in enumerate(target_loader_eval):
+            data, class_l = (
                 data.to(device),
                 class_l.to(device),
-                data_rot.to(device),
-                rot_l.to(device),
             )
-
             original_features = feature_extractor(data)
-            rotated_features = feature_extractor(data_rot)
 
-            """ This version is with entropy
             entropy_losses = torch.zeros([4])
-            rotation_score = 0
-            for i in range(1, 4):
+            rotation_scores = torch.zeros([4, 4])
+            for i in range(1, 5):
                 rotated_features = feature_extractor(
                     torch.rot90(data, k=i, dims=[2, 3])
                 )
                 rotation_probabilities = torch.nn.Softmax(dim=0)(
-                    rot_cls(
-                        torch.cat([original_features, rotated_features], 1)
-                    ).flatten()
+                    torch.flatten(
+                        rot_cls(torch.cat([original_features, rotated_features], 1))
+                    )
                 )
                 entropy_losses[i - 1] = (
                     rotation_probabilities.dot(torch.log10(rotation_probabilities))
                     / log(args.n_classes_known, 10)
                 ).item()
-                rotation_score += rotation_probabilities[i - 1]
-            """
-            rotation_scores = rot_cls(
-                torch.cat([original_features, rotated_features], 1)
-            )
+                rotation_scores[i - 1] = rotation_probabilities
             # normality score is maximum prediction of a class. e.g. if image is rotated 90° left with 70% probability, normality score = 0.7
-            normality_score[index] = torch.max(torch.nn.Softmax(dim=1)(rotation_scores))
+            normality_score[index] = torch.max(torch.mean(rotation_scores, dim=0))
+            """If you want to use entropy
+            normality_score[index] = torch.max(
+                normality_score[index], 1 - torch.mean(entropy_losses)
+            )
+            """
             # ground truth is label indicating known/unknown
             ground_truth[index] = 0 if class_l >= args.n_classes_known else 1
 
@@ -103,7 +99,7 @@ def evaluation(
     number_of_known_samples = 0
     number_of_unknown_samples = 0
     with torch.no_grad():
-        for img_id, (data, class_l, data_rot, rot_l) in enumerate(target_loader_eval):
+        for img_id, (_, class_l, _, _) in enumerate(target_loader_eval):
             if normality_score[img_id] >= args.threshold:
                 # we consider the domain of the image as known
                 target_known.write(

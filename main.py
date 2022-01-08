@@ -81,10 +81,12 @@ def get_args():
 
     parser.add_argument(
         "--train_all",
-        type=bool,
-        default=True,
         help="If true, all network weights will be trained",
+        dest="train_all",
+        action="store_true",
     )
+    parser.add_argument("--train_classifiers", dest="train_all", action="store_false")
+    parser.set_defaults(train_all=True)
 
     parser.add_argument(
         "--weight_RotTask_step1",
