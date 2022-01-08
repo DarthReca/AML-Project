@@ -1,5 +1,9 @@
 # Advanced Machine Learning Project - ROS
 
+## Txt_List
+
+In new_txt_list you can find some mockup data to test step two
+
 ## Dataset
 
 1 - Download Office-Home dataset from here https://drive.google.com/file/d/0B81rNlvomiwed0V1YUxQdC1uOTg/view
@@ -29,24 +33,6 @@ you have to execute the command:
 ```
 pip install torch==1.4.0
 ```
-
-## READ-TASK SEPARATION
-
-Daniele:
-
-- losses, class predictions and accuracies in step1... .py
-
-Kylie:
-
-- losses, class predictions and accuracies in step2... .py
-
-Tommaso:
-
-- normality score, threshold, output storage on files in eval_target.py
-
-Ehsan:
-
-- rotation in getItem in dataset.py
 
 ## DOCS
 

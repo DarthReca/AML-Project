@@ -5,6 +5,7 @@ from sklearn.metrics import roc_auc_score
 import random
 import argparse
 import os
+import shutil
 
 from torch.utils.data.dataloader import DataLoader
 
@@ -41,12 +42,24 @@ def evaluation(
     feature_extractor.eval()
     rot_cls.eval()
 
-    normality_score = torch.empty(size=[len(target_loader_eval)], dtype=torch.float32)
-    ground_truth = torch.empty(size=[len(target_loader_eval)], dtype=torch.int32)
+    normality_score = torch.empty(
+        size=[len(target_loader_eval.dataset)], dtype=torch.float32
+    )
+    ground_truth = torch.empty(
+        size=[len(target_loader_eval.dataset)], dtype=torch.int32
+    )
+
+    # DEBUG VERSION
+    # normality_score = torch.empty(size=[512], dtype=torch.float32)
+    # ground_truth = torch.empty(size=[512], dtype=torch.int32)
 
     with torch.no_grad():
         # iterate over the target images to compute normality scores (i.e. how sure we are of the predicted rotation)
         for index, (data, class_l, _, _) in enumerate(target_loader_eval):
+            # DEBUG VERSION
+            # if index == 512:
+            #    break
+
             data, class_l = (
                 data.to(device),
                 class_l.to(device),
@@ -90,8 +103,12 @@ def evaluation(
     if not os.path.isdir("new_txt_list"):
         os.mkdir("new_txt_list")
 
-    # This txt files will have ??? -> the names of the source images and <- ??? the names of the target images selected as unknown
-    target_unknown = open(f"new_txt_list/{args.source}_known_{rand}.txt", "w+")
+    # This txt files will have the names of the source images and the names of the target images selected as unknown
+    source_unknown_path = shutil.copyfile(
+        f"txt_list/{args.source}_known.txt",
+        f"new_txt_list/{args.source}_known_{rand}.txt",
+    )
+    target_unknown = open(source_unknown_path, "a+")
 
     # This txt files will have the names of the target images selected as known
     target_known = open(f"new_txt_list/{args.target}_known_{rand}.txt", "w+")
@@ -100,6 +117,9 @@ def evaluation(
     number_of_unknown_samples = 0
     with torch.no_grad():
         for img_id, (_, class_l, _, _) in enumerate(target_loader_eval):
+            # DEBUG VERSION
+            # if img_id == 512:
+            #    break
             if normality_score[img_id] >= args.threshold:
                 # we consider the domain of the image as known
                 target_known.write(
@@ -108,9 +128,7 @@ def evaluation(
                 number_of_known_samples += 1
             else:
                 # we consider the domain of the image as UNknown
-                target_unknown.write(
-                    f"{target_loader_eval.dataset.names[img_id]} {class_l.item()}\n"
-                )
+                target_unknown.write(f"{target_loader_eval.dataset.names[img_id]} 45\n")
                 number_of_unknown_samples += 1
 
     target_known.close()

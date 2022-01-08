@@ -199,7 +199,6 @@ class Trainer:
             self.target_loader_eval,
             self.device,
         )
-
         # Step 2 set up
         # Create a new data loader for the known source images
         source_path_file = (
