@@ -6,6 +6,7 @@ from optimizer_helper import get_optim_and_scheduler
 from torch import nn
 from torch.utils.data import DataLoader
 from resnet import ResNet, Classifier
+import os
 
 #### Implement Step1
 
@@ -126,8 +127,10 @@ def step1(
             % (class_loss, acc_cls, rot_loss, acc_rot)
         )
         if epoch % 10 == 0:
+            if not os.path.isdir("weights"):
+                os.mkdir("weights")
             torch.save(
-                feature_extractor.state_dict(), f"weigths/feature_extractor_{epoch}.pth"
+                feature_extractor.state_dict(), f"weights/feature_extractor_{epoch}.pth"
             )
             torch.save(obj_cls.state_dict(), f"weights/object_classifier_{epoch}.pth")
             torch.save(rot_cls.state_dict(), f"weights/rotation_classifier_{epoch}.pth")
