@@ -27,7 +27,7 @@ def get_args():
         description="Script to launch training",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-
+    parser.add_argument("--load_weights", default=False, type=bool)
     parser.add_argument("--source", default="Art", help="Source name")
     parser.add_argument("--target", default="Clipart", help="Target name")
     parser.add_argument(
@@ -147,6 +147,20 @@ class Trainer:
         self.obj_classifier = Classifier(512, self.args.n_classes_known + 1)
         # Initiate rotation classifier with input_size=512*2 and 4 classes: [0, 90, 180, 270]
         self.rot_classifier = Classifier(512 * 2, 4)
+
+        if args.load_weights:
+            self.rot_classifier.load_state_dict(
+                torch.load("weights/rotation_classifier.pth")
+            )
+            self.rot_classifier.eval()
+            self.obj_classifier.load_state_dict(
+                torch.load("weights/object_classifier.pth")
+            )
+            self.obj_classifier.eval()
+            self.feature_extractor.load_state_dict(
+                torch.load("weights/feature_extractor.pth")
+            )
+            self.feature_extractor.eval()
 
         # Load model into the device
         self.feature_extractor = self.feature_extractor.to(self.device)

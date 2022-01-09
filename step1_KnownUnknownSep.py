@@ -101,9 +101,9 @@ def _do_epoch(
 
 def step1(
     args: argparse.Namespace,
-    feature_extractor: nn.Module,
-    rot_cls: nn.Module,
-    obj_cls: nn.Module,
+    feature_extractor: ResNet,
+    rot_cls: Classifier,
+    obj_cls: Classifier,
     source_loader: DataLoader,
     device: torch.device,
 ) -> None:
@@ -125,4 +125,10 @@ def step1(
             "Class Loss %.4f, Class Accuracy %.4f,Rot Loss %.4f, Rot Accuracy %.4f"
             % (class_loss, acc_cls, rot_loss, acc_rot)
         )
+        if epoch % 10 == 0:
+            torch.save(
+                feature_extractor.state_dict(), f"weigths/feature_extractor_{epoch}.pth"
+            )
+            torch.save(obj_cls.state_dict(), f"weights/object_classifier_{epoch}.pth")
+            torch.save(rot_cls.state_dict(), f"weights/rotation_classifier_{epoch}.pth")
         scheduler.step()
