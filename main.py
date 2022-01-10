@@ -27,7 +27,13 @@ def get_args():
         description="Script to launch training",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-    parser.add_argument("--load_weights", default=False, type=bool)
+    parser.add_argument(
+        "--load_weights",
+        const=True,
+        default=False,
+        action="store_const",
+        help="Use to load pretrained weights",
+    )
     parser.add_argument("--source", default="Art", help="Source name")
     parser.add_argument("--target", default="Clipart", help="Target name")
     parser.add_argument(
@@ -78,14 +84,14 @@ def get_args():
         default=10,
         help="Number of epochs of step2 for source-target adaptation",
     )
-
     parser.add_argument(
-        "--train_all",
-        help="If true, all network weights will be trained",
+        "--train_classifiers",
         dest="train_all",
-        action="store_true",
+        default=True,
+        const=False,
+        action="store_const",
+        help="Used to train only classifiers",
     )
-    parser.add_argument("--train_classifiers", dest="train_all", action="store_false")
     parser.set_defaults(train_all=True)
 
     parser.add_argument(
@@ -116,6 +122,13 @@ def get_args():
     )
     parser.add_argument(
         "--folder_name", default=None, help="Used by the logger to save logs"
+    )
+    parser.add_argument(
+        "--steps",
+        nargs="*",
+        default=["step1", "eval", "step2"],
+        choices=["step1", "eval", "step2"],
+        help="Choose steps to run",
     )
 
     return parser.parse_args()
@@ -194,57 +207,58 @@ class Trainer:
         """
 
         # Run step 1: train the object and rotation classifier
-        print("Step 1 --------------------------------------------")
-        step1(
-            self.args,
-            self.feature_extractor,
-            self.rot_cls,
-            self.obj_cls,
-            self.source_loader,
-            self.device,
-        )
-        # Evaluate the roation classifier on the target domain to split target into known and unknown classes.
-        print("Target - Evaluation -- for known/unknown separation")
-        # Returns a random integer (don't really understand why - just to add to the generated file names?)
-        rand = evaluation(
-            self.args,
-            self.feature_extractor,
-            self.rot_cls,
-            self.target_loader_eval,
-            self.device,
-        )
-        # Step 2 set up
-        # Create a new data loader for the known source images
-        source_path_file = (
-            "new_txt_list/" + self.args.source + "_known_" + str(rand) + ".txt"
-        )
-        self.source_loader = data_helper.get_train_dataloader(
-            self.args, source_path_file
-        )
+        if "step1" in self.args.steps:
+            print("Step 1 --------------------------------------------")
+            step1(
+                self.args,
+                self.feature_extractor,
+                self.rot_cls,
+                self.obj_cls,
+                self.source_loader,
+                self.device,
+            )
 
-        # Create train and evaluation data loaders for the known target images
-        target_path_file = (
-            "new_txt_list/" + self.args.target + "_known_" + str(rand) + ".txt"
-        )
-        self.target_loader_train = data_helper.get_train_dataloader(
-            self.args, target_path_file
-        )
-        self.target_loader_eval = data_helper.get_val_dataloader(
-            self.args, target_path_file
-        )
+        source_path_file = f"new_txt_list/{self.args.source}_known.txt"
+        target_path_file = f"new_txt_list/{self.args.target}_known.txt"
+        if "eval" in self.args.steps:
+            # Evaluate the roation classifier on the target domain to split target into known and unknown classes.
+            print("Target - Evaluation -- for known/unknown separation")
+            # Returns a random integer (don't really understand why - just to add to the generated file names?)
+            rand = evaluation(
+                self.args,
+                self.feature_extractor,
+                self.rot_cls,
+                self.target_loader_eval,
+                self.device,
+            )
+            source_path_file = f"new_txt_list/{self.args.source}_known_{rand}.txt"
+            target_path_file = f"new_txt_list/{self.args.target}_known_{rand}.txt"
+        if "step2" in self.args.steps:
+            # Step 2 set up
+            # Create a new data loader for the known source images
+            self.source_loader = data_helper.get_train_dataloader(
+                self.args, source_path_file
+            )
+            # Create train and evaluation data loaders for the known target images
+            self.target_loader_train = data_helper.get_train_dataloader(
+                self.args, target_path_file
+            )
+            self.target_loader_eval = data_helper.get_val_dataloader(
+                self.args, target_path_file
+            )
 
-        # Run step 2: on known part do source-target domain adaptation, on unknown part of target train the unknown class
-        print("Step 2 --------------------------------------------")
-        step2(
-            self.args,
-            self.feature_extractor,
-            self.rot_cls,
-            self.obj_cls,
-            self.source_loader,
-            self.target_loader_train,
-            self.target_loader_eval,
-            self.device,
-        )
+            # Run step 2: on known part do source-target domain adaptation, on unknown part of target train the unknown class
+            print("Step 2 --------------------------------------------")
+            step2(
+                self.args,
+                self.feature_extractor,
+                self.rot_cls,
+                self.obj_cls,
+                self.source_loader,
+                self.target_loader_train,
+                self.target_loader_eval,
+                self.device,
+            )
 
 
 def main():
