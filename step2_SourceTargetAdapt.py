@@ -113,7 +113,7 @@ def _do_epoch(
 
     # compute accuracy on class and rotation predictions
     acc_cls = correct_classes / len(source_loader.dataset)
-    acc_rot = correct_rotations / len(target_loader_train.dataset)
+    acc_rot = correct_rotations / len(source_loader.dataset)
 
     print(
         "Class Loss %.4f, Class Accuracy %.4f,Rot Loss %.4f, Rot Accuracy %.4f"
