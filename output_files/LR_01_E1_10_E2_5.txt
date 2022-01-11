@@ -1,0 +1,51 @@
+Source:  Art  Target:  Clipart
+Dataset size: source 1789, target 4365
+Step 1 --------------------------------------------
+Step size: 8
+Epoch:  0
+Class Loss 2.7177, Class Accuracy 0.1738,Rot Loss 1.4901, Rot Accuracy 0.2521
+Epoch:  1
+Class Loss 1.6515, Class Accuracy 0.5159,Rot Loss 1.2298, Rot Accuracy 0.3365
+Epoch:  2
+Class Loss 1.1042, Class Accuracy 0.6965,Rot Loss 1.2477, Rot Accuracy 0.3767
+Epoch:  3
+Class Loss 0.7292, Class Accuracy 0.7870,Rot Loss 1.0412, Rot Accuracy 0.4544
+Epoch:  4
+Class Loss 0.5539, Class Accuracy 0.8379,Rot Loss 1.1108, Rot Accuracy 0.4891
+Epoch:  5
+Class Loss 0.2960, Class Accuracy 0.8753,Rot Loss 1.0265, Rot Accuracy 0.5327
+Epoch:  6
+Class Loss 0.2677, Class Accuracy 0.8949,Rot Loss 0.7641, Rot Accuracy 0.6104
+Epoch:  7
+Class Loss 0.2203, Class Accuracy 0.9122,Rot Loss 0.7469, Rot Accuracy 0.6031
+Epoch:  8
+Class Loss 0.1520, Class Accuracy 0.9195,Rot Loss 0.6525, Rot Accuracy 0.6473
+Epoch:  9
+Class Loss 0.1265, Class Accuracy 0.9212,Rot Loss 0.7204, Rot Accuracy 0.6456
+Target - Evaluation -- for known/unknown separation
+AUROC 0.5339
+Generated random number is : 47502
+The number of target samples selected as known is:  687
+The number of target samples selected as unknown is:  3678
+Step 2 --------------------------------------------
+Step size: 4
+Epoch:  0
+Class Loss 0.3553, Class Accuracy 0.7832,Rot Loss 0.1531, Rot Accuracy 0.7776
+
+Evaluation: OS* 0.0696, UNK 1.0000, HOS 0.1302
+Epoch:  1
+Class Loss 0.0764, Class Accuracy 0.9374,Rot Loss 0.0372, Rot Accuracy 0.8859
+
+Evaluation: OS* 0.0104, UNK 1.0000, HOS 0.0205
+Epoch:  2
+Class Loss 0.0792, Class Accuracy 0.9605,Rot Loss 0.0226, Rot Accuracy 0.9177
+
+Evaluation: OS* 0.0237, UNK 1.0000, HOS 0.0463
+Epoch:  3
+Class Loss 0.0612, Class Accuracy 0.9735,Rot Loss 0.0153, Rot Accuracy 0.9334
+
+Evaluation: OS* 0.0430, UNK 1.0000, HOS 0.0824
+Epoch:  4
+Class Loss 0.0329, Class Accuracy 0.9782,Rot Loss 0.1535, Rot Accuracy 0.8610
+
+Evaluation: OS* 0.0311, UNK 1.0000, HOS 0.0603

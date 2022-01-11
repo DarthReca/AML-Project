@@ -217,7 +217,8 @@ def step2(
         args.train_all,
     )
 
-    for _ in range(args.epochs_step2):
+    for epoch in range(args.epochs_step2):
+        print("Epoch: ", epoch)
         _do_epoch(
             args,
             feature_extractor,
