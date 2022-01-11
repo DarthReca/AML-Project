@@ -168,8 +168,12 @@ class Trainer:
         self.feature_extractor = resnet18_feat_extractor()
         # Initiate object classifier with input_size=512, and numbers of classes is known classes + 1 (the unknown class, trained only in step2)
         self.obj_classifier = Classifier(512, self.args.n_classes_known + 1)
-        # Initiate rotation classifier with input_size=512*2 and 4 classes: [0, 90, 180, 270]
-        self.rot_classifier = Classifier(512 * 2, 4)
+        if args.variation == "horizontal_flipping":
+            # Initiate flipping classifier with input_size=512*2 and 2 classes: [flipped, not flipped]
+            self.rot_classifier = Classifier(512 * 2 , 2)
+        else:
+            # Initiate rotation classifier with input_size=512*2 and 4 classes: [0, 90, 180, 270]
+            self.rot_classifier = Classifier(512 * 2, 4)
 
         if args.load_weights:
             self.rot_classifier.load_state_dict(

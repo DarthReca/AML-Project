@@ -66,11 +66,21 @@ def evaluation(
             )
             original_features = feature_extractor(data)
 
+            """
             entropy_losses = torch.zeros([4])
             rotation_scores = torch.zeros([4, 4])
             for i in range(1, 5):
+            
                 rotated_features = feature_extractor(
                     torch.rot90(data, k=i, dims=[2, 3])
+                )
+            """
+            entropy_losses = torch.zeros([2])
+            rotation_scores = torch.zeros([2, 2])
+            for i in range(1, 3):
+            
+                rotated_features = feature_extractor(
+                    torch.fliplr(data) if i==1 else data
                 )
                 rotation_probabilities = torch.nn.Softmax(dim=0)(
                     torch.flatten(
