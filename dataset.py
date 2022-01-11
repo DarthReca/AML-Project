@@ -117,10 +117,10 @@ class FlipDataset(data.Dataset):
             img = self.image_transformer(img)
 
         
-        # produce a random label True or False
-        flip_flag = True if random.randrange(2) == 0 else False
-        # The angles of rotation are 0°, 90°, 180°, 270° that correspond to labels 0, 1, 2, 3.
-        if flip_flag == True:
+        # produce a random label 1 (True) or 0 (False)
+        flip_flag = random.randrange(2)
+        # image is either flipped or not that correspond to labels 0, 1.
+        if flip_flag == 1:
             img_flip = torch.fliplr(img)
         else: 
             img_flip = img
@@ -151,10 +151,10 @@ class TestFlipDataset(data.Dataset):
             img = self.image_transformer(img)
 
         
-        # produce a random label True or False
-        flip_flag = True if random.randrange(2) == 0 else False
-        # The angles of rotation are 0°, 90°, 180°, 270° that correspond to labels 0, 1, 2, 3.
-        if flip_flag == True:
+        # produce a random label 1 (True) or 0 (False)
+        flip_flag = random.randrange(2)
+        # image is either flipped or not that correspond to labels 0, 1.
+        if flip_flag == 1:
             img_flip = torch.fliplr(img)
         else: 
             img_flip = img
