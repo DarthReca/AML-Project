@@ -131,6 +131,16 @@ def get_args():
         help="Choose steps to run",
     )
 
+    parser.add_argument(
+        "--variation",
+        type=str,
+        default="rotation",
+        choices=["rotation",  "horizontal_flipping", "jigsaw_puzzle"
+        #,"odd_one_out", "translations" #not implemented
+        ],
+        help="Number of epochs of step1 for known/unknown separation",
+    )
+
     return parser.parse_args()
 
 

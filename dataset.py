@@ -95,3 +95,71 @@ class TestDataset(data.Dataset):
 
     def __len__(self):
         return len(self.names)
+
+class FlipDataset(data.Dataset):
+    def __init__(
+        self,
+        names: List[str],
+        labels: List[int],
+        path_dataset: str,
+        img_transformer: Optional[transforms.Compose] = None,
+    ):
+        self.data_path = path_dataset
+        self.names = names
+        self.labels = labels
+        self.image_transformer = img_transformer
+
+    def __getitem__(self, index: int) -> Tuple[torch.Tensor, int, torch.Tensor, int]:
+        # Get and process image
+        image_path = self.data_path + "/" + self.names[index]
+        img = Image.open(image_path).convert("RGB")
+        if self.image_transformer:
+            img = self.image_transformer(img)
+
+        
+        # produce a random label True or False
+        flip_flag = True if random.randrange(2) == 0 else False
+        # The angles of rotation are 0°, 90°, 180°, 270° that correspond to labels 0, 1, 2, 3.
+        if flip_flag == True:
+            img_flip = torch.fliplr(img)
+        else: 
+            img_flip = img
+
+        return img, self.labels[index], img_flip, flip_flag
+
+    def __len__(self):
+        return len(self.names)
+
+class TestFlipDataset(data.Dataset):
+    def __init__(
+        self,
+        names: List[str],
+        labels: List[int],
+        path_dataset: str,
+        img_transformer: Optional[transforms.Compose] = None,
+    ):
+        self.data_path = path_dataset
+        self.names = names
+        self.labels = labels
+        self.image_transformer = img_transformer
+
+    def __getitem__(self, index: int) -> Tuple[torch.Tensor, int, torch.Tensor, int]:
+        # Get and process image
+        image_path = self.data_path + "/" + self.names[index]
+        img = Image.open(image_path).convert("RGB")
+        if self.image_transformer:
+            img = self.image_transformer(img)
+
+        
+        # produce a random label True or False
+        flip_flag = True if random.randrange(2) == 0 else False
+        # The angles of rotation are 0°, 90°, 180°, 270° that correspond to labels 0, 1, 2, 3.
+        if flip_flag == True:
+            img_flip = torch.fliplr(img)
+        else: 
+            img_flip = img
+
+        return img, self.labels[index], img_flip, flip_flag
+
+    def __len__(self):
+        return len(self.names)
