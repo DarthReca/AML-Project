@@ -151,6 +151,8 @@ def _do_epoch(
             
             print()
             print(class_label)
+            print(class_prediction)
+            print(class_scores)
 
             # Update counters
             if class_label == args.n_classes_known:
