@@ -125,7 +125,7 @@ def evaluation(
 
     number_of_known_samples = 0
     number_of_unknown_samples = 0
-    print("treshold: " + args.threshold)
+    print("treshold: " + str(args.threshold))
     with torch.no_grad():
         for img_id, (_, class_l, _, _) in enumerate(target_loader_eval):
             # DEBUG VERSION
