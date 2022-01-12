@@ -151,7 +151,7 @@ def _do_epoch(
             
             print()
             print(class_label)
-            
+
             # Update counters
             if class_label == args.n_classes_known:
                 total_classes_unknown += 1
@@ -163,6 +163,11 @@ def _do_epoch(
                 correct_classes_known += torch.sum(
                     class_prediction == class_label
                 ).item()
+
+        print("\n\ntotal classes known: " + str(total_classes_known))
+        print("total classes unknown: " + str(total_classes_unknown))
+        print("correct classes unknown: " + str(correct_classes_known))
+        print("correct classes unknown: " + str(correct_classes_unknown))
 
         # compute accuracies
         if total_classes_unknown == 0:
