@@ -168,7 +168,7 @@ def _do_epoch(
 
         print("\n\ntotal classes known: " + str(total_classes_known))
         print("total classes unknown: " + str(total_classes_unknown))
-        print("correct classes unknown: " + str(correct_classes_known))
+        print("correct classes known: " + str(correct_classes_known))
         print("correct classes unknown: " + str(correct_classes_unknown))
 
         # compute accuracies
