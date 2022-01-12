@@ -125,6 +125,7 @@ def evaluation(
 
     number_of_known_samples = 0
     number_of_unknown_samples = 0
+    print("treshold: " + args.treshold)
     with torch.no_grad():
         for img_id, (_, class_l, _, _) in enumerate(target_loader_eval):
             # DEBUG VERSION
@@ -132,6 +133,9 @@ def evaluation(
             #    break
             if normality_score[img_id] >= args.threshold:
                 # we consider the domain of the image as known
+                print(img_id)
+                print(normality_score[img_id])
+                print()
                 target_known.write(
                     f"{target_loader_eval.dataset.names[img_id]} {class_l.item()}\n"
                 )
