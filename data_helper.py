@@ -2,7 +2,7 @@ import torch
 import torch.utils.data as data
 from torchvision import transforms
 
-from dataset import Dataset, TestDataset, FlipDataset, TestFlipDataset, _dataset_info
+from dataset import FlipDataset, TestFlipDataset, _dataset_info
 
 """
 get_train_dataloader(args,txt_file) 
@@ -37,14 +37,9 @@ def get_train_dataloader(args, txt_file):
 
     img_transformer = get_train_transformers(args)
     name_train, labels_train = _dataset_info(txt_file)
-    if args.variation == "horizontal_flipping":
-        train_dataset = FlipDataset(
-            name_train, labels_train, args.path_dataset, img_transformer=img_transformer
-        )
-    else: #else if args.variation == "rotation":
-        train_dataset = Dataset(
-            name_train, labels_train, args.path_dataset, img_transformer=img_transformer
-        )   
+    train_dataset = FlipDataset(
+        name_train, labels_train, args.path_dataset, img_transformer=img_transformer
+    )
     
     
     loader = torch.utils.data.DataLoader(
@@ -64,10 +59,8 @@ def get_val_dataloader(args, txt_file):
 
     names, labels = _dataset_info(txt_file)
     img_tr = get_test_transformer(args)
-    if args.variation == "horizontal_flipping":
-        test_dataset = TestFlipDataset(names, labels, args.path_dataset, img_transformer=img_tr)
-    else: #else if args.variation == "rotation":
-        test_dataset = TestDataset(names, labels, args.path_dataset, img_transformer=img_tr)
+    
+    test_dataset = TestFlipDataset(names, labels, args.path_dataset, img_transformer=img_tr)
     loader = torch.utils.data.DataLoader(
         test_dataset,
         batch_size=1,

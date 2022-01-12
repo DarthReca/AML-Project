@@ -131,15 +131,6 @@ def get_args():
         help="Choose steps to run",
     )
 
-    parser.add_argument(
-        "--variation",
-        type=str,
-        default="rotation",
-        choices=["rotation",  "horizontal_flipping", "jigsaw_puzzle"
-        #,"odd_one_out", "translations" #not implemented
-        ],
-        help="Number of epochs of step1 for known/unknown separation",
-    )
 
     return parser.parse_args()
 
@@ -168,12 +159,8 @@ class Trainer:
         self.feature_extractor = resnet18_feat_extractor()
         # Initiate object classifier with input_size=512, and numbers of classes is known classes + 1 (the unknown class, trained only in step2)
         self.obj_classifier = Classifier(512, self.args.n_classes_known + 1)
-        if args.variation == "horizontal_flipping":
-            # Initiate flipping classifier with input_size=512*2 and 2 classes: [flipped, not flipped]
-            self.rot_classifier = Classifier(512 * 2 , 2)
-        else:
-            # Initiate rotation classifier with input_size=512*2 and 4 classes: [0, 90, 180, 270]
-            self.rot_classifier = Classifier(512 * 2, 4)
+        # Initiate flipping classifier with input_size=512*2 and 2 classes: [flipped, not flipped]
+        self.rot_classifier = Classifier(512 * 2 , 2)
 
         if args.load_weights:
             self.rot_classifier.load_state_dict(
