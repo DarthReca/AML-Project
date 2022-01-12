@@ -15,11 +15,8 @@ def _dataset_info(txt_labels) -> Tuple[List[str], List[int]]:
     file_names = []
     labels = []
     for row in images_list:
-        print()
         row = row.split(" ")
-        print(row[0])
         file_names.append(row[0])
-        print(row[1])
         labels.append(int(row[1]))
 
     return file_names, labels

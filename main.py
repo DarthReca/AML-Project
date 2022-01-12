@@ -244,6 +244,7 @@ class Trainer:
             self.target_loader_train = data_helper.get_train_dataloader(
                 self.args, target_path_file
             )
+            print("Reading target path file: " + target_path_file)
             self.target_loader_eval = data_helper.get_val_dataloader(
                 self.args, target_path_file
             )

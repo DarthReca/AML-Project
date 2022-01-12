@@ -130,7 +130,9 @@ def _do_epoch(
     correct_classes_unknown = 0
     total_classes_known = 0
     total_classes_unknown = 0
-
+    
+    print("Number of known classes: ")
+    print(args.n_classes_known)
     # deactivate autograd engine for speedup during evaluation phase
     with torch.no_grad():
         for it, (data, class_label, _, _) in enumerate(target_loader_eval):
@@ -146,7 +148,10 @@ def _do_epoch(
 
             # Get predictions
             class_prediction = torch.argmax(class_scores, dim=1)
-
+            
+            print()
+            print(class_label)
+            
             # Update counters
             if class_label == args.n_classes_known:
                 total_classes_unknown += 1
