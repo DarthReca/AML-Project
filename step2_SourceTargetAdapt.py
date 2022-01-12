@@ -148,11 +148,9 @@ def _do_epoch(
             class_prediction = torch.argmax(class_scores, dim=1)
 
             # Update counters
-            if class_label == args.n_classes_known:
+            if class_label >= args.n_classes_known:
                 total_classes_unknown += 1
-                correct_classes_unknown += torch.sum(
-                    class_prediction == class_label
-                ).item()
+                correct_classes_unknown += torch.sum(class_prediction == 45).item()
             else:
                 total_classes_known += 1
                 correct_classes_known += torch.sum(
