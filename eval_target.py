@@ -119,13 +119,14 @@ def evaluation(
         f"new_txt_list/{args.source}_known_{rand}.txt",
     )
     target_unknown = open(source_unknown_path, "a+")
+    #new line at the end of source images, otherwise first target unknown image is on the same line as last source image
+    target_unknown.write(f"\n")
 
     # This txt files will have the names of the target images selected as known
     target_known = open(f"new_txt_list/{args.target}_known_{rand}.txt", "w+")
 
     number_of_known_samples = 0
     number_of_unknown_samples = 0
-    print("treshold: " + str(args.threshold))
     with torch.no_grad():
         for img_id, (_, class_l, _, _) in enumerate(target_loader_eval):
             # DEBUG VERSION
@@ -133,9 +134,6 @@ def evaluation(
             #    break
             if normality_score[img_id] >= args.threshold:
                 # we consider the domain of the image as known
-                print(img_id)
-                print(normality_score[img_id])
-                print()
                 target_known.write(
                     f"{target_loader_eval.dataset.names[img_id]} {class_l.item()}\n"
                 )
