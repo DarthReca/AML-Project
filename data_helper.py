@@ -36,6 +36,7 @@ def get_train_dataloader(args, txt_file):
     """
 
     img_transformer = get_train_transformers(args)
+    print("\nReading: " + txt_file)
     name_train, labels_train = _dataset_info(txt_file)
     train_dataset = FlipDataset(
         name_train, labels_train, args.path_dataset, img_transformer=img_transformer
