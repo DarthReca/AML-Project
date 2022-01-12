@@ -1,0 +1,63 @@
+Source:  Art  Target:  Clipart
+Dataset size: source 1789, target 4365
+Step 1 --------------------------------------------
+Step size: 16
+Epoch:  0
+Class Loss 5.7935, Class Accuracy 0.1302,Rot Loss 7.7095, Rot Accuracy 0.2281
+Epoch:  1
+Class Loss 4.7775, Class Accuracy 0.0341,Rot Loss 3.8447, Rot Accuracy 0.2342
+Epoch:  2
+Class Loss 4.7806, Class Accuracy 0.0341,Rot Loss 1.8600, Rot Accuracy 0.2387
+Epoch:  3
+Class Loss 3.9379, Class Accuracy 0.0442,Rot Loss 1.4265, Rot Accuracy 0.2476
+Epoch:  4
+Class Loss 3.7601, Class Accuracy 0.0414,Rot Loss 1.3830, Rot Accuracy 0.2437
+Epoch:  5
+Class Loss 3.7426, Class Accuracy 0.0604,Rot Loss 1.3635, Rot Accuracy 0.2214
+Epoch:  6
+Class Loss 3.7547, Class Accuracy 0.0620,Rot Loss 1.4248, Rot Accuracy 0.2219
+Epoch:  7
+Class Loss 3.9192, Class Accuracy 0.0632,Rot Loss 1.5237, Rot Accuracy 0.2370
+Epoch:  8
+Class Loss 3.6837, Class Accuracy 0.0620,Rot Loss 1.4420, Rot Accuracy 0.2169
+Epoch:  9
+Class Loss 3.6650, Class Accuracy 0.0553,Rot Loss 1.4523, Rot Accuracy 0.2236
+Epoch:  10
+Class Loss 3.6620, Class Accuracy 0.0637,Rot Loss 1.4114, Rot Accuracy 0.2269
+Epoch:  11
+Class Loss 3.6947, Class Accuracy 0.0699,Rot Loss 1.4596, Rot Accuracy 0.2476
+Epoch:  12
+Class Loss 3.6713, Class Accuracy 0.0788,Rot Loss 1.3841, Rot Accuracy 0.2398
+Epoch:  13
+Class Loss 3.6947, Class Accuracy 0.0727,Rot Loss 1.4192, Rot Accuracy 0.2197
+Epoch:  14
+Class Loss 3.6353, Class Accuracy 0.0738,Rot Loss 1.3825, Rot Accuracy 0.2230
+Epoch:  15
+Class Loss 3.6520, Class Accuracy 0.0749,Rot Loss 1.4492, Rot Accuracy 0.2387
+Epoch:  16
+Class Loss 3.6197, Class Accuracy 0.0721,Rot Loss 1.4075, Rot Accuracy 0.2275
+Epoch:  17
+Class Loss 3.6011, Class Accuracy 0.0822,Rot Loss 1.3890, Rot Accuracy 0.2381
+Epoch:  18
+Class Loss 3.5973, Class Accuracy 0.0710,Rot Loss 1.3989, Rot Accuracy 0.2381
+Epoch:  19
+Class Loss 3.6169, Class Accuracy 0.0727,Rot Loss 1.3898, Rot Accuracy 0.2409
+Target - Evaluation -- for known/unknown separation
+AUROC 0.4875
+Generated random number is : 16831
+The number of target samples selected as known is:  40
+The number of target samples selected as unknown is:  4325
+Step 2 --------------------------------------------
+Step size: 16
+Traceback (most recent call last):
+  File "main.py", line 283, in <module>
+    main()
+  File "main.py", line 274, in main
+    trainer.do_training()
+  File "main.py", line 260, in do_training
+    self.device,
+  File "/content/AML-Project/step2_SourceTargetAdapt.py", line 230, in step2
+    device,
+  File "/content/AML-Project/step2_SourceTargetAdapt.py", line 66, in _do_epoch
+    target_loader_train_it
+StopIteration

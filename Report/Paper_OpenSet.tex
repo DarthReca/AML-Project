@@ -1,0 +1,138 @@
+% CVPR 2022 Paper Template
+% based on the CVPR template provided by Ming-Ming Cheng (https://github.com/MCG-NKU/CVPR_Template)
+% modified and extended by Stefan Roth (stefan.roth@NOSPAMtu-darmstadt.de)
+
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+%%%%%%%%% PAPER TYPE  - PLEASE UPDATE FOR FINAL VERSION
+%\usepackage[review]{cvpr}      % To produce the REVIEW version
+\usepackage{cvpr}              % To produce the CAMERA-READY version
+%\usepackage[pagenumbers]{cvpr} % To force page numbers, e.g. for an arXiv version
+
+% Include other packages here, before hyperref.
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+
+
+% It is strongly recommended to use hyperref, especially for the review version.
+% hyperref with option pagebackref eases the reviewers' job.
+% Please disable hyperref *only* if you encounter grave issues, e.g. with the
+% file validation for the camera-ready version.
+%
+% If you comment hyperref and then uncomment it, you should delete
+% ReviewTempalte.aux before re-running LaTeX.
+% (Or just hit 'q' on the first LaTeX run, let it finish, and you
+%  should be clear).
+\usepackage[pagebackref,breaklinks,colorlinks]{hyperref}
+
+
+% Support for easy cross-referencing
+\usepackage[capitalize]{cleveref}
+\crefname{section}{Sec.}{Secs.}
+\Crefname{section}{Section}{Sections}
+\Crefname{table}{Table}{Tables}
+\crefname{table}{Tab.}{Tabs.}
+
+
+%%%%%%%%% PAPER ID  - PLEASE UPDATE
+\def\cvprPaperID{*****} % *** Enter the CVPR Paper ID here
+\def\confName{CVPR}
+\def\confYear{2022}
+
+
+\begin{document}
+
+%%%%%%%%% TITLE - PLEASE UPDATE
+\title{Open-Set Domain Adaptation through Self-Supervision}
+
+\author{Daniele Rege Cambrin, Kylie Bedwell, Tommaso Natta, Ehsan Ansari Nejad\\
+Politecnico di Torino\\
+Corso Duca degli Abruzzi, 24\\
+10129 Torino, ITALY\\
+{\tt\small s290144@studenti.polito.it, s287581@studenti.polito.it} \\
+{\tt\small s282478@studenti.polito.it, s288903@studenti.polito.it}
+% For a paper whose authors are all at the same institution,
+% omit the following lines up until the closing ``}''.
+% Additional authors and addresses can be added with ``\and'',
+% just like the second author.
+% To save space, use either the email address or home page, not both
+}
+\maketitle
+
+%%%%%%%%% ABSTRACT
+\begin{abstract}
+   - sentence describing the problem
+ - sentence describing our proposed method
+ - sentence summarising the results
+ - sentence about the variations
+ - sentence about the variation results
+\end{abstract}
+
+%%%%%%%%% BODY TEXT
+\section{Introduction}
+\label{sec:intro}
+
+In the computer vision research area large amounts of unlabeled data are available, however the cost of labelling this data is high ~\cite{Csurka2017}. Domain adaptation is one technique that can be used to exploit the unlabeled data by first training a model on labeled data from a different but similar domain (the \textit{source} domain), and then applying this model to the unlabeled data ( the \textit{target} domain). This technique assumes the distribution of both source and target domans are similar and describe the same class labels, also known as the \textit{closed-set} scenario~\cite{Bucci2020}. When applied to real-word scenarios however it is possible that the target domain includes previously unseen classes, known as the \textit{open-set} scenario. These extra class labels in the target domain will cause performance degradation of the classification model and should be identified and isolated. The problem thus consists of two steps: first separating the target domain into known and unknown samples; then conducting domain alignment between the source domain and the known samples of the target domain. 
+
+Self-supervised learning can be used to separate the known class samples in the target domain from the unknown samples. Self-supervised learning involves using known ...
+
+
+- Introduce the problem
+- state our focus
+- the network used
+- the dataset used
+- introduce the variations we will implement
+
+%------------------------------------------------------------------------
+\section{Related Work}
+\label{sec:relatedWork}
+
+- what's been done in the past on this topic
+ - Summarise each of the cited references
+- Cite some papers about the variations we did
+ - other variations which might be interesting (but that we didnt do) - if space
+- 
+
+%------------------------------------------------------------------------
+\section{Method}
+\label{sec:method}
+
+- describe in detail the method used
+- include the diagrams here and explain them
+- explain the evaluation parameters that will be used
+
+%------------------------------------------------------------------------
+\section{Experiments}
+\label{sec:experiments}
+
+- start with parameter tuning of learning rate and epochs, include graph to justify decision
+- ablation study: hyperparameter tuning of weights and threshold value, include graphs or tables of values
+
+
+%------------------------------------------------------------------------
+\section{Variations}
+\label{sec:variations}
+
+- describe each of the variations
+- present results of the performance of the model and compare with the baseline for each of the variations
+
+%------------------------------------------------------------------------
+\section{Conclusions}
+\label{sec:conclusion}
+
+- summarise the results
+- add future recommendations
+
+\subsection{Acknowledgements}
+The authors would like to thank Silvia Bucci for her assistance and guidance in completing this study.
+
+
+%%%%%%%%% REFERENCES
+{\small
+\bibliographystyle{ieee_fullname}
+\bibliography{egbib}
+}
+
+\end{document}
