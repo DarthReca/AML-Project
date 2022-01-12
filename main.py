@@ -274,6 +274,8 @@ class Trainer:
                 self.device,
             )
 
+            print("<------End")
+
 
 def main():
     # main function of the program

@@ -113,7 +113,7 @@ def _do_epoch(
 
     # compute accuracy on class and rotation predictions
     acc_cls = correct_classes / len(source_loader.dataset)
-    acc_rot = correct_rotations / len(target_loader_train.dataset)
+    acc_rot = correct_rotations / len(source_loader.dataset)
 
     print(
         "Class Loss %.4f, Class Accuracy %.4f,Rot Loss %.4f, Rot Accuracy %.4f"
@@ -217,7 +217,8 @@ def step2(
         args.train_all,
     )
 
-    for _ in range(args.epochs_step2):
+    for epoch in range(args.epochs_step2):
+        print("Epoch: ", epoch)
         _do_epoch(
             args,
             feature_extractor,
