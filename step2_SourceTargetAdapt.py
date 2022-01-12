@@ -148,12 +148,12 @@ def _do_epoch(
 
             # Get predictions
             class_prediction = torch.argmax(class_scores, dim=1)
-            
+            """
             print()
             print(class_label)
             print(class_prediction)
             print(class_scores)
-
+            """
             # Update counters
             if class_label == args.n_classes_known:
                 total_classes_unknown += 1
