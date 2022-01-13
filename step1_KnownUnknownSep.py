@@ -123,7 +123,7 @@ def step1(
             args, feature_extractor, rot_cls, obj_cls, source_loader, optimizer, device
         )
         print(
-            "Class Loss %.4f, Class Accuracy %.4f,Rot Loss %.4f, Rot Accuracy %.4f"
+            "Class Loss %.4f, Class Accuracy %.4f,Flip Loss %.4f, Flip Accuracy %.4f"
             % (class_loss, acc_cls, rot_loss, acc_rot)
         )
         if epoch % 10 == 0:

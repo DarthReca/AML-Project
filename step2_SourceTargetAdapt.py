@@ -116,7 +116,7 @@ def _do_epoch(
     acc_rot = correct_rotations / len(source_loader.dataset)
 
     print(
-        "Class Loss %.4f, Class Accuracy %.4f,Rot Loss %.4f, Rot Accuracy %.4f"
+        "Class Loss %.4f, Class Accuracy %.4f,Flip Loss %.4f, Flip Accuracy %.4f"
         % (class_loss.item(), acc_cls, rot_loss.item(), acc_rot)
     )
 
@@ -131,8 +131,6 @@ def _do_epoch(
     total_classes_known = 0
     total_classes_unknown = 0
     
-    print("Number of known classes: ")
-    print(args.n_classes_known)
     # deactivate autograd engine for speedup during evaluation phase
     with torch.no_grad():
         for it, (data, class_label, _, _) in enumerate(target_loader_eval):
