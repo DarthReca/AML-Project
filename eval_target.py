@@ -128,7 +128,7 @@ def evaluation(
                 number_of_known_samples += 1
             else:
                 # we consider the domain of the image as UNknown
-                target_unknown.write(f"{target_loader_eval.dataset.names[img_id]} 45\n")
+                target_unknown.write(f"{target_loader_eval.dataset.names[img_id]} {args.n_classes_known}\n")
                 number_of_unknown_samples += 1
 
     target_known.close()
