@@ -109,7 +109,9 @@ def evaluation(
         f"new_txt_list/{args.source}_known_{rand}.txt",
     )
     target_unknown = open(source_unknown_path, "a+")
-
+    #new line at the end of source images, otherwise first target unknown image is on the same line as last source image
+    target_unknown.write(f"\n")
+    
     # This txt files will have the names of the target images selected as known
     target_known = open(f"new_txt_list/{args.target}_known_{rand}.txt", "w+")
 
