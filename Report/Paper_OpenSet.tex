@@ -89,23 +89,16 @@ This study investigates the use of a simplified ROS method for object classifica
 
 \textbf{Anomaly detection}, or outlier/novelty detection, in an open-set scenario can be used to detect samples belonging to the unknown or unseen class. Various different approaches for anomaly detection have been used in the literature as applied to the open-set scenario. Golan and El-Yanic \cite{Golan2018} present a method for using geometric transformations to create a self-labeled dataset. In this way the neural classifier learns features that are effective for the detection of anomalies.  Sakurada and Yairi \cite{Sakurada2014} on the other hand make use of autoencoders with dimensionality reduction. This method assumes the data have correlations that can clearly separate normal and anomalous samples when reduced to a lower dimensional subspace. After the test data is projected into the subspace it is then reconstructed and the corresponding reconstruction error is used to identify the anomalous samples.
 
-\textcolor{red}{Not sure if the Sakurada study is relevant to our work}
 
+\textbf{Self-supervised learning} has been a key concept aimed at reducing the need for human labeling of data. It has also created opportunities for the use of data in problems where supervision is not possible \cite{Yaman2020}. Self-supervised learning consists of choosing a self-supervised task (or pretext task) to train alongside the main classification task. One possible self-supervised task is image rotation prediction, which is reported to perform best for visual representation learning \cite{Xu2019, Gidaris2018}. However many options are available, including image-patch based methods \cite{Mundhenk2018, Kim2018}, horizontal flipping \cite{Golan2018}, or by solving jigsaw puzzles \cite{Carlucci2019, Kim2018}. 
 
-\textbf{Self-supervised learning}...
-\cite{Xu2019}, Komodakis, 
 
 \textbf{Domain adaptation} ...
-Calucci, Csurka, Pau
+Calucci, Csurka, Pau, Zhang2016, Ren2021
 
 \textbf{Rotation-based Open Set}...
-\cite{Bucci2020}
+\cite{Bucci2020}, center-loss paper 
 
-- what's been done in the past on this topic
- - Summarise each of the cited references
-- Cite some papers about the variations we did
- - other variations which might be interesting (but that we didnt do) - if space
-- 
 
 %------------------------------------------------------------------------
 \section{Method}
