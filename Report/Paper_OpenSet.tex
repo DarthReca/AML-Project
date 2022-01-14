@@ -74,16 +74,14 @@ Corso Duca degli Abruzzi, 24\\
 \section{Introduction}
 \label{sec:intro}
 
-In the computer vision research area large amounts of unlabeled data are available, however the cost of labelling this data is high ~\cite{Csurka2017}. Domain adaptation is one technique that can be used to exploit the unlabeled data by first training a model on labeled data from a different but similar domain (the \textit{source} domain), and then applying this model to the unlabeled data ( the \textit{target} domain). This technique assumes the distribution of both source and target domans are similar and describe the same class labels, also known as the \textit{closed-set} scenario~\cite{Bucci2020}. When applied to real-word scenarios however it is possible that the target domain includes previously unseen classes, known as the \textit{open-set} scenario. These extra class labels in the target domain will cause performance degradation of the classification model and should be identified and isolated. The problem thus consists of two steps: first separating the target domain into known and unknown samples; then conducting domain alignment between the source domain and the known samples of the target domain. 
+In the computer vision research area large amounts of unlabeled data are available, however the cost of labeling this data is high ~\cite{Csurka2017}. Domain adaptation is one technique that can be used to exploit the unlabeled data by first training a model on labeled data from a different but similar domain (the \textit{source} domain), and then applying this model to the unlabeled data ( the \textit{target} domain). This technique assumes the distribution of both source and target domains are similar and describe the same class labels, also known as the \textit{closed-set} scenario~\cite{Bucci2020}. When applied to real-word scenarios however it is possible that the target domain includes previously unseen classes, known as the \textit{open-set} scenario. These extra class labels in the target domain will cause performance degradation of the classification model and should be identified and isolated. The problem thus consists of two steps: first separating the target domain into known and unknown samples; then conducting domain alignment between the source domain and the known samples of the target domain. 
 
-Self-supervised learning can be used to separate the known class samples in the target domain from the unknown samples. Self-supervised learning involves using known ...
+Self-supervised learning can be used to separate the known class samples in the target domain from the unknown samples. Self-supervised learning involves the transformation of data using a known transform (for example by using image rotation), then training a model to predict the transformation~\cite{Xu2019}. When used in an object classification task and considering the image rotation transformation, the correct orientation of an object is domain-invariant. In this way the model can be trained to predict the correct orientation of the image using data from the source domain, then applied to the images of the target domain. If the orientation of a sample in the target domain is predicted correctly then it is considered to be of a \textit{known} class. Contrarily if the orientation is not prediction correctly it is labelled as \textit{unknown}. 
 
+Domain adaptation can then be performed between the samples in the source domain and the samples recognized as known in the target domain. When applying domain adaptation to an open-set scenario (Open-Set Domain Adapatation or OSDA) the samples classified as unknown can be treated as a separate class and incorporated into the Closed-Set Domain Adaptation (CSDA) task~\cite{Pau2020}. The self-supervised rotation task can also be used to reduce the domain shift during this step, using the Rotation-based Open Set (ROS) method developed by Bucci \etal \cite{Bucci2020}.
 
-- Introduce the problem
-- state our focus
-- the network used
-- the dataset used
-- introduce the variations we will implement
+This study investigates the use of a simplified ROS method for object classification on the \textit{Office-Home} dataset \cite{OfficeHome}. Alternative self-supervised tasks \textcolor{red}{as well as the inclusion of center-loss} are also considered and their performance on the object classification task is evaluated.
+
 
 %------------------------------------------------------------------------
 \section{Related Work}
@@ -100,6 +98,7 @@ Self-supervised learning can be used to separate the known class samples in the 
 \label{sec:method}
 
 - describe in detail the method used
+- the network used
 - include the diagrams here and explain them
 - explain the evaluation parameters that will be used
 
