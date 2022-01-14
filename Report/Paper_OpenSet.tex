@@ -87,6 +87,20 @@ This study investigates the use of a simplified ROS method for object classifica
 \section{Related Work}
 \label{sec:relatedWork}
 
+\textbf{Anomaly detection}, or outlier/novelty detection, in an open-set scenario can be used to detect samples belonging to the unknown or unseen class. Various different approaches for anomaly detection have been used in the literature as applied to the open-set scenario. Golan and El-Yanic \cite{Golan2018} present a method for using geometric transformations to create a self-labeled dataset. In this way the neural classifier learns features that are effective for the detection of anomalies.  Sakurada and Yairi \cite{Sakurada2014} on the other hand make use of autoencoders with dimensionality reduction. This method assumes the data have correlations that can clearly separate normal and anomalous samples when reduced to a lower dimensional subspace. After the test data is projected into the subspace it is then reconstructed and the corresponding reconstruction error is used to identify the anomalous samples.
+
+\textcolor{red}{Not sure if the Sakurada study is relevant to our work}
+
+
+\textbf{Self-supervised learning}...
+\cite{Xu2019}, Komodakis, 
+
+\textbf{Domain adaptation} ...
+Calucci, Csurka, Pau
+
+\textbf{Rotation-based Open Set}...
+\cite{Bucci2020}
+
 - what's been done in the past on this topic
  - Summarise each of the cited references
 - Cite some papers about the variations we did
