@@ -4,6 +4,10 @@
 
 In new_txt_list you can find some mockup data to test step two
 
+## Weights
+
+Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
+
 ## Dataset
 
 1 - Download Office-Home dataset from here https://drive.google.com/file/d/0B81rNlvomiwed0V1YUxQdC1uOTg/view
