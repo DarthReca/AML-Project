@@ -67,7 +67,7 @@ def evaluation(
             original_features = feature_extractor(data)
 
             entropy_losses = torch.zeros([4])
-            rotation_scores = torch.zeros([4, 4])
+            rotation_scores = torch.zeros([4])
             for i in range(1, 5):
                 rotated_features = feature_extractor(
                     torch.rot90(data, k=i, dims=[2, 3])
@@ -81,9 +81,8 @@ def evaluation(
                     rotation_probabilities.dot(torch.log10(rotation_probabilities))
                     / log(args.n_classes_known, 10)
                 ).item()
-                rotation_scores[i - 1] = rotation_probabilities
-            # normality score is maximum prediction of a class. e.g. if image is rotated 90° left with 70% probability, normality score = 0.7
-            normality_score[index] = torch.max(torch.mean(rotation_scores, dim=0))
+                rotation_scores[i - 1] = rotation_probabilities[i - 1]
+            normality_score[index] = torch.max(rotation_scores)
             """If you want to use entropy
             normality_score[index] = torch.max(
                 normality_score[index], 1 - torch.mean(entropy_losses)
@@ -109,9 +108,9 @@ def evaluation(
         f"new_txt_list/{args.source}_known_{rand}.txt",
     )
     target_unknown = open(source_unknown_path, "a+")
-    #new line at the end of source images, otherwise first target unknown image is on the same line as last source image
+    # new line at the end of source images, otherwise first target unknown image is on the same line as last source image
     target_unknown.write(f"\n")
-    
+
     # This txt files will have the names of the target images selected as known
     target_known = open(f"new_txt_list/{args.target}_known_{rand}.txt", "w+")
 
@@ -130,7 +129,9 @@ def evaluation(
                 number_of_known_samples += 1
             else:
                 # we consider the domain of the image as UNknown
-                target_unknown.write(f"{target_loader_eval.dataset.names[img_id]} {args.n_classes_known}\n")
+                target_unknown.write(
+                    f"{target_loader_eval.dataset.names[img_id]} {args.n_classes_known}\n"
+                )
                 number_of_unknown_samples += 1
 
     target_known.close()
