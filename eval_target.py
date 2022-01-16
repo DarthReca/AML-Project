@@ -68,20 +68,21 @@ def evaluation(
 
             entropy_losses = torch.zeros([4])
             rotation_scores = torch.zeros([4])
-            for i in range(1, 5):
-                rotated_features = feature_extractor(
-                    torch.rot90(data, k=i, dims=[2, 3])
-                )
+            for i in range(4):
+                rotated = torch.rot90(data, k=i, dims=[2, 3])
+                rotated_features = feature_extractor(rotated)
                 rotation_probabilities = torch.nn.Softmax(dim=0)(
                     torch.flatten(
                         rot_cls(torch.cat([original_features, rotated_features], 1))
                     )
                 )
-                entropy_losses[i - 1] = (
+                entropy_losses[i] = (
                     rotation_probabilities.dot(torch.log10(rotation_probabilities))
                     / log(args.n_classes_known, 10)
                 ).item()
-                rotation_scores[i - 1] = rotation_probabilities[i - 1]
+                rotation_scores[i] = rotation_probabilities[i]
+
+            # normality score is maximum prediction of a class. e.g. if image is rotated 90° left with 70% probability, normality score = 0.7
             normality_score[index] = torch.max(rotation_scores)
             """If you want to use entropy
             normality_score[index] = torch.max(
