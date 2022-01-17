@@ -16,19 +16,21 @@ class CenterLoss(nn.Module):
     ----------
     Wen et al. A Discriminative Feature Learning Approach for Deep Face Recognition. ECCV 2016.
     """
-
+    
     def __init__(self, num_classes: int = 10, feat_dim: int = 2, use_gpu: bool = True):
         super(CenterLoss, self).__init__()
         self.num_classes = num_classes
         self.feat_dim = feat_dim
         self.use_gpu = use_gpu
+        print(self.use_gpu)
 
         if self.use_gpu:
             self.centers = nn.Parameter(
                 torch.randn(self.num_classes, self.feat_dim).cuda()
             )
         else:
-            self.centers = nn.Parameter(torch.randn(self.num_classes, self.feat_dim))
+            self.centers = nn.Parameter(
+                torch.randn(self.num_classes, self.feat_dim))
 
     def forward(self, x: torch.Tensor, labels: torch.Tensor):
         """
@@ -39,6 +41,7 @@ class CenterLoss(nn.Module):
         labels: Tensor
             ground truth labels with shape (batch_size).
         """
+       
         batch_size = x.size(0)
         distmat = (
             torch.pow(x, 2)

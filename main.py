@@ -9,6 +9,8 @@ from step1_KnownUnknownSep import step1
 from eval_target import evaluation
 from step2_SourceTargetAdapt import step2
 
+from center_loss import CenterLoss
+
 
 def get_args():
     """
@@ -57,7 +59,8 @@ def get_args():
     parser.add_argument(
         "--max_scale", default=1.0, type=float, help="Maximum scale percent"
     )
-    parser.add_argument("--jitter", default=0.4, type=float, help="Color jitter amount")
+    parser.add_argument("--jitter", default=0.4, type=float,
+                        help="Color jitter amount")
     parser.add_argument(
         "--random_grayscale",
         default=0.1,
@@ -66,8 +69,10 @@ def get_args():
     )
 
     # training parameters
-    parser.add_argument("--image_size", type=int, default=222, help="Image size")
-    parser.add_argument("--batch_size", type=int, default=128, help="Batch size")
+    parser.add_argument("--image_size", type=int,
+                        default=222, help="Image size")
+    parser.add_argument("--batch_size", type=int,
+                        default=128, help="Batch size")
     parser.add_argument(
         "--learning_rate", type=float, default=0.001, help="Learning rate"
     )
@@ -113,6 +118,19 @@ def get_args():
         help="Threshold for the known/unkown separation",
     )
 
+    # centerLoss params
+    parser.add_argument('--lr_cent', type=float, default=0.5,
+                        help="learning rate for center loss")
+    parser.add_argument('--weight_cent', type=float,
+                        default=1, help="weight for center loss")
+    parser.add_argument('--max_epoch', type=int, default=100)
+    parser.add_argument('--stepsize', type=int, default=20)
+    parser.add_argument('--gamma', type=float, default=0.5,
+                        help="learning rate decay")
+
+    parser.add_argument('--plot', action='store_true',
+                        help="whether to plot features for every epoch")
+
     # tensorboard logger
     parser.add_argument(
         "--tf_logger",
@@ -152,7 +170,8 @@ class Trainer:
         self.args = args
 
         # Set device for allocation of the tensor
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = torch.device(
+            "cuda" if torch.cuda.is_available() else "cpu")
 
         # ResNet model
         self.feature_extractor = resnet18_feat_extractor()
@@ -160,6 +179,12 @@ class Trainer:
         self.obj_classifier = Classifier(512, self.args.n_classes_known + 1)
         # Initiate rotation classifier with input_size=512*2 and 4 classes: [0, 90, 180, 270]
         self.rot_classifier = Classifier(512 * 2, 4)
+
+        #firs param =supervised * known
+        # center_loss = CenterLoss(num_classes=self.ss_classes*self.n_classes, feat_dim=256*self.n_classes, use_gpu=True,device=self.device)
+        #f second params=eat_dim=256*self.n_classes
+        
+        self.center_loss = CenterLoss(self.args.n_classes_known*4, 256*self.args.n_classes_known, False)
 
         if args.load_weights:
             self.rot_classifier.load_state_dict(
@@ -183,7 +208,8 @@ class Trainer:
         # Path to file with the list of known class images, source is the domain of the image (from command line argument, default is Art)
         source_path_file = "txt_list/" + args.source + "_known.txt"
         # Create the source data loader, providing an iterable over the dataset - using map-style dataset.
-        self.source_loader = data_helper.get_train_dataloader(args, source_path_file)
+        self.source_loader = data_helper.get_train_dataloader(
+            args, source_path_file)
 
         # Path to the file with the list of target images (from command line argument, default is Clipart)
         target_path_file = "txt_list/" + args.target + ".txt"
@@ -192,7 +218,8 @@ class Trainer:
         self.target_loader_train = data_helper.get_val_dataloader(
             args, target_path_file
         )
-        self.target_loader_eval = data_helper.get_val_dataloader(args, target_path_file)
+        self.target_loader_eval = data_helper.get_val_dataloader(
+            args, target_path_file)
 
         print("Source: ", self.args.source, " Target: ", self.args.target)
         print(
@@ -214,6 +241,7 @@ class Trainer:
                 self.feature_extractor,
                 self.rot_cls,
                 self.obj_cls,
+                self.center_loss,
                 self.source_loader,
                 self.device,
             )
