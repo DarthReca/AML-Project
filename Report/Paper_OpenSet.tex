@@ -93,17 +93,17 @@ This study investigates the use of a simplified ROS method for object classifica
 \textbf{Self-supervised learning} has been a key concept aimed at reducing the need for human labeling of data. It has also created opportunities for the use of data in problems where supervision is not possible \cite{Yaman2020}. Self-supervised learning consists of choosing a self-supervised task (or pretext task) to train alongside the main classification task. One possible self-supervised task is image rotation prediction, which is reported to perform best for visual representation learning \cite{Xu2019, Gidaris2018}. However many options are available, including image-patch based methods \cite{Mundhenk2018, Kim2018}, horizontal flipping \cite{Golan2018}, or by solving jigsaw puzzles \cite{Carlucci2019, Kim2018}. 
 
 
-\textbf{Domain adaptation} techniques have advanced significantly in recent years for the closed-set scenario \cite{Pau2020}, however for real-world applications the closed-set assumption is often not applicable \cite{Ren2021}. It has become increasingly important to develop robust techniques for open-set domain adaptation to address this problem. Recent studies in this field include: the development of a generic approach to learn a linear mapping between the features of the source domain and target domain \cite{Pau2020}; the use of self-supervision to improve the generalization of models to different domains \cite{Carlucci2019}; or considering partial domain adaptation by using a discrepancy criterion to partially align features whilst avoiding negative transfer \cite{Ren2021}. These techniques have been reported to perform well, and increase the applicability of domain adaptation methods to real-world applications \cite{Carlucci2019, Ren2021,Pau2020}.
+\textbf{Domain adaptation} techniques have advanced significantly in recent years for the closed-set scenario \cite{Pau2020}, however for real-world applications the closed-set assumption is often not applicable \cite{Ren2021}. It has become increasingly important to develop robust techniques for open-set domain adaptation to address this problem. Recent studies in this field include: the development of a generic approach to learn a linear mapping between the features of the source domain and target domain \cite{Pau2020}; the use of self-supervision to improve the generalization of models to different domains \cite{Carlucci2019}; partial domain adaptation by using a discrepancy criterion to partially align features whilst avoiding negative transfer \cite{Ren2021}. These techniques have been reported to perform well, and increase the applicability of domain adaptation methods to real-world applications \cite{Carlucci2019, Ren2021,Pau2020}.
 
 
-\textbf{Rotation-based Open Set} (ROS) is a specific technique developed by Bucci \etal \cite{Bucci2020} for open-set domain adaptation. 
-
-\cite{Bucci2020}, center-loss paper 
+\textbf{Rotation-based Open Set} (ROS) is a specific technique developed by Bucci \etal \cite{Bucci2020}. ROS is a two-stage method for open-set domain adaptation. The first stage separates samples in the target domain into known and unknown categories by training the model on a multi-rotation recognition task. The rotation recognition task includes the use of the center-loss to improve performance by learning a center of the features and minimizing the distances between features and their corresponding centers \cite{Wen2016}. The second stage conducts domain alignment, training both semantic and rotation classifiers to classify known target samples. Bucci \etal \cite{Bucci2020} also propose the use of the harmonic mean of the average class accuracies  for the known and unknown classes as a more robust and balanced evaluation metric.
 
 
 %------------------------------------------------------------------------
 \section{Method}
 \label{sec:method}
+
+ROS but without the center-loss and only a single-head rotation classifier.
 
 - describe in detail the method used
 - the network used
