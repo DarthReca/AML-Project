@@ -85,6 +85,14 @@ class JigSawDataset(data.Dataset):
     def __len__(self):
         return len(self.names)
 
+    def __retrieve_permutations(self, classes):
+        all_perm = np.load('permutations_%d.npy' % (classes))
+        # from range [1,9] to [0,8]
+        if all_perm.min() == 1:
+            all_perm = all_perm - 1
+
+        return all_perm
+
 
 class JigsawTestDataset(data.Dataset):
     def __init__(
