@@ -25,7 +25,7 @@ def _dataset_info(txt_labels):
     return file_names, labels
 
 
-class JigSawDataset(data.Dataset):
+class JigsawDataset(data.Dataset):
     def __init__(
             self,
             names: List[str],
@@ -45,7 +45,6 @@ class JigSawDataset(data.Dataset):
         self.augment_tile = transforms.Compose([
             transforms.RandomCrop(64),
             transforms.Resize((75, 75), Image.BILINEAR),
-            transforms.Lambda(rgb_jittering),
             transforms.ToTensor()
         ])
 
@@ -106,7 +105,6 @@ class JigsawTestDataset(data.Dataset):
         self.names = names
         self.labels = labels
         self.image_transformer = img_transformer
-
         self.permutations = self.__retrieve_permutations(jig_classes)
         self.grid_size = 3
         self.image_resize = transforms.Compose([
@@ -115,7 +113,6 @@ class JigsawTestDataset(data.Dataset):
         self.augment_tile = transforms.Compose([
             transforms.RandomCrop(64),
             transforms.Resize((75, 75), Image.BILINEAR),
-            transforms.Lambda(rgb_jittering),
             transforms.ToTensor()
         ])
 
@@ -125,7 +122,7 @@ class JigsawTestDataset(data.Dataset):
             x = n % self.grid_size
             tile = img.crop([x * w, y * w, (x + 1) * w, (y + 1) * w])
             tile = self.augment_tile(tile)
-        return tile
+            return tile
 
     def __getitem__(self, index):
         # Get and process an image
@@ -156,6 +153,14 @@ class JigsawTestDataset(data.Dataset):
 
     def __len__(self):
         return len(self.names)
+
+    def __retrieve_permutations(self, classes):
+        all_perm = np.load('permutations_%d.npy' % (classes))
+        # from range [1,9] to [0,8]
+        if all_perm.min() == 1:
+            all_perm = all_perm - 1
+
+        return all_perm
 
 
 # sphinx_gallery_thumbnail_path = "../../gallery/assets/visualization_utils_thumbnail.png"
