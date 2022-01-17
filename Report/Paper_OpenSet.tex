@@ -103,10 +103,44 @@ This study investigates the use of a simplified ROS method for object classifica
 \section{Method}
 \label{sec:method}
 
-ROS but without the center-loss and only a single-head rotation classifier.
+This study aims to solve the open-set scenario by using self-supervised learning with domain adaptation. Image rotation recognition has been chosen as the self-supervised task due to it's good performance for visual representation learning \cite{Xu2019, Gidaris2018}. The rotation recognition task involves taking the original image sample from the source domain and rotating it clockwise a set amount (for example by 0$^{\circ}$, 90$^{\circ}$, 180$^{\circ}$ or 270$^{\circ}$). A rotation classifier is then trained to predict the correct orientation of the object. The correct orientation of the object, however, is not an inherent property of an image, for example consider the pens in Figure \ref{fig:RotatedPens}. When analysing a rotated image of a pen it is not possible to infer the original rotation. The original image is therefore included in the rotation classifier and the relative rotation analysed instead. In training the rotation classifier the features of the original sample are concatenated with the features of the rotated sample. By including the original samples the network is also able to learn features that are more discriminative between class labels, focussing more on the shape of the object and less on the texture \cite{Bucci2020}, as shown in Figure \ref{fig:RotationFeatures}.
+
+\begin{figure}[!htb]
+  \centering
+   \includegraphics[width=0.9\linewidth]{Figures/RotatedPens.png}
+   \caption{Relative orientations of pens with respect to the original images \cite{Bucci2020}.}
+   \label{fig:RotatedPens}
+\end{figure}
+
+\begin{figure}[!htb]
+  \centering
+   \includegraphics[width=0.9\linewidth]{Figures/RotationFeatures.png}
+   \caption{Image rotations help the network learn features that discriminate the shape of objects \cite{Bucci2020}.}
+   \label{fig:RotationFeatures}
+\end{figure}
+
+To solve the open-set domain adaptation problem a simplified version of the ROS method (Figure \ref{fig:ROS}) is used. This version uses a single-head rotation classifier and does not include the center-loss, \textcolor{red}{however the effect of the center-loss is evaluated subsequently as a variation to this method}. Alternative self-supervised tasks are also considered, including horizontal flipping, \textcolor{red}{vertical flipping} and through solving jigsaw puzzles. These variations are analyzed in Section \ref{sec:variations}.
+
+\begin{figure*}[!htb]
+  \centering
+   \includegraphics[width=0.9\linewidth]{Figures/ROS.png}
+   \caption{Rotation-based Open Set (ROS) method schematic illustration \cite{Bucci2020}.}
+   \label{fig:ROS}
+\end{figure*}
+
+\subsection{Stage I - known/unknown separation}
+
+Stage I of the simplified ROS method involves training both an object classifier and a rotation recognition task on data from the source domain, as shown on the left side of Figure \ref{fig:ROS}. 
+
+
+
+\subsection{Target evaluation}
+
+\subsection{Stage II - domain alignment}
+
+\subsection{Final evaluation}
 
 - describe in detail the method used
-- the network used
 - include the diagrams here and explain them
 - explain the evaluation parameters that will be used
 
@@ -114,6 +148,7 @@ ROS but without the center-loss and only a single-head rotation classifier.
 \section{Experiments}
 \label{sec:experiments}
 
+- the network used
 - ablation study: hyperparameter tuning of weights and threshold value, include graphs or tables of values
 
 
