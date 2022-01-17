@@ -130,8 +130,12 @@ To solve the open-set domain adaptation problem a simplified version of the ROS 
 
 \subsection{Stage I - known/unknown separation}
 
-Stage I of the simplified ROS method involves training both an object classifier and a rotation recognition task on data from the source domain, as shown on the left side of Figure \ref{fig:ROS}. 
-
+Stage I of the simplified ROS method involves training both an object classifier and a rotation recognition task on data from the source domain, as shown on the left side of Figure \ref{fig:ROS}, where $D_S$ is the source domain dataset, $E$ is the encoder, $C_1$ is the object classifier and $R_1$ is the rotation classifier. The object prediction is based on the features of the original source samples, whereas the rotation prediction is based on the concatenated features of the original and rotated samples. The object classification and rotation recognition tasks are trained simultaneously to minimize the total loss objective function given by:
+\begin{equation}
+  L_{tot} = L_{cls} + \alpha_1 L_{rot} ,
+  \label{eq:totalloss}
+\end{equation}
+where $L_{cls}$ is the loss from the object classifier, $L_{rot}$ is the loss from the rotation classifier, and $\alpha_1$ is the weight assigned to the rotation recognition task. The value of $\alpha_1$ is tuned according to the performance of the network, as detailed in Section \ref{sec:ablation}.
 
 
 \subsection{Target evaluation}
@@ -147,6 +151,11 @@ Stage I of the simplified ROS method involves training both an object classifier
 %------------------------------------------------------------------------
 \section{Experiments}
 \label{sec:experiments}
+
+\subsection{Ablation study}
+\label{sec:ablation}
+
+\subsection{Results}
 
 - the network used
 - ablation study: hyperparameter tuning of weights and threshold value, include graphs or tables of values
