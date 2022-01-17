@@ -130,7 +130,7 @@ To solve the open-set domain adaptation problem a simplified version of the ROS 
 
 \subsection{Stage I - known/unknown separation}
 
-Stage I of the simplified ROS method involves training both an object classifier and a rotation recognition task on data from the source domain, as shown on the left side of Figure \ref{fig:ROS}, where $D_S$ is the source domain dataset, $E$ is the encoder, $C_1$ is the object classifier and $R_1$ is the rotation classifier. The object prediction is based on the features of the original source samples, whereas the rotation prediction is based on the concatenated features of the original and rotated samples. The object classification and rotation recognition tasks are trained simultaneously to minimize the total loss objective function given by:
+Stage I of the simplified ROS method involves training both an object classifier and a rotation recognition task on data from the source domain, as shown on the left side of Figure \ref{fig:ROS}, where $D_s$ is the source domain dataset, $E$ is the encoder, $C_1$ is the object classifier and $R_1$ is the rotation classifier. The object prediction is based on the features of the original source samples, whereas the rotation prediction is based on the concatenated features of the original and rotated samples. The object classification and rotation recognition tasks are trained simultaneously to minimize the total loss objective function given by:
 \begin{equation}
   L_{tot} = L_{cls} + \alpha_1 L_{rot} ,
   \label{eq:totalloss}
@@ -138,11 +138,18 @@ Stage I of the simplified ROS method involves training both an object classifier
 where $L_{cls}$ is the loss from the object classifier, $L_{rot}$ is the loss from the rotation classifier, and $\alpha_1$ is the weight assigned to the rotation recognition task. The value of $\alpha_1$ is tuned according to the performance of the network, as detailed in Section \ref{sec:ablation}.
 
 
-\subsection{Target evaluation}
+\subsubsection*{Target evaluation}
+
+Once the rotation classifier has been well trained it can be used to identify the known classes of the target domain, and separate these samples from the unknown classes. The method is illustrated in the center of Figure \ref{fig:ROS}, where $D_t$ is the target domain dataset, $D_t^{unk}$ is the dataset of target samples identified as belonging to an unknown class, and $D^{knw}_t$ is the dataset of target samples identified as belonging to a known class. The rotation classifier is applied to each of the target samples and generates a score for each of the possible rotations. The normality score is then computed as the rotation with the maximum score (highest prediction).
+
+The precision of the normality score is then evaluated using the AUROC (Area Under Receiver Operating Characteristics curve) metric. The AUROC metric reduces analysis of the ROC curve to a single scalar value which can be used to compare the performance of classifiers \cite{Fawcett2006}. The higher the AUROC score the better the classifier overall, with scores $> 0.5$ showing an improvement over random guessing.
+
+If the AUROC is $> 0.5$ then the normality score can be used to conduct the known/unknown separation subject to a selected threshold, i.e. if the normality score is above the threshold the sample is considered as known and added to $D^{knw}_t$, otherwise it is considered as unknown and added to $D_t^{unk}$. The threshold value is also tuned according to the performance of the network, as detailed in Section \ref{sec:ablation}.
+
 
 \subsection{Stage II - domain alignment}
 
-\subsection{Final evaluation}
+\subsubsection*{Final evaluation}
 
 - describe in detail the method used
 - include the diagrams here and explain them
