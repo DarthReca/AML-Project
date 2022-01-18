@@ -149,23 +149,38 @@ If the AUROC is $> 0.5$ then the normality score can be used to conduct the know
 
 \subsection{Stage II - domain alignment}
 
+In stage II of the simplified ROS method the unknown dataset created from the target domain $D_t^{unk}$ is combined with the samples from the source domain $D_s$, with the unknown samples representing an additional `unknown' class. The object classifier $C_2$ is thus trained to recognise samples belonging to the unknown class. Concurrently, the known target samples  $D^{knw}_t$ are used for the source-target adaptation by training the rotation recognition task $R_2$. The method is shown on the right side of Figure \ref{fig:ROS}. As in stage I, the object classification and rotation recognition tasks are trained simultaneously to minimize the total loss objective function given by:
+\begin{equation}
+  L_{tot} = L_{cls} + \alpha_2 L_{rot} ,
+  \label{eq:totalloss}
+\end{equation}
+where $\alpha_2$ is the weight assigned to the rotation recognition task of stage II. The value of $\alpha_2$ is also selected to provide the best performance, detailed further in Section \ref{sec:ablation}. 
+
+
 \subsubsection*{Final evaluation}
 
-- describe in detail the method used
-- include the diagrams here and explain them
-- explain the evaluation parameters that will be used
+Once the classifiers have been trained the final evaluation can be completed. Three metrics are considered for the evalutation: the accuracy of the object classifier in correctly classifying objects of the known category $OS^*$; the accuracy of the object classifier in correctly identifying objects of the unknown category $UNK$; and the harmonic mean $HOS$ between the two accuracys $OS^*$ and $UNK$, as defined in \cite{Bucci2020}. The harmonic mean is calculated as:
+\begin{equation}
+ HOS = 2\, \frac{OS^* \times UNK}{OS^* + UNK} ,
+ \label{eq:hos}
+\end{equation}
+and provides a balanced measure of performance of the classifier at recognizing both known and unknown samples.
+
 
 %------------------------------------------------------------------------
 \section{Experiments}
 \label{sec:experiments}
 
+- the network used
+
+
 \subsection{Ablation study}
 \label{sec:ablation}
 
+- ablation study: hyperparameter tuning of weights and threshold value, include graphs or tables of values
+
 \subsection{Results}
 
-- the network used
-- ablation study: hyperparameter tuning of weights and threshold value, include graphs or tables of values
 
 
 %------------------------------------------------------------------------
