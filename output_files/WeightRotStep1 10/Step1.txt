@@ -1,0 +1,166 @@
+Source:  Art  Target:  Clipart
+Dataset size: source 1789, target 4365
+Step 1 --------------------------------------------
+Step size: 64
+Epoch:  0
+Class Loss 3.8181, Class Accuracy 0.0274,Flip Loss 0.6609, Flip Accuracy 0.5059
+Epoch:  1
+Class Loss 3.3238, Class Accuracy 0.1084,Flip Loss 0.7169, Flip Accuracy 0.6221
+Epoch:  2
+Class Loss 3.0675, Class Accuracy 0.2107,Flip Loss 0.4048, Flip Accuracy 0.7205
+Epoch:  3
+Class Loss 2.9783, Class Accuracy 0.3007,Flip Loss 0.2972, Flip Accuracy 0.8038
+Epoch:  4
+Class Loss 2.6884, Class Accuracy 0.3443,Flip Loss 0.1906, Flip Accuracy 0.8256
+Epoch:  5
+Class Loss 2.6380, Class Accuracy 0.3935,Flip Loss 0.4875, Flip Accuracy 0.8418
+Epoch:  6
+Class Loss 2.5679, Class Accuracy 0.4187,Flip Loss 0.1810, Flip Accuracy 0.8647
+Epoch:  7
+Class Loss 2.4214, Class Accuracy 0.4371,Flip Loss 0.0648, Flip Accuracy 0.8804
+Epoch:  8
+Class Loss 2.0937, Class Accuracy 0.4757,Flip Loss 0.1402, Flip Accuracy 0.8865
+Epoch:  9
+Class Loss 2.1289, Class Accuracy 0.4964,Flip Loss 0.0690, Flip Accuracy 0.8949
+Epoch:  10
+Class Loss 1.7669, Class Accuracy 0.5254,Flip Loss 0.3489, Flip Accuracy 0.8776
+Epoch:  11
+Class Loss 1.8439, Class Accuracy 0.5305,Flip Loss 0.1681, Flip Accuracy 0.8882
+Epoch:  12
+Class Loss 1.8981, Class Accuracy 0.5651,Flip Loss 0.0409, Flip Accuracy 0.9083
+Epoch:  13
+Class Loss 1.8576, Class Accuracy 0.5746,Flip Loss 0.0484, Flip Accuracy 0.9044
+Epoch:  14
+Class Loss 1.6565, Class Accuracy 0.5953,Flip Loss 0.0281, Flip Accuracy 0.9117
+Epoch:  15
+Class Loss 1.5862, Class Accuracy 0.6015,Flip Loss 0.0053, Flip Accuracy 0.9156
+Epoch:  16
+Class Loss 1.5953, Class Accuracy 0.6143,Flip Loss 0.0428, Flip Accuracy 0.9201
+Epoch:  17
+Class Loss 1.3374, Class Accuracy 0.6333,Flip Loss 0.0499, Flip Accuracy 0.9262
+Epoch:  18
+Class Loss 1.3563, Class Accuracy 0.6618,Flip Loss 0.0166, Flip Accuracy 0.9251
+Epoch:  19
+Class Loss 1.2370, Class Accuracy 0.6713,Flip Loss 0.0871, Flip Accuracy 0.9212
+Epoch:  20
+Class Loss 1.2842, Class Accuracy 0.6870,Flip Loss 0.0186, Flip Accuracy 0.9245
+Epoch:  21
+Class Loss 1.2802, Class Accuracy 0.6982,Flip Loss 0.0319, Flip Accuracy 0.9245
+Epoch:  22
+Class Loss 1.1460, Class Accuracy 0.7127,Flip Loss 0.0128, Flip Accuracy 0.9245
+Epoch:  23
+Class Loss 1.0853, Class Accuracy 0.7350,Flip Loss 0.0028, Flip Accuracy 0.9212
+Epoch:  24
+Class Loss 1.2021, Class Accuracy 0.7362,Flip Loss 0.0537, Flip Accuracy 0.9212
+Epoch:  25
+Class Loss 0.9586, Class Accuracy 0.7479,Flip Loss 0.0318, Flip Accuracy 0.9173
+Epoch:  26
+Class Loss 0.9535, Class Accuracy 0.7585,Flip Loss 0.0439, Flip Accuracy 0.9262
+Epoch:  27
+Class Loss 0.8555, Class Accuracy 0.7608,Flip Loss 0.0030, Flip Accuracy 0.9251
+Epoch:  28
+Class Loss 0.9056, Class Accuracy 0.7641,Flip Loss 0.0008, Flip Accuracy 0.9262
+Epoch:  29
+Class Loss 0.9343, Class Accuracy 0.7708,Flip Loss 0.0045, Flip Accuracy 0.9273
+Epoch:  30
+Class Loss 0.8941, Class Accuracy 0.7753,Flip Loss 0.0046, Flip Accuracy 0.9290
+Epoch:  31
+Class Loss 0.8188, Class Accuracy 0.7837,Flip Loss 0.0014, Flip Accuracy 0.9268
+Epoch:  32
+Class Loss 0.7395, Class Accuracy 0.8044,Flip Loss 0.0072, Flip Accuracy 0.9268
+Epoch:  33
+Class Loss 0.6671, Class Accuracy 0.8038,Flip Loss 0.0076, Flip Accuracy 0.9268
+Epoch:  34
+Class Loss 0.7739, Class Accuracy 0.8049,Flip Loss 0.0312, Flip Accuracy 0.9223
+Epoch:  35
+Class Loss 0.7849, Class Accuracy 0.8077,Flip Loss 0.0037, Flip Accuracy 0.9262
+Epoch:  36
+Class Loss 0.6481, Class Accuracy 0.8206,Flip Loss 0.0033, Flip Accuracy 0.9279
+Epoch:  37
+Class Loss 0.6114, Class Accuracy 0.8250,Flip Loss 0.0077, Flip Accuracy 0.9257
+Epoch:  38
+Class Loss 0.6517, Class Accuracy 0.8267,Flip Loss 0.0534, Flip Accuracy 0.9268
+Epoch:  39
+Class Loss 0.5968, Class Accuracy 0.8351,Flip Loss 0.0010, Flip Accuracy 0.9268
+Epoch:  40
+Class Loss 0.6841, Class Accuracy 0.8429,Flip Loss 0.0069, Flip Accuracy 0.9285
+Epoch:  41
+Class Loss 0.5857, Class Accuracy 0.8446,Flip Loss 0.0007, Flip Accuracy 0.9296
+Epoch:  42
+Class Loss 0.6079, Class Accuracy 0.8491,Flip Loss 0.0137, Flip Accuracy 0.9290
+Epoch:  43
+Class Loss 0.4662, Class Accuracy 0.8530,Flip Loss 0.0392, Flip Accuracy 0.9285
+Epoch:  44
+Class Loss 0.5365, Class Accuracy 0.8614,Flip Loss 0.0005, Flip Accuracy 0.9296
+Epoch:  45
+Class Loss 0.5115, Class Accuracy 0.8603,Flip Loss 0.0053, Flip Accuracy 0.9290
+Epoch:  46
+Class Loss 0.4101, Class Accuracy 0.8675,Flip Loss 0.0008, Flip Accuracy 0.9296
+Epoch:  47
+Class Loss 0.5527, Class Accuracy 0.8703,Flip Loss 0.0005, Flip Accuracy 0.9290
+Epoch:  48
+Class Loss 0.4169, Class Accuracy 0.8759,Flip Loss 0.0006, Flip Accuracy 0.9296
+Epoch:  49
+Class Loss 0.3988, Class Accuracy 0.8787,Flip Loss 0.0010, Flip Accuracy 0.9285
+Epoch:  50
+Class Loss 0.3499, Class Accuracy 0.8849,Flip Loss 0.0014, Flip Accuracy 0.9290
+Epoch:  51
+Class Loss 0.2999, Class Accuracy 0.8821,Flip Loss 0.0266, Flip Accuracy 0.9296
+Epoch:  52
+Class Loss 0.3389, Class Accuracy 0.8849,Flip Loss 0.0015, Flip Accuracy 0.9279
+Epoch:  53
+Class Loss 0.4318, Class Accuracy 0.8888,Flip Loss 0.0002, Flip Accuracy 0.9268
+Epoch:  54
+Class Loss 0.2736, Class Accuracy 0.8893,Flip Loss 0.0007, Flip Accuracy 0.9268
+Epoch:  55
+Class Loss 0.3721, Class Accuracy 0.8888,Flip Loss 0.0009, Flip Accuracy 0.9268
+Epoch:  56
+Class Loss 0.4067, Class Accuracy 0.8927,Flip Loss 0.0088, Flip Accuracy 0.9279
+Epoch:  57
+Class Loss 0.3329, Class Accuracy 0.8938,Flip Loss 0.0064, Flip Accuracy 0.9279
+Epoch:  58
+Class Loss 0.3882, Class Accuracy 0.8899,Flip Loss 0.0043, Flip Accuracy 0.9279
+Epoch:  59
+Class Loss 0.3828, Class Accuracy 0.8916,Flip Loss 0.0017, Flip Accuracy 0.9279
+Epoch:  60
+Class Loss 0.3054, Class Accuracy 0.8932,Flip Loss 0.0033, Flip Accuracy 0.9279
+Epoch:  61
+Class Loss 0.3146, Class Accuracy 0.8977,Flip Loss 0.0044, Flip Accuracy 0.9296
+Epoch:  62
+Class Loss 0.3091, Class Accuracy 0.8988,Flip Loss 0.0003, Flip Accuracy 0.9285
+Epoch:  63
+Class Loss 0.3194, Class Accuracy 0.9033,Flip Loss 0.0033, Flip Accuracy 0.9290
+Epoch:  64
+Class Loss 0.3323, Class Accuracy 0.9067,Flip Loss 0.0047, Flip Accuracy 0.9296
+Epoch:  65
+Class Loss 0.2832, Class Accuracy 0.9094,Flip Loss 0.0102, Flip Accuracy 0.9279
+Epoch:  66
+Class Loss 0.2357, Class Accuracy 0.9089,Flip Loss 0.0014, Flip Accuracy 0.9296
+Epoch:  67
+Class Loss 0.2471, Class Accuracy 0.9072,Flip Loss 0.0009, Flip Accuracy 0.9296
+Epoch:  68
+Class Loss 0.1967, Class Accuracy 0.9089,Flip Loss 0.0003, Flip Accuracy 0.9301
+Epoch:  69
+Class Loss 0.2327, Class Accuracy 0.9061,Flip Loss 0.0017, Flip Accuracy 0.9290
+Epoch:  70
+Class Loss 0.2681, Class Accuracy 0.9083,Flip Loss 0.0009, Flip Accuracy 0.9296
+Epoch:  71
+Class Loss 0.2571, Class Accuracy 0.9100,Flip Loss 0.0029, Flip Accuracy 0.9296
+Epoch:  72
+Class Loss 0.2475, Class Accuracy 0.9106,Flip Loss 0.0007, Flip Accuracy 0.9301
+Epoch:  73
+Class Loss 0.2100, Class Accuracy 0.9061,Flip Loss 0.0037, Flip Accuracy 0.9301
+Epoch:  74
+Class Loss 0.2515, Class Accuracy 0.9072,Flip Loss 0.0001, Flip Accuracy 0.9296
+Epoch:  75
+Class Loss 0.2469, Class Accuracy 0.9061,Flip Loss 0.0001, Flip Accuracy 0.9290
+Epoch:  76
+Class Loss 0.2637, Class Accuracy 0.9050,Flip Loss 0.0005, Flip Accuracy 0.9296
+Epoch:  77
+Class Loss 0.2819, Class Accuracy 0.9083,Flip Loss 0.0014, Flip Accuracy 0.9301
+Epoch:  78
+Class Loss 0.2667, Class Accuracy 0.9122,Flip Loss 0.0005, Flip Accuracy 0.9290
+Epoch:  79
+Class Loss 0.2846, Class Accuracy 0.9055,Flip Loss 0.0016, Flip Accuracy 0.9290
+Epoch:  80
+Class Loss 0.2624, Class Accuracy 0.9094,Flip Loss 0.0003, Flip Accuracy 0.9296
