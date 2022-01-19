@@ -64,9 +64,10 @@ class JigsawDataset(data.Dataset):
      # Get and process an image
         image_path = self.data_path + "/" + self.names[index]
         img = Image.open(image_path).convert("RGB")
-        # if self.image_transformer:
-        #  img = self.image_transformer(img)
-
+        if self.image_transformer:
+          img = self.image_transformer(img)
+        
+        
        # if img.size[0] != 255:
         #  img = self.image_resize(img)
 
@@ -87,8 +88,8 @@ class JigsawDataset(data.Dataset):
         img = transforms.ToTensor()(img)
         """
 
-      #  if np.random.rand() < 0.30:
-       #     img = img.convert('LA').convert('RGB')
+        if np.random.rand() < 0.30:
+            img = img.convert('LA').convert('RGB')
 
         if img.size[0] != 255:
             img = self.image_transformer(img)
@@ -114,20 +115,15 @@ class JigsawDataset(data.Dataset):
 
         order = np.random.randint(len(self.permutations))
         data = [tiles[self.permutations[order][t]] for t in range(9)]
-        lst = []
-        x=0
-        for i in range(9):
-             lst.append(data[i])
-        # lstt = torch.stack([x for _ in range(10)])
-        #lstt = torch.stack(lst)
-
-        data = torch.cat(data, 1)
-
-
-
+        data1 = torch.cat(data[0:3], 2)
+        data2 = torch.cat(data[3:6], 2)
+        data3 = torch.cat(data[6:9], 2)
+        data = torch.cat((data1, data2, data3), 1)
+        
+        
         img = transforms.ToTensor()(img)
-    
-        #data = torch.squeeze(data)
+        
+        
 
         #show([img, data])
 

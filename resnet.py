@@ -14,7 +14,8 @@ class ResNet(nn.Module):
         self.inplanes = 64
         super(ResNet, self).__init__()
         # Layers
-        self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False)
+        self.conv1 = nn.Conv2d(3, 64, kernel_size=7,
+                               stride=2, padding=3, bias=False)
         self.bn1 = nn.BatchNorm2d(64)
         self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
@@ -30,7 +31,8 @@ class ResNet(nn.Module):
         # Init layers
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
-                nn.init.kaiming_normal_(m.weight, mode="fan_out", nonlinearity="relu")
+                nn.init.kaiming_normal_(
+                    m.weight, mode="fan_out", nonlinearity="relu")
             elif isinstance(m, nn.BatchNorm2d):
                 nn.init.constant_(m.weight, 1)
                 nn.init.constant_(m.bias, 0)
@@ -100,6 +102,7 @@ def resnet18_feat_extractor() -> ResNet:
     See here to have a better idea of the architecture: https://learnopencv.com/wp-content/uploads/2020/03/resnet-18.png
     """
     model = ResNet(BasicBlock, [2, 2, 2, 2])
-    model.load_state_dict(model_zoo.load_url(model_urls["resnet18"]), strict=False)
+    model.load_state_dict(model_zoo.load_url(
+        model_urls["resnet18"]), strict=False)
 
     return model
