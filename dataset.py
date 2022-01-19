@@ -1,14 +1,16 @@
-import torch.utils.data as data
-from PIL import Image
-from random import random
-import random
-import torchvision
-import torchvision.transforms.functional as TF
-import torch
 import numpy as np
+import torch
+import torch.utils.data as data
+import torchvision
+import torchvision.transforms as transforms
+from PIL import Image
+import random
+from random import sample, random
+import torchvision.transforms.functional as TF
 import matplotlib.pyplot as plt
 from typing import List, Optional
-import torchvision.transforms as transforms
+import torchvision.transforms.functional as F
+import os
 
 
 def _dataset_info(txt_labels):
@@ -35,7 +37,9 @@ class JigsawDataset(data.Dataset):
         self.data_path = path_dataset
         self.names = names
         self.labels = labels
-        self.image_transformer = img_transformer
+        self.image_transformer = transforms.Compose([
+            transforms.Resize(256, Image.BILINEAR),
+            transforms.CenterCrop(255)])
 
         self.permutations = self.__retrieve_permutations(jig_classes)
         self.grid_size = 3
@@ -60,26 +64,74 @@ class JigsawDataset(data.Dataset):
      # Get and process an image
         image_path = self.data_path + "/" + self.names[index]
         img = Image.open(image_path).convert("RGB")
-        if self.image_transformer:
-            img = self.image_transformer(img)
+        # if self.image_transformer:
+        #  img = self.image_transformer(img)
 
-        if img.size[0] != 255:
-            img = self.image_resize(img)
+       # if img.size[0] != 255:
+        #  img = self.image_resize(img)
 
         # 9 is number of grids
+        """
         tiles = [None] * 9
-        for n in range(n_grids):
+        for n in range(9):
             tiles[n] = self.get_tile(img, n)
 
-        index = random.randrange(len(self.permutations) + 1)
+        index = np.random.randint(len(self.permutations) + 1)
         if index == 0:
             data = tiles
         else:
-            data = [tiles[self.permutations[order - 1][t]]
-                    for t in range(n_grids)]
+            data = [tiles[self.permutations[index - 1][t]]
+                    for t in range(9)]
 
         data = torch.stack(data, 0)
-        return img, int(self.labels[index]), data, int(index)
+        img = transforms.ToTensor()(img)
+        """
+
+      #  if np.random.rand() < 0.30:
+       #     img = img.convert('LA').convert('RGB')
+
+        if img.size[0] != 255:
+            img = self.image_transformer(img)
+
+        s = float(img.size[0]) / 3
+        a = s / 2
+        tiles = [None] * 9
+        for n in range(9):
+            i = n / 3
+            j = n % 3
+            c = [a * i * 2 + a, a * j * 2 + a]
+            c = np.array([c[1] - a, c[0] - a, c[1] +
+                          a + 1, c[0] + a + 1]).astype(int)
+            tile = img.crop(c.tolist())
+            tile = self.augment_tile(tile)
+            # Normalize the patches indipendently to avoid low level features shortcut
+            m, s = tile.view(
+                3, -1).mean(dim=1).numpy(), tile.view(3, -1).std(dim=1).numpy()
+            s[s == 0] = 1
+            #norm = transforms.Normalize(mean=m.tolist(), std=s.tolist())
+            #tile = norm(tile)
+            tiles[n] = tile
+
+        order = np.random.randint(len(self.permutations))
+        data = [tiles[self.permutations[order][t]] for t in range(9)]
+        lst = []
+        x=0
+        for i in range(9):
+             lst.append(data[i])
+        # lstt = torch.stack([x for _ in range(10)])
+        #lstt = torch.stack(lst)
+
+        data = torch.cat(data, 1)
+
+
+
+        img = transforms.ToTensor()(img)
+    
+        #data = torch.squeeze(data)
+
+        #show([img, data])
+
+        return img, int(self.labels[index]), data, int(order)
 
     def __len__(self):
         return len(self.names)
@@ -143,12 +195,11 @@ class JigsawTestDataset(data.Dataset):
         if index == 0:
             data = tiles
         else:
-            data = [tiles[self.permutations[order - 1][t]]
+            data = [tiles[self.permutations[index - 1][t]]
                     for t in range(n_grids)]
-
+      
         data = torch.stack(data, 0)
 
-        show([img, data])
         return img, int(self.labels[index]), data, int(index)
 
     def __len__(self):
@@ -166,7 +217,7 @@ class JigsawTestDataset(data.Dataset):
 # sphinx_gallery_thumbnail_path = "../../gallery/assets/visualization_utils_thumbnail.png"
 
 
-#plt.rcParams["savefig.bbox"] = 'tight'
+# plt.rcParams["savefig.bbox"] = 'tight'
 
 
 def show(imgs):
@@ -176,9 +227,11 @@ def show(imgs):
     for i, img in enumerate(imgs):
         img = img.detach()
         img = F.to_pil_image(img)
+        img = transforms.ToTensor()(img)
+        img = torch.squeeze(img)
         axs[0, i].imshow(np.asarray(img))
         axs[0, i].set(xticklabels=[], yticklabels=[], xticks=[], yticks=[])
         # write image to file
-        plt.savefig(f"figs/{random.randint(10000) + i}.png")
+        plt.savefig(f"figs/{np.random.randint(1,10000) + i}.png")
         plt.cla()
     plt.close(fix)

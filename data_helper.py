@@ -42,6 +42,7 @@ def get_train_dataloader(args, txt_file):
     train_dataset = JigsawDataset(
         name_train, labels_train, args.path_dataset, img_transformer=img_transformer
     )
+
     loader = torch.utils.data.DataLoader(
         train_dataset,
         batch_size=args.batch_size,
@@ -59,6 +60,7 @@ def get_val_dataloader(args, txt_file):
 
     names, labels = _dataset_info(txt_file)
     img_tr = get_test_transformer(args)
+
     test_dataset = JigsawTestDataset(
         names, labels, args.path_dataset, img_transformer=img_tr)
     loader = torch.utils.data.DataLoader(
