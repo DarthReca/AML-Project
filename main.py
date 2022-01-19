@@ -57,7 +57,8 @@ def get_args():
     parser.add_argument(
         "--max_scale", default=1.0, type=float, help="Maximum scale percent"
     )
-    parser.add_argument("--jitter", default=0.4, type=float, help="Color jitter amount")
+    parser.add_argument("--jitter", default=0.4, type=float,
+                        help="Color jitter amount")
     parser.add_argument(
         "--random_grayscale",
         default=0.1,
@@ -66,8 +67,10 @@ def get_args():
     )
 
     # training parameters
-    parser.add_argument("--image_size", type=int, default=222, help="Image size")
-    parser.add_argument("--batch_size", type=int, default=128, help="Batch size")
+    parser.add_argument("--image_size", type=int,
+                        default=222, help="Image size")
+    parser.add_argument("--batch_size", type=int,
+                        default=128, help="Batch size")
     parser.add_argument(
         "--learning_rate", type=float, default=0.001, help="Learning rate"
     )
@@ -152,14 +155,15 @@ class Trainer:
         self.args = args
 
         # Set device for allocation of the tensor
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = torch.device(
+            "cuda" if torch.cuda.is_available() else "cpu")
 
         # ResNet model
         self.feature_extractor = resnet18_feat_extractor()
         # Initiate object classifier with input_size=512, and numbers of classes is known classes + 1 (the unknown class, trained only in step2)
-        self.obj_classifier = Classifier(512, self.args.n_classes_known + 1)
+        self.obj_classifier = Classifier(512*2, self.args.n_classes_known + 1)
         # Initiate rotation classifier with input_size=512*2 and 4 classes: [0, 90, 180, 270]
-        self.rot_classifier = Classifier(512 * 4, 30)
+        self.rot_classifier = Classifier(512*2, 30)
 
         if args.load_weights:
             self.rot_classifier.load_state_dict(
@@ -183,7 +187,8 @@ class Trainer:
         # Path to file with the list of known class images, source is the domain of the image (from command line argument, default is Art)
         source_path_file = "txt_list/" + args.source + "_known.txt"
         # Create the source data loader, providing an iterable over the dataset - using map-style dataset.
-        self.source_loader = data_helper.get_train_dataloader(args, source_path_file)
+        self.source_loader = data_helper.get_train_dataloader(
+            args, source_path_file)
 
         # Path to the file with the list of target images (from command line argument, default is Clipart)
         target_path_file = "txt_list/" + args.target + ".txt"
@@ -192,7 +197,8 @@ class Trainer:
         self.target_loader_train = data_helper.get_val_dataloader(
             args, target_path_file
         )
-        self.target_loader_eval = data_helper.get_val_dataloader(args, target_path_file)
+        self.target_loader_eval = data_helper.get_val_dataloader(
+            args, target_path_file)
 
         print("Source: ", self.args.source, " Target: ", self.args.target)
         print(

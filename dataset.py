@@ -38,14 +38,14 @@ class JigsawDataset(data.Dataset):
         self.names = names
         self.labels = labels
         self.image_transformer = transforms.Compose([
-            transforms.Resize(256, Image.BILINEAR),
-            transforms.CenterCrop(255)])
+            transforms.Resize(224, Image.BILINEAR),
+            transforms.CenterCrop(224)])
 
         self.permutations = self.__retrieve_permutations(jig_classes)
         self.grid_size = 3
         self.image_resize = transforms.Compose([
-            transforms.Resize(256, Image.BILINEAR),
-            transforms.CenterCrop(255)])
+            transforms.Resize(224, Image.BILINEAR),
+            transforms.CenterCrop(224)])
         self.augment_tile = transforms.Compose([
             transforms.RandomCrop(64),
             transforms.Resize((75, 75), Image.BILINEAR),
@@ -88,8 +88,7 @@ class JigsawDataset(data.Dataset):
         img = transforms.ToTensor()(img)
         """
 
-        if np.random.rand() < 0.30:
-            img = img.convert('LA').convert('RGB')
+       
 
         if img.size[0] != 255:
             img = self.image_transformer(img)
@@ -123,9 +122,10 @@ class JigsawDataset(data.Dataset):
         
         img = transforms.ToTensor()(img)
         
-        
+        print(data.shape)
+        print(img.shape)
 
-        #show([img, data])
+        show([img, data])
 
         return img, int(self.labels[index]), data, int(order)
 
