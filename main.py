@@ -159,7 +159,7 @@ class Trainer:
         # Initiate object classifier with input_size=512, and numbers of classes is known classes + 1 (the unknown class, trained only in step2)
         self.obj_classifier = Classifier(512, self.args.n_classes_known + 1)
         # Initiate rotation classifier with input_size=512*2 and 4 classes: [0, 90, 180, 270]
-        self.rot_classifier = Classifier(512 * 4, 30)
+        self.rot_classifier = Classifier(512 * 2, 30)
 
         if args.load_weights:
             self.rot_classifier.load_state_dict(

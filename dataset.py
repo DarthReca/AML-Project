@@ -1,3 +1,4 @@
+import enum
 import numpy as np
 import torch
 import torch.utils.data as data
@@ -11,16 +12,17 @@ import matplotlib.pyplot as plt
 from typing import List, Optional
 import torchvision.transforms.functional as F
 import os
+from itertools import product
 
 
 def _dataset_info(txt_labels):
-    with open(txt_labels, 'r') as f:
+    with open(txt_labels, "r") as f:
         images_list = f.readlines()
 
     file_names = []
     labels = []
     for row in images_list:
-        row = row.split(' ')
+        row = row.split(" ")
         file_names.append(row[0])
         labels.append(int(row[1]))
 
@@ -29,89 +31,29 @@ def _dataset_info(txt_labels):
 
 class JigsawDataset(data.Dataset):
     def __init__(
-            self,
-            names: List[str],
-            labels: List[int],
-            path_dataset: str,
-            jig_classes=30, img_transformer: Optional[transforms.Compose] = None):
+        self,
+        names: List[str],
+        labels: List[int],
+        path_dataset: str,
+        jig_classes=30,
+        img_transformer: Optional[transforms.Compose] = None,
+    ):
         self.data_path = path_dataset
         self.names = names
         self.labels = labels
-        self.image_transformer = transforms.Compose([
-            transforms.Resize(256, Image.BILINEAR),
-            transforms.CenterCrop(255)])
+        self.image_transformer = transforms.Resize(216)
 
         self.permutations = self.__retrieve_permutations(jig_classes)
-        self.grid_size = 3
-        self.image_resize = transforms.Compose([
-            transforms.Resize(256, Image.BILINEAR),
-            transforms.CenterCrop(255)])
-        self.augment_tile = transforms.Compose([
-            transforms.RandomCrop(64),
-            transforms.Resize((75, 75), Image.BILINEAR),
-            transforms.ToTensor()
-        ])
-
-    def get_tile(self, img, n):
-        w = float(img.size[0]) / self.grid_size
-        y = int(n / self.grid_size)
-        x = n % self.grid_size
-        tile = img.crop([x * w, y * w, (x + 1) * w, (y + 1) * w])
-        tile = self.augment_tile(tile)
-        return tile
 
     def __getitem__(self, index):
-     # Get and process an image
+        # Get and process an image
         image_path = self.data_path + "/" + self.names[index]
-        img = Image.open(image_path).convert("RGB")
-        if self.image_transformer:
-          img = self.image_transformer(img)
-        
-        
-       # if img.size[0] != 255:
-        #  img = self.image_resize(img)
+        img = TF.resize(Image.open(image_path).convert("RGB"), [222, 222])
 
-        # 9 is number of grids
-        """
-        tiles = [None] * 9
-        for n in range(9):
-            tiles[n] = self.get_tile(img, n)
-
-        index = np.random.randint(len(self.permutations) + 1)
-        if index == 0:
-            data = tiles
-        else:
-            data = [tiles[self.permutations[index - 1][t]]
-                    for t in range(9)]
-
-        data = torch.stack(data, 0)
-        img = transforms.ToTensor()(img)
-        """
-
-        if np.random.rand() < 0.30:
-            img = img.convert('LA').convert('RGB')
-
-        if img.size[0] != 255:
-            img = self.image_transformer(img)
-
-        s = float(img.size[0]) / 3
-        a = s / 2
-        tiles = [None] * 9
-        for n in range(9):
-            i = n / 3
-            j = n % 3
-            c = [a * i * 2 + a, a * j * 2 + a]
-            c = np.array([c[1] - a, c[0] - a, c[1] +
-                          a + 1, c[0] + a + 1]).astype(int)
-            tile = img.crop(c.tolist())
-            tile = self.augment_tile(tile)
-            # Normalize the patches indipendently to avoid low level features shortcut
-            m, s = tile.view(
-                3, -1).mean(dim=1).numpy(), tile.view(3, -1).std(dim=1).numpy()
-            s[s == 0] = 1
-            #norm = transforms.Normalize(mean=m.tolist(), std=s.tolist())
-            #tile = norm(tile)
-            tiles[n] = tile
+        tiles = [
+            TF.to_tensor(TF.crop(img, 74 * row, 74 * column, 74, 74))
+            for row, column in product(range(3), range(3))
+        ]
 
         order = np.random.randint(len(self.permutations))
         data = [tiles[self.permutations[order][t]] for t in range(9)]
@@ -119,13 +61,8 @@ class JigsawDataset(data.Dataset):
         data2 = torch.cat(data[3:6], 2)
         data3 = torch.cat(data[6:9], 2)
         data = torch.cat((data1, data2, data3), 1)
-        
-        
-        img = transforms.ToTensor()(img)
-        
-        
 
-        #show([img, data])
+        img = transforms.ToTensor()(img)
 
         return img, int(self.labels[index]), data, int(order)
 
@@ -133,7 +70,7 @@ class JigsawDataset(data.Dataset):
         return len(self.names)
 
     def __retrieve_permutations(self, classes):
-        all_perm = np.load('permutations_%d.npy' % (classes))
+        all_perm = np.load("permutations_%d.npy" % (classes))
         # from range [1,9] to [0,8]
         if all_perm.min() == 1:
             all_perm = all_perm - 1
@@ -147,7 +84,8 @@ class JigsawTestDataset(data.Dataset):
         names: List[str],
         labels: List[int],
         path_dataset: str,
-        jig_classes=30, img_transformer: Optional[transforms.Compose] = None,
+        jig_classes=30,
+        img_transformer: Optional[transforms.Compose] = None,
     ):
         self.data_path = path_dataset
         self.names = names
@@ -155,14 +93,16 @@ class JigsawTestDataset(data.Dataset):
         self.image_transformer = img_transformer
         self.permutations = self.__retrieve_permutations(jig_classes)
         self.grid_size = 3
-        self.image_resize = transforms.Compose([
-            transforms.Resize(256, Image.BILINEAR),
-            transforms.CenterCrop(255)])
-        self.augment_tile = transforms.Compose([
-            transforms.RandomCrop(64),
-            transforms.Resize((75, 75), Image.BILINEAR),
-            transforms.ToTensor()
-        ])
+        self.image_resize = transforms.Compose(
+            [transforms.Resize(256, Image.BILINEAR), transforms.CenterCrop(255)]
+        )
+        self.augment_tile = transforms.Compose(
+            [
+                transforms.RandomCrop(64),
+                transforms.Resize((75, 75), Image.BILINEAR),
+                transforms.ToTensor(),
+            ]
+        )
 
         def get_tile(self, img, n):
             w = float(img.size[0]) / self.grid_size
@@ -191,9 +131,8 @@ class JigsawTestDataset(data.Dataset):
         if index == 0:
             data = tiles
         else:
-            data = [tiles[self.permutations[index - 1][t]]
-                    for t in range(n_grids)]
-      
+            data = [tiles[self.permutations[index - 1][t]] for t in range(n_grids)]
+
         data = torch.stack(data, 0)
 
         return img, int(self.labels[index]), data, int(index)
@@ -202,7 +141,7 @@ class JigsawTestDataset(data.Dataset):
         return len(self.names)
 
     def __retrieve_permutations(self, classes):
-        all_perm = np.load('permutations_%d.npy' % (classes))
+        all_perm = np.load("permutations_%d.npy" % (classes))
         # from range [1,9] to [0,8]
         if all_perm.min() == 1:
             all_perm = all_perm - 1
