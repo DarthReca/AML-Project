@@ -120,7 +120,7 @@ def get_args():
         "--lr_cent", type=float, default=0.5, help="learning rate for center loss"
     )
     parser.add_argument(
-        "--weight_cent", type=float, default=1, help="weight for center loss"
+        "--weight_cent", type=float, default=0.01, help="weight for center loss"
     )
     parser.add_argument("--max_epoch", type=int, default=100)
     parser.add_argument("--stepsize", type=int, default=20)
