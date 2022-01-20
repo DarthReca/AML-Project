@@ -188,7 +188,57 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _80_  |     |     |     |     | 0.5791 |     |
 | _140_ |     |     |     |     |        |     |
 
+## THRESHOLD
+
+**Art - Clipart**
+
+Total target (Clipart) samples: 4365
+
+Number of samples should be known: 3064
+
+Number of samples should be unknown: 1301
+
+|  Threshold |  Number of samples known    |  
+|:-----:|:------:|
+| 0.3 | 3778 | 
+| 0.5 | 3486 | 
+| 0.7 | 3123 | 
+| 0.75 | 3019 |
+| 0.8 | 2872 |
+
+Threshold of 0.75 chosen. (With alpha1 = 10 and epochs = 40)
+
+## STEP 2
+
+**Art - Clipart**
+
+|  Alpha2 | Epoch # |  OS*  | UNK | HOS | Class Acc | Rot Acc |
+|:-----:|:------:|:------:|:------:|
+| 0.01 |10 | | | | | |
+|     | 20 | | | | | |
+|     | 30 | | | | | |
+|     | 40 | | | | | |
+| 0.1 | 10 | | | | | |
+|     | 20 | | | | | |
+|     | 30 | | | | | |
+|     | 40 | | | | | |
+| 0.5 | 10 | 0.3123 | 0.6156 | 0.4144 | 0.9324 | 0.775 |
+|     | 20 | 0.3215 | 0.5908 | 0.4164 | 0.9490 | 0.8211 |
+|     | 30 |
+|     | 40 |
+| 3   | 10 | 0.3003 | 0.6486 | 0.4105 | 0.9033 | 0.8912 |
+|     | 20 | 0.3542 | 0.5802 | 0.4399 | 0.9483 | 0.9352 |
+|     | 30 | 0.3584 | 0.5413 | 0.4312 | 0.9640 | 0.9509 |
+|     | 40 | 0.3690 | 0.5000 | 0.4246 | 0.9726 | 0.9620 |
+| 10 | 10 | 0.2791 | 0.6863 | 0.3969 | 0.8578 | 0.8746 |
+|    | 20 | 0.3114 | 0.6156 | 0.4136 | 0.8861 | 0.9295 |
+|    | 30 | 0.3086 | 0.6002 | 0.4076 | 0.9254 | 0.9499 |
+|    | 40 | 0.3367 | 0.5743 | 0.4245 | 0.9416 | 0.9668 |
+
+Best HOS: , with alpha1 = 10, epochs1 = 40, threshold = 0.75 and epochs = ?
+
 ## DOCS
 
 https://github.com/silvia1993/ROS
+
 https://github.com/gidariss/FeatureLearningRotNet
