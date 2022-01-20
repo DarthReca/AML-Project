@@ -59,9 +59,6 @@ def _do_epoch(
     """
     criterion = nn.CrossEntropyLoss()
     # Initialize center loss
-    
-    center_loss = CenterLoss(args.n_classes_known*4,
-                             256*args.n_classes_known, False)
     feature_extractor.train()
     obj_cls.train()
     rot_cls.train()
@@ -83,8 +80,7 @@ def _do_epoch(
         # Pass features to classifiers
         class_scores = obj_cls(original_features)
         # Here we have to concatenate tensors as suggested by the architecture
-        rotation_scores = rot_cls(
-            torch.cat([original_features, rotated_features], 1))
+        rotation_scores = rot_cls(torch.cat([original_features, rotated_features], 1))
 
         # Concatenation of the features
         features = torch.cat([original_features, rotated_features], 1)
@@ -100,8 +96,7 @@ def _do_epoch(
         loss.backward()
         for param in center_loss.parameters():
             # lr_cent is learning rate for center loss, e.g. lr_cent = 0.5
-            param.grad.data *= (args.lr_cent /
-                                (args.weight_cent * args.learning_rate))
+            param.grad.data *= args.lr_cent / (args.weight_cent * args.learning_rate)
 
         optimizer.step()
 
@@ -111,8 +106,7 @@ def _do_epoch(
 
         # Update counters
         correct_classes += torch.sum(class_prediction == class_label).item()
-        correct_rotations += torch.sum(rotation_prediction ==
-                                       rotated_label).item()
+        correct_rotations += torch.sum(rotation_prediction == rotated_label).item()
 
     acc_cls = correct_classes / len(source_loader.dataset)
     acc_rot = correct_rotations / len(source_loader.dataset)
@@ -142,7 +136,14 @@ def step1(
     for epoch in range(args.epochs_step1):
         print("Epoch: ", epoch)
         class_loss, acc_cls, rot_loss, acc_rot = _do_epoch(
-            args, feature_extractor, rot_cls, obj_cls, center_loss, source_loader, optimizer, device
+            args,
+            feature_extractor,
+            rot_cls,
+            obj_cls,
+            center_loss,
+            source_loader,
+            optimizer,
+            device,
         )
         print(
             "Class Loss %.4f, Class Accuracy %.4f,Rot Loss %.4f, Rot Accuracy %.4f"
@@ -152,17 +153,12 @@ def step1(
             if not os.path.isdir("weights"):
                 os.mkdir("weights")
             torch.save(
-                feature_extractor.state_dict(
-                ), f"weights/feature_extractor_{epoch}.pth"
+                feature_extractor.state_dict(), f"weights/feature_extractor_{epoch}.pth"
             )
-            torch.save(obj_cls.state_dict(),
-                       f"weights/object_classifier_{epoch}.pth")
-            torch.save(rot_cls.state_dict(),
-                       f"weights/rotation_classifier_{epoch}.pth")
+            torch.save(obj_cls.state_dict(), f"weights/object_classifier_{epoch}.pth")
+            torch.save(rot_cls.state_dict(), f"weights/rotation_classifier_{epoch}.pth")
 
         scheduler.step()
-
-
 
 
 def plot_features(features, labels, num_classes, epoch, prefix):
@@ -170,9 +166,9 @@ def plot_features(features, labels, num_classes, epoch, prefix):
 
     Args:
         features: (num_instances, num_features).
-        labels: (num_instances). 
+        labels: (num_instances).
     """
-    colors = ['C0', 'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9']
+    colors = ["C0", "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9"]
     for label_idx in range(num_classes):
         plt.scatter(
             features[labels == label_idx, 0],
@@ -180,11 +176,10 @@ def plot_features(features, labels, num_classes, epoch, prefix):
             c=colors[label_idx],
             s=1,
         )
-    plt.legend(['0', '1', '2', '3', '4', '5', '6',
-                '7', '8', '9'], loc='upper right')
+    plt.legend(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"], loc="upper right")
     dirname = osp.join(args.save_dir, prefix)
     if not osp.exists(dirname):
         os.mkdir(dirname)
-    save_name = osp.join(dirname, 'epoch_' + str(epoch+1) + '.png')
-    plt.savefig(save_name, bbox_inches='tight')
+    save_name = osp.join(dirname, "epoch_" + str(epoch + 1) + ".png")
+    plt.savefig(save_name, bbox_inches="tight")
     plt.close()
