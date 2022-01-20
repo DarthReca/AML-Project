@@ -1,0 +1,166 @@
+Source:  Product  Target:  Clipart
+Dataset size: source 3143, target 4365
+Step 1 --------------------------------------------
+Step size: 64
+Epoch:  0
+Class Loss 3.3965, Class Accuracy 0.0856,Rot Loss 1.3108, Rot Accuracy 0.2946
+Epoch:  1
+Class Loss 2.4306, Class Accuracy 0.3735,Rot Loss 1.0848, Rot Accuracy 0.3818
+Epoch:  2
+Class Loss 1.9492, Class Accuracy 0.5918,Rot Loss 1.0120, Rot Accuracy 0.4792
+Epoch:  3
+Class Loss 1.6479, Class Accuracy 0.6949,Rot Loss 1.0183, Rot Accuracy 0.5250
+Epoch:  4
+Class Loss 1.2374, Class Accuracy 0.7458,Rot Loss 0.8092, Rot Accuracy 0.5807
+Epoch:  5
+Class Loss 1.2410, Class Accuracy 0.7801,Rot Loss 0.7744, Rot Accuracy 0.6048
+Epoch:  6
+Class Loss 0.9962, Class Accuracy 0.8018,Rot Loss 0.7036, Rot Accuracy 0.6421
+Epoch:  7
+Class Loss 0.9347, Class Accuracy 0.8323,Rot Loss 0.6673, Rot Accuracy 0.6904
+Epoch:  8
+Class Loss 0.7812, Class Accuracy 0.8419,Rot Loss 0.5251, Rot Accuracy 0.7178
+Epoch:  9
+Class Loss 0.7461, Class Accuracy 0.8438,Rot Loss 0.6380, Rot Accuracy 0.7420
+Epoch:  10
+Class Loss 0.6913, Class Accuracy 0.8632,Rot Loss 0.5252, Rot Accuracy 0.7677
+Epoch:  11
+Class Loss 0.7552, Class Accuracy 0.8708,Rot Loss 0.4587, Rot Accuracy 0.7903
+Epoch:  12
+Class Loss 0.6664, Class Accuracy 0.8864,Rot Loss 0.5828, Rot Accuracy 0.8101
+Epoch:  13
+Class Loss 0.4857, Class Accuracy 0.8906,Rot Loss 0.3071, Rot Accuracy 0.8206
+Epoch:  14
+Class Loss 0.5900, Class Accuracy 0.8928,Rot Loss 0.3645, Rot Accuracy 0.8231
+Epoch:  15
+Class Loss 0.5144, Class Accuracy 0.8969,Rot Loss 0.4154, Rot Accuracy 0.8412
+Epoch:  16
+Class Loss 0.4192, Class Accuracy 0.9055,Rot Loss 0.3666, Rot Accuracy 0.8575
+Epoch:  17
+Class Loss 0.4566, Class Accuracy 0.9106,Rot Loss 0.2989, Rot Accuracy 0.8692
+Epoch:  18
+Class Loss 0.3682, Class Accuracy 0.9166,Rot Loss 0.3217, Rot Accuracy 0.8750
+Epoch:  19
+Class Loss 0.4067, Class Accuracy 0.9205,Rot Loss 0.2590, Rot Accuracy 0.8766
+Epoch:  20
+Class Loss 0.4382, Class Accuracy 0.9233,Rot Loss 0.2412, Rot Accuracy 0.8762
+Epoch:  21
+Class Loss 0.3243, Class Accuracy 0.9265,Rot Loss 0.2218, Rot Accuracy 0.8906
+Epoch:  22
+Class Loss 0.3391, Class Accuracy 0.9268,Rot Loss 0.2441, Rot Accuracy 0.8937
+Epoch:  23
+Class Loss 0.2784, Class Accuracy 0.9329,Rot Loss 0.2074, Rot Accuracy 0.9052
+Epoch:  24
+Class Loss 0.3030, Class Accuracy 0.9354,Rot Loss 0.2528, Rot Accuracy 0.9055
+Epoch:  25
+Class Loss 0.3148, Class Accuracy 0.9383,Rot Loss 0.1550, Rot Accuracy 0.9166
+Epoch:  26
+Class Loss 0.2994, Class Accuracy 0.9389,Rot Loss 0.1560, Rot Accuracy 0.9122
+Epoch:  27
+Class Loss 0.2823, Class Accuracy 0.9453,Rot Loss 0.1181, Rot Accuracy 0.9173
+Epoch:  28
+Class Loss 0.2758, Class Accuracy 0.9421,Rot Loss 0.1510, Rot Accuracy 0.9265
+Epoch:  29
+Class Loss 0.3169, Class Accuracy 0.9430,Rot Loss 0.1575, Rot Accuracy 0.9195
+Epoch:  30
+Class Loss 0.2260, Class Accuracy 0.9469,Rot Loss 0.1689, Rot Accuracy 0.9306
+Epoch:  31
+Class Loss 0.2244, Class Accuracy 0.9497,Rot Loss 0.3001, Rot Accuracy 0.9290
+Epoch:  32
+Class Loss 0.2400, Class Accuracy 0.9555,Rot Loss 0.1660, Rot Accuracy 0.9275
+Epoch:  33
+Class Loss 0.1880, Class Accuracy 0.9526,Rot Loss 0.0846, Rot Accuracy 0.9335
+Epoch:  34
+Class Loss 0.2353, Class Accuracy 0.9520,Rot Loss 0.1316, Rot Accuracy 0.9411
+Epoch:  35
+Class Loss 0.1748, Class Accuracy 0.9539,Rot Loss 0.1014, Rot Accuracy 0.9427
+Epoch:  36
+Class Loss 0.2152, Class Accuracy 0.9535,Rot Loss 0.0905, Rot Accuracy 0.9386
+Epoch:  37
+Class Loss 0.1535, Class Accuracy 0.9609,Rot Loss 0.0733, Rot Accuracy 0.9427
+Epoch:  38
+Class Loss 0.1415, Class Accuracy 0.9545,Rot Loss 0.1102, Rot Accuracy 0.9411
+Epoch:  39
+Class Loss 0.1533, Class Accuracy 0.9574,Rot Loss 0.0610, Rot Accuracy 0.9415
+Epoch:  40
+Class Loss 0.2303, Class Accuracy 0.9583,Rot Loss 0.0898, Rot Accuracy 0.9478
+Epoch:  41
+Class Loss 0.1178, Class Accuracy 0.9580,Rot Loss 0.0794, Rot Accuracy 0.9485
+Epoch:  42
+Class Loss 0.1228, Class Accuracy 0.9605,Rot Loss 0.0988, Rot Accuracy 0.9516
+Epoch:  43
+Class Loss 0.1316, Class Accuracy 0.9609,Rot Loss 0.1390, Rot Accuracy 0.9516
+Epoch:  44
+Class Loss 0.1907, Class Accuracy 0.9644,Rot Loss 0.0853, Rot Accuracy 0.9485
+Epoch:  45
+Class Loss 0.1361, Class Accuracy 0.9628,Rot Loss 0.0769, Rot Accuracy 0.9491
+Epoch:  46
+Class Loss 0.1306, Class Accuracy 0.9615,Rot Loss 0.0903, Rot Accuracy 0.9526
+Epoch:  47
+Class Loss 0.1332, Class Accuracy 0.9656,Rot Loss 0.1014, Rot Accuracy 0.9593
+Epoch:  48
+Class Loss 0.0894, Class Accuracy 0.9660,Rot Loss 0.0744, Rot Accuracy 0.9510
+Epoch:  49
+Class Loss 0.0856, Class Accuracy 0.9675,Rot Loss 0.0341, Rot Accuracy 0.9605
+Epoch:  50
+Class Loss 0.1326, Class Accuracy 0.9669,Rot Loss 0.1304, Rot Accuracy 0.9590
+Epoch:  51
+Class Loss 0.1446, Class Accuracy 0.9656,Rot Loss 0.0828, Rot Accuracy 0.9564
+Epoch:  52
+Class Loss 0.1016, Class Accuracy 0.9663,Rot Loss 0.1210, Rot Accuracy 0.9612
+Epoch:  53
+Class Loss 0.0796, Class Accuracy 0.9660,Rot Loss 0.0326, Rot Accuracy 0.9656
+Epoch:  54
+Class Loss 0.0888, Class Accuracy 0.9672,Rot Loss 0.0616, Rot Accuracy 0.9599
+Epoch:  55
+Class Loss 0.0895, Class Accuracy 0.9675,Rot Loss 0.0507, Rot Accuracy 0.9586
+Epoch:  56
+Class Loss 0.1368, Class Accuracy 0.9650,Rot Loss 0.0625, Rot Accuracy 0.9599
+Epoch:  57
+Class Loss 0.0733, Class Accuracy 0.9695,Rot Loss 0.0668, Rot Accuracy 0.9660
+Epoch:  58
+Class Loss 0.0676, Class Accuracy 0.9660,Rot Loss 0.1086, Rot Accuracy 0.9593
+Epoch:  59
+Class Loss 0.1108, Class Accuracy 0.9672,Rot Loss 0.0681, Rot Accuracy 0.9574
+Epoch:  60
+Class Loss 0.1150, Class Accuracy 0.9695,Rot Loss 0.0443, Rot Accuracy 0.9644
+Epoch:  61
+Class Loss 0.1195, Class Accuracy 0.9698,Rot Loss 0.0628, Rot Accuracy 0.9618
+Epoch:  62
+Class Loss 0.0746, Class Accuracy 0.9704,Rot Loss 0.0997, Rot Accuracy 0.9599
+Epoch:  63
+Class Loss 0.0651, Class Accuracy 0.9672,Rot Loss 0.0623, Rot Accuracy 0.9605
+Epoch:  64
+Class Loss 0.0811, Class Accuracy 0.9720,Rot Loss 0.1093, Rot Accuracy 0.9650
+Epoch:  65
+Class Loss 0.0624, Class Accuracy 0.9691,Rot Loss 0.0164, Rot Accuracy 0.9666
+Epoch:  66
+Class Loss 0.1048, Class Accuracy 0.9710,Rot Loss 0.0314, Rot Accuracy 0.9679
+Epoch:  67
+Class Loss 0.0992, Class Accuracy 0.9691,Rot Loss 0.0684, Rot Accuracy 0.9672
+Epoch:  68
+Class Loss 0.0694, Class Accuracy 0.9688,Rot Loss 0.0344, Rot Accuracy 0.9675
+Epoch:  69
+Class Loss 0.0666, Class Accuracy 0.9710,Rot Loss 0.0130, Rot Accuracy 0.9682
+Epoch:  70
+Class Loss 0.0691, Class Accuracy 0.9714,Rot Loss 0.0414, Rot Accuracy 0.9695
+Epoch:  71
+Class Loss 0.0974, Class Accuracy 0.9723,Rot Loss 0.0263, Rot Accuracy 0.9663
+Epoch:  72
+Class Loss 0.0790, Class Accuracy 0.9698,Rot Loss 0.0122, Rot Accuracy 0.9691
+Epoch:  73
+Class Loss 0.0487, Class Accuracy 0.9685,Rot Loss 0.0470, Rot Accuracy 0.9704
+Epoch:  74
+Class Loss 0.0638, Class Accuracy 0.9701,Rot Loss 0.0577, Rot Accuracy 0.9695
+Epoch:  75
+Class Loss 0.0468, Class Accuracy 0.9710,Rot Loss 0.0331, Rot Accuracy 0.9707
+Epoch:  76
+Class Loss 0.0812, Class Accuracy 0.9710,Rot Loss 0.0183, Rot Accuracy 0.9701
+Epoch:  77
+Class Loss 0.0567, Class Accuracy 0.9698,Rot Loss 0.0201, Rot Accuracy 0.9701
+Epoch:  78
+Class Loss 0.0593, Class Accuracy 0.9720,Rot Loss 0.0090, Rot Accuracy 0.9704
+Epoch:  79
+Class Loss 0.0626, Class Accuracy 0.9704,Rot Loss 0.0215, Rot Accuracy 0.9675
+Epoch:  80
+Class Loss 0.0622, Class Accuracy 0.9707,Rot Loss 0.0148, Rot Accuracy 0.9685

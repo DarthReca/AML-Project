@@ -89,7 +89,8 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 |     | 80 | 0.9714 | 0.9354 |
 | 3   | 20 | 0.9233 | 0.8762 |
 |     | 40 | 0.9583 | 0.9478 |
-|     | 60 |
+|     | 60 | 0.9695 | 0.9644 |
+|     | 80 | 0.9707 | 0.9685 |
 | 10 | 20 | 0.8632 | 0.9020 |
 |    | 40 | 0.9249 | 0.9513 |
 |    | 60 | 0.9504 | 0.9555 |
@@ -109,10 +110,22 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 
 | Alpha1 | Epoch # | Class Acc | Rot Acc|
 | :---: | :----: | :-: | :----: |
-| 0.1 | 20 | 
-| 0.5 |
-| 1 |
-| 3 | 20 | 
+| 0.1 | 20 |  | |
+|     | 40 |  | |
+|     | 60 |  | |
+|     | 80 |  | |
+| 0.5 | 20 |  | |
+|     | 40 |  | |
+|     | 60 |  | |
+|     | 80 |  | |
+| 1 | 20 |  | |
+|     | 40 |  | |
+|     | 60 |  | |
+|     | 80 |  | |
+| 3 | 20 | 0.8838 | 0.8456 |
+|   | 40 | | |
+|     | 60 |  | |
+|     | 80 |  | |
 | 10 | 20 | 0.8291 | 0.8844 |
 |    | 40 | 0.9035 | 0.9444 |
 |    | 60 | 0.9305 | 0.9470 |
@@ -132,11 +145,26 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 
 | Alpha1 | Epoch # | Class Acc | Rot Acc|
 | :---: | :----: | :-: | :----: |
-| 0.1 | 20 | 
-| 0.5 |
-| 1 |
-| 3 |
-| 10 | 20 | 
+| 0.1 | 20 |
+|   | 40 | 
+|   | 60 | | |
+|   | 80 | | |
+| 0.5 | 20 |
+|   | 40 | 
+|   | 60 | | |
+|   | 80 | | |
+| 1 | 20 | 0.8629 | 0.6165 |
+|   | 40 | 0.9125 | 0.7448 |
+|   | 60 | | |
+|   | 80 | | |
+| 3 | 20 | 0.8466 | 0.8326 |
+|   | 40 | 0.9034 | 0.9227 |
+|   | 60 | | |
+|   | 80 | | |
+| 10 | 20 | 0.7820 | 0.8740 |
+|    | 40 | 0.8672 | 0.9253 |
+|    | 60 | 0.9050 | 0.9367 |
+|    | 80 | 0.9184 | 0.9527 |
 
 
 ## AUCROC
@@ -153,6 +181,18 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _140_ |        |     |        | 0.5430 |        |        |
 | _160_ |        |     | 0.5319 |        |        |        |
 
+| Alpha1 | Epoch # | AUCROC |
+| 0.1 | 20 | |
+|     | 40 |  |
+| 0.5 | 20 | |
+|     | 40 |  |
+|  1  | 20 | |
+|     | 40 |  |
+|  3  | 20 | |
+|     | 40 |  |
+|  10 | 20 | |
+|     | 40 | 0.5578 |
+
 **Art - Product**
 
 |       | 0.1 | 0.3 |   1    |  3  |   10   | 100 |
@@ -163,6 +203,18 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _80_  |     |     | 0.5043 |     | 0.5261 |     |
 | _140_ |     |     |        |     |        |     |
 
+| Alpha1 | Epoch # | AUCROC |
+| 0.1 | 20 | |
+|     | 40 |  |
+| 0.5 | 20 | |
+|     | 40 |  |
+|  1  | 20 | |
+|     | 40 |  |
+|  3  | 20 | |
+|     | 40 |  |
+|  10 | 20 | |
+|     | 40 |  |
+
 **Art - RealWorld**
 
 |       | 0.1 | 0.3 |   1    | 3   |   10   | 100 |
@@ -172,6 +224,18 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _60_  |     |     |        |     |        |     |
 | _80_  |     |     | 0.4764 |     | 0.4998 |     |
 | _140_ |     |     |        |     |        |     |
+
+| Alpha1 | Epoch # | AUCROC |
+| 0.1 | 20 | |
+|     | 40 |  |
+| 0.5 | 20 | |
+|     | 40 |  |
+|  1  | 20 | |
+|     | 40 |  |
+|  3  | 20 | |
+|     | 40 |  |
+|  10 | 20 | |
+|     | 40 |  |
 
 ---
 
@@ -185,6 +249,18 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _80_  |     |     |     |     | 0.5581 |     |
 | _140_ |     |     |     |     |        |     |
 
+| Alpha1 | Epoch # | AUCROC |
+| 0.1 | 20 | |
+|     | 40 |  |
+| 0.5 | 20 | |
+|     | 40 |  |
+|  1  | 20 | |
+|     | 40 |  |
+|  3  | 20 | |
+|     | 40 |  |
+|  10 | 20 | |
+|     | 40 |  |
+
 **Product - Art**
 
 |       | 0.1 | 0.3 |  1  | 3   |   10   | 100 |
@@ -195,6 +271,18 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _80_  |     |     |     |     | 0.5148 |     |
 | _140_ |     |     |     |     |        |     |
 
+| Alpha1 | Epoch # | AUCROC |
+| 0.1 | 20 | |
+|     | 40 |  |
+| 0.5 | 20 | |
+|     | 40 |  |
+|  1  | 20 | |
+|     | 40 |  |
+|  3  | 20 | |
+|     | 40 |  |
+|  10 | 20 | |
+|     | 40 |  |
+
 **Product - RealWorld**
 
 |       | 0.1 | 0.3 |  1  | 3   |   10   | 100 |
@@ -204,6 +292,18 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _60_  |     |     |     |     |        |     |
 | _80_  |     |     |     |     | 0.5382 |     |
 | _140_ |     |     |     |     |        |     |
+
+| Alpha1 | Epoch # | AUCROC |
+| 0.1 | 20 | |
+|     | 40 |  |
+| 0.5 | 20 | |
+|     | 40 |  |
+|  1  | 20 | |
+|     | 40 |  |
+|  3  | 20 | |
+|     | 40 |  |
+|  10 | 20 | |
+|     | 40 |  |
 
 ---
 
@@ -217,6 +317,18 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _80_  |     |     |     |     | 0.5770 |     |
 | _140_ |     |     |     |     |        |     |
 
+| Alpha1 | Epoch # | AUCROC |
+| 0.1 | 20 | |
+|     | 40 |  |
+| 0.5 | 20 | |
+|     | 40 |  |
+|  1  | 20 | |
+|     | 40 |  |
+|  3  | 20 | |
+|     | 40 |  |
+|  10 | 20 | |
+|     | 40 |  |
+
 **RealWorld - Art**
 
 |       | 0.1 | 0.3 | 1   | 3   | 10     | 100 |
@@ -227,6 +339,18 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _80_  |     |     |     |     | 0.5314 |     |
 | _140_ |     |     |     |     |        |     |
 
+| Alpha1 | Epoch # | AUCROC |
+| 0.1 | 20 | |
+|     | 40 |  |
+| 0.5 | 20 | |
+|     | 40 |  |
+|  1  | 20 | |
+|     | 40 |  |
+|  3  | 20 | |
+|     | 40 |  |
+|  10 | 20 | |
+|     | 40 |  |
+
 **RealWorld - Product**
 
 |       | 0.1 | 0.3 | 1   | 3   | 10     | 100 |
@@ -236,6 +360,18 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _60_  |     |     |     |     |        |     |
 | _80_  |     |     |     |     | 0.5918 |     |
 | _140_ |     |     |     |     |        |     |
+
+| Alpha1 | Epoch # | AUCROC |
+| 0.1 | 20 | |
+|     | 40 |  |
+| 0.5 | 20 | |
+|     | 40 |  |
+|  1  | 20 | |
+|     | 40 |  |
+|  3  | 20 | |
+|     | 40 |  |
+|  10 | 20 | |
+|     | 40 |  |
 
 ---
 
@@ -249,6 +385,18 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _80_  |     |     |     |     | 0.5663 |     |
 | _140_ |     |     |     |     |        |     |
 
+| Alpha1 | Epoch # | AUCROC |
+| 0.1 | 20 | |
+|     | 40 |  |
+| 0.5 | 20 | |
+|     | 40 |  |
+|  1  | 20 | |
+|     | 40 |  |
+|  3  | 20 | |
+|     | 40 |  |
+|  10 | 20 | |
+|     | 40 |  |
+
 **Clipart - Art**
 
 |       | 0.1 | 0.3 | 1   | 3   | 10     | 100 |
@@ -259,6 +407,18 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _80_  |     |     |     |     | 0.5510 |     |
 | _140_ |     |     |     |     |        |     |
 
+| Alpha1 | Epoch # | AUCROC |
+| 0.1 | 20 | |
+|     | 40 |  |
+| 0.5 | 20 | |
+|     | 40 |  |
+|  1  | 20 | |
+|     | 40 |  |
+|  3  | 20 | |
+|     | 40 |  |
+|  10 | 20 | |
+|     | 40 |  |
+
 **Clipart - Product**
 
 |       | 0.1 | 0.3 | 1   | 3   | 10     | 100 |
@@ -268,6 +428,18 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _60_  |     |     |     |     |        |     |
 | _80_  |     |     |     |     | 0.5791 |     |
 | _140_ |     |     |     |     |        |     |
+
+| Alpha1 | Epoch # | AUCROC |
+| 0.1 | 20 | |
+|     | 40 |  |
+| 0.5 | 20 | |
+|     | 40 |  |
+|  1  | 20 | |
+|     | 40 |  |
+|  3  | 20 | |
+|     | 40 |  |
+|  10 | 20 | |
+|     | 40 |  |
 
 ## THRESHOLD
 
@@ -288,6 +460,40 @@ Number of samples should be unknown: 1301
 | 0.8 | 2872 |
 
 Threshold of 0.75 chosen. (With alpha1 = 10 and epochs = 40)
+
+**Product - Clipart**
+
+Total target (Clipart) samples: 4365
+
+Number of samples should be known: 3064
+
+Number of samples should be unknown: 1301
+
+|  Threshold |  Number of samples known    |  
+|:-----:|:------:|
+| 0.3 | | 
+| 0.5 |  | 
+| 0.7 |  | 
+| 0.8 |  |
+
+Threshold of ? chosen. 
+
+**Real World - Clipart**
+
+Total target (Clipart) samples: 4365
+
+Number of samples should be known: 3064
+
+Number of samples should be unknown: 1301
+
+|  Threshold |  Number of samples known    |  
+|:-----:|:------:|
+| 0.3 | | 
+| 0.5 |  | 
+| 0.7 |  | 
+| 0.8 |  |
+
+Threshold of ? chosen. 
 
 ## STEP 2
 
@@ -316,7 +522,7 @@ Threshold of 0.75 chosen. (With alpha1 = 10 and epochs = 40)
 |    | 30 | 0.3086 | 0.6002 | 0.4076 | 0.9254 | 0.9499 |
 |    | 40 | 0.3367 | 0.5743 | 0.4245 | 0.9416 | 0.9668 |
 
-Best HOS: , with alpha1 = 10, epochs1 = 40, threshold = 0.75, alpha2 = ? and epochs = ?
+Best HOS: 0.4399, with alpha1 = 10, epochs1 = 40, threshold = 0.75, alpha2 = 3 and epochs2 = 20
 
 ## DOCS
 
