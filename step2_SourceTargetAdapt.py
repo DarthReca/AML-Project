@@ -3,7 +3,7 @@ from torch import nn
 from optimizer_helper import get_optim_and_scheduler
 from itertools import cycle
 import numpy as np
-
+import os
 
 #### Implement Step2
 
@@ -228,4 +228,12 @@ def step2(
             optimizer,
             device,
         )
+        if epoch % 10 == 0:
+            if not os.path.isdir("weights"):
+                os.mkdir("weights")
+            torch.save(
+                feature_extractor.state_dict(), f"weights/step2_feature_extractor_{epoch}.pth"
+            )
+            torch.save(obj_cls.state_dict(), f"weights/step2_object_classifier_{epoch}.pth")
+            torch.save(rot_cls.state_dict(), f"weights/step2_rotation_classifier_{epoch}.pth")
         scheduler.step()
