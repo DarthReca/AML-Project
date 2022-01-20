@@ -120,7 +120,7 @@ def get_args():
         "--lr_cent", type=float, default=0.5, help="learning rate for center loss"
     )
     parser.add_argument(
-        "--weight_cent", type=float, default=0.01, help="weight for center loss"
+        "--weight_cent", type=float, default=1, help="weight for center loss"
     )
     parser.add_argument("--max_epoch", type=int, default=100)
     parser.add_argument("--stepsize", type=int, default=20)
@@ -252,6 +252,7 @@ class Trainer:
                 self.args,
                 self.feature_extractor,
                 self.rot_cls,
+                self.center_loss,
                 self.target_loader_eval,
                 self.device,
             )
@@ -278,6 +279,7 @@ class Trainer:
                 self.feature_extractor,
                 self.rot_cls,
                 self.obj_cls,
+                self.center_loss,
                 self.source_loader,
                 self.target_loader_train,
                 self.target_loader_eval,

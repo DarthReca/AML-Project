@@ -150,7 +150,9 @@ def _do_epoch(
             # Update counters
             if class_label >= args.n_classes_known:
                 total_classes_unknown += 1
-                correct_classes_unknown += torch.sum(class_prediction == args.n_classes_known).item()
+                correct_classes_unknown += torch.sum(
+                    class_prediction == args.n_classes_known
+                ).item()
             else:
                 total_classes_known += 1
                 correct_classes_known += torch.sum(
@@ -177,6 +179,7 @@ def step2(
     feature_extractor,
     rot_cls,
     obj_cls,
+    center_loss,
     source_loader,
     target_loader_train,
     target_loader_eval,
@@ -205,11 +208,11 @@ def step2(
     device
         only passed through. CPU or GPU ?
     """
-
     optimizer, scheduler = get_optim_and_scheduler(
         feature_extractor,
         rot_cls,
         obj_cls,
+        center_loss,
         args.epochs_step2,
         args.learning_rate,
         args.train_all,
