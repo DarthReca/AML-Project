@@ -30,7 +30,18 @@ _For 40 epochs_
 
 ### Product - Art
 
-_For 40 epochs WC: 0.001_
+_For 40 epochs WR: 10_
 
-- Accuracy: 0.9612
-- Aucroc: 0.5077
+|          |  0.01  | 0.001  |
+| :------: | :----: | :----: |
+|  Aucroc  | 0.5023 | 0.5077 |
+| Accuracy | 0.9631 | 0.9612 |
+
+### Art - RealWorld
+
+_For 40 epochs WR: 10_
+
+|          |  0.01  | 0.001  |
+| :------: | :----: | :----: |
+|  Aucroc  | 0.4967 | 0.5000 |
+| Accuracy | 0.9139 | 0.9128 |

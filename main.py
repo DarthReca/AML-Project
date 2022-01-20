@@ -252,7 +252,6 @@ class Trainer:
                 self.args,
                 self.feature_extractor,
                 self.rot_cls,
-                self.center_loss,
                 self.target_loader_eval,
                 self.device,
             )

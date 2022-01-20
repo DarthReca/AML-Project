@@ -1,0 +1,92 @@
+True
+Source:  Product  Target:  Art
+Dataset size: source 3143, target 2427
+Step 1 --------------------------------------------
+Step size: 32
+Epoch:  0
+Class Loss 3.6655, Class Accuracy 0.0538,Rot Loss 17.1367, Rot Accuracy 0.2736, Center Loss: 4.6290
+Epoch:  1
+Class Loss 3.5163, Class Accuracy 0.1572,Rot Loss 11.8798, Rot Accuracy 0.4149, Center Loss: 1.3543
+Epoch:  2
+Class Loss 3.4687, Class Accuracy 0.2059,Rot Loss 9.0621, Rot Accuracy 0.5361, Center Loss: 1.0310
+Epoch:  3
+Class Loss 3.4592, Class Accuracy 0.2453,Rot Loss 9.0702, Rot Accuracy 0.5670, Center Loss: 0.7427
+Epoch:  4
+Class Loss 3.4409, Class Accuracy 0.2765,Rot Loss 7.9462, Rot Accuracy 0.6513, Center Loss: 0.7988
+Epoch:  5
+Class Loss 3.3123, Class Accuracy 0.3271,Rot Loss 7.3799, Rot Accuracy 0.7111, Center Loss: 0.7985
+Epoch:  6
+Class Loss 3.1853, Class Accuracy 0.3487,Rot Loss 6.4896, Rot Accuracy 0.7248, Center Loss: 1.0131
+Epoch:  7
+Class Loss 3.1757, Class Accuracy 0.3462,Rot Loss 6.6534, Rot Accuracy 0.7299, Center Loss: 0.8246
+Epoch:  8
+Class Loss 3.2453, Class Accuracy 0.3793,Rot Loss 4.5509, Rot Accuracy 0.7716, Center Loss: 0.5912
+Epoch:  9
+Class Loss 3.0258, Class Accuracy 0.3901,Rot Loss 5.3177, Rot Accuracy 0.7983, Center Loss: 0.7337
+Epoch:  10
+Class Loss 2.8225, Class Accuracy 0.4429,Rot Loss 2.5868, Rot Accuracy 0.8428, Center Loss: 0.8743
+Epoch:  11
+Class Loss 2.8074, Class Accuracy 0.4604,Rot Loss 2.7465, Rot Accuracy 0.8352, Center Loss: 0.9601
+Epoch:  12
+Class Loss 2.8089, Class Accuracy 0.4706,Rot Loss 3.7886, Rot Accuracy 0.8282, Center Loss: 0.8821
+Epoch:  13
+Class Loss 2.8092, Class Accuracy 0.4706,Rot Loss 2.4762, Rot Accuracy 0.8606, Center Loss: 0.7643
+Epoch:  14
+Class Loss 2.6716, Class Accuracy 0.5014,Rot Loss 3.1552, Rot Accuracy 0.8619, Center Loss: 0.8086
+Epoch:  15
+Class Loss 2.6372, Class Accuracy 0.5514,Rot Loss 2.4765, Rot Accuracy 0.8762, Center Loss: 0.8028
+Epoch:  16
+Class Loss 2.5614, Class Accuracy 0.5227,Rot Loss 3.1607, Rot Accuracy 0.8899, Center Loss: 0.7541
+Epoch:  17
+Class Loss 2.5036, Class Accuracy 0.5587,Rot Loss 1.4709, Rot Accuracy 0.8995, Center Loss: 0.7870
+Epoch:  18
+Class Loss 2.4055, Class Accuracy 0.5721,Rot Loss 3.0377, Rot Accuracy 0.8934, Center Loss: 0.8005
+Epoch:  19
+Class Loss 2.3675, Class Accuracy 0.5730,Rot Loss 2.1896, Rot Accuracy 0.9071, Center Loss: 0.8093
+Epoch:  20
+Class Loss 2.1765, Class Accuracy 0.6013,Rot Loss 2.4663, Rot Accuracy 0.9150, Center Loss: 0.8310
+Epoch:  21
+Class Loss 2.2470, Class Accuracy 0.6147,Rot Loss 3.6825, Rot Accuracy 0.9096, Center Loss: 0.8768
+Epoch:  22
+Class Loss 2.1283, Class Accuracy 0.6255,Rot Loss 1.5480, Rot Accuracy 0.9157, Center Loss: 0.7911
+Epoch:  23
+Class Loss 1.9774, Class Accuracy 0.6265,Rot Loss 1.3825, Rot Accuracy 0.9170, Center Loss: 0.8938
+Epoch:  24
+Class Loss 1.9590, Class Accuracy 0.6421,Rot Loss 1.7537, Rot Accuracy 0.9240, Center Loss: 0.8418
+Epoch:  25
+Class Loss 1.8739, Class Accuracy 0.6596,Rot Loss 1.4942, Rot Accuracy 0.9322, Center Loss: 0.8703
+Epoch:  26
+Class Loss 1.7990, Class Accuracy 0.6624,Rot Loss 1.1053, Rot Accuracy 0.9290, Center Loss: 0.8710
+Epoch:  27
+Class Loss 1.9391, Class Accuracy 0.6691,Rot Loss 1.0243, Rot Accuracy 0.9249, Center Loss: 0.8661
+Epoch:  28
+Class Loss 1.7417, Class Accuracy 0.6895,Rot Loss 0.9400, Rot Accuracy 0.9246, Center Loss: 0.8338
+Epoch:  29
+Class Loss 1.8846, Class Accuracy 0.6850,Rot Loss 1.2818, Rot Accuracy 0.9335, Center Loss: 0.8245
+Epoch:  30
+Class Loss 1.6021, Class Accuracy 0.7016,Rot Loss 0.8703, Rot Accuracy 0.9392, Center Loss: 0.7999
+Epoch:  31
+Class Loss 1.8079, Class Accuracy 0.7022,Rot Loss 2.6429, Rot Accuracy 0.9281, Center Loss: 0.8738
+Epoch:  32
+Class Loss 1.7538, Class Accuracy 0.7054,Rot Loss 1.3254, Rot Accuracy 0.9427, Center Loss: 0.7824
+Epoch:  33
+Class Loss 1.5488, Class Accuracy 0.7146,Rot Loss 0.4340, Rot Accuracy 0.9561, Center Loss: 0.8054
+Epoch:  34
+Class Loss 1.6224, Class Accuracy 0.7159,Rot Loss 1.2090, Rot Accuracy 0.9555, Center Loss: 0.8084
+Epoch:  35
+Class Loss 1.5825, Class Accuracy 0.7203,Rot Loss 0.4720, Rot Accuracy 0.9596, Center Loss: 0.7908
+Epoch:  36
+Class Loss 1.5114, Class Accuracy 0.7152,Rot Loss 0.9391, Rot Accuracy 0.9602, Center Loss: 0.8136
+Epoch:  37
+Class Loss 1.6783, Class Accuracy 0.7206,Rot Loss 0.5687, Rot Accuracy 0.9625, Center Loss: 0.7556
+Epoch:  38
+Class Loss 1.5513, Class Accuracy 0.7299,Rot Loss 0.6179, Rot Accuracy 0.9590, Center Loss: 0.8113
+Epoch:  39
+Class Loss 1.7534, Class Accuracy 0.7276,Rot Loss 0.3830, Rot Accuracy 0.9637, Center Loss: 0.7713
+Epoch:  40
+Class Loss 1.6226, Class Accuracy 0.7305,Rot Loss 0.8101, Rot Accuracy 0.9631, Center Loss: 0.8065
+Target - Evaluation -- for known/unknown separation
+AUROC 0.5023
+Generated random number is : 22694
+The number of target samples selected as known is:  2086
+The number of target samples selected as unknown is:  341
