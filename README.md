@@ -8,11 +8,24 @@ In new_txt_list you can find some mockup data to test step two
 
 Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 
-## Notes
+## Tables
 
-- 
+_For 40 epochs_
 
-## DOCS
+### Art - Clipart
 
-https://github.com/silvia1993/ROS
-https://github.com/gidariss/FeatureLearningRotNet
+**Accuracy**
+
+|      |  0.01  | 0.001  |
+| :--: | :----: | :----: |
+| _10_ | 0.9150 | 0.9150 |
+| _1_  | 0.4695 | 0.6870 |
+|      |        |        |
+
+**AUCROC**
+
+|      |  0.01  | 0.001  |
+| :--: | :----: | :----: |
+| _10_ | 0.5302 | 0.5486 |
+| _1_  | 0.4953 | 0.5520 |
+|      |        |        |
