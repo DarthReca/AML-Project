@@ -182,7 +182,7 @@ class Trainer:
         # center_loss = CenterLoss(num_classes=self.ss_classes*self.n_classes, feat_dim=256*self.n_classes, use_gpu=True,device=self.device)
         # f second params=eat_dim=256*self.n_classes
 
-        self.center_loss = CenterLoss(4, 512 * 2, False)
+        self.center_loss = CenterLoss(4, 512 * 2, True)
 
         if args.load_weights:
             self.rot_classifier.load_state_dict(

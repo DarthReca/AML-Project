@@ -25,7 +25,7 @@ def _do_epoch(
     source_loader: DataLoader,
     optimizer: torch.optim.Optimizer,
     device: torch.device,
-) -> Tuple[float, float, float, float]:
+) -> Tuple[float, float, float, float, float]:
     """
     Ideally we do an epoch and return all useful losses and accuracies.
 
@@ -88,10 +88,10 @@ def _do_epoch(
         # Now we can check the losses
         class_loss = criterion(class_scores, class_label)
         #  This needs CenterLoss to work better (see variation 3)
-        cent_loss = center_loss(features, rotated_label) * args.weight_cent
-        rot_loss = criterion(rotation_scores, rotated_label) + cent_loss
+        cent_loss = args.weight_cent * center_loss(features, rotated_label)
+        rot_loss = args.weight_RotTask_step1 * criterion(rotation_scores, rotated_label)
 
-        loss = class_loss + args.weight_RotTask_step1 * rot_loss
+        loss = class_loss + rot_loss + cent_loss
 
         loss.backward()
         for param in center_loss.parameters():
@@ -111,7 +111,7 @@ def _do_epoch(
     acc_cls = correct_classes / len(source_loader.dataset)
     acc_rot = correct_rotations / len(source_loader.dataset)
 
-    return class_loss, acc_cls, rot_loss, acc_rot
+    return class_loss, acc_cls, rot_loss, acc_rot, cent_loss
 
 
 def step1(
@@ -135,7 +135,7 @@ def step1(
 
     for epoch in range(args.epochs_step1):
         print("Epoch: ", epoch)
-        class_loss, acc_cls, rot_loss, acc_rot = _do_epoch(
+        class_loss, acc_cls, rot_loss, acc_rot, cent_loss = _do_epoch(
             args,
             feature_extractor,
             rot_cls,
@@ -146,8 +146,8 @@ def step1(
             device,
         )
         print(
-            "Class Loss %.4f, Class Accuracy %.4f,Rot Loss %.4f, Rot Accuracy %.4f"
-            % (class_loss, acc_cls, rot_loss, acc_rot)
+            "Class Loss %.4f, Class Accuracy %.4f,Rot Loss %.4f, Rot Accuracy %.4f, Center Loss: %.4f"
+            % (class_loss, acc_cls, rot_loss, acc_rot, cent_loss)
         )
         if epoch % 10 == 0:
             if not os.path.isdir("weights"):
