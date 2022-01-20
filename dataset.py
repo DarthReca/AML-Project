@@ -90,50 +90,28 @@ class JigsawTestDataset(data.Dataset):
         self.data_path = path_dataset
         self.names = names
         self.labels = labels
-        self.image_transformer = img_transformer
-        self.permutations = self.__retrieve_permutations(jig_classes)
-        self.grid_size = 3
-        self.image_resize = transforms.Compose(
-            [transforms.Resize(256, Image.BILINEAR), transforms.CenterCrop(255)]
-        )
-        self.augment_tile = transforms.Compose(
-            [
-                transforms.RandomCrop(64),
-                transforms.Resize((75, 75), Image.BILINEAR),
-                transforms.ToTensor(),
-            ]
-        )
+        self.image_transformer = transforms.Resize(216)
 
-        def get_tile(self, img, n):
-            w = float(img.size[0]) / self.grid_size
-            y = int(n / self.grid_size)
-            x = n % self.grid_size
-            tile = img.crop([x * w, y * w, (x + 1) * w, (y + 1) * w])
-            tile = self.augment_tile(tile)
-            return tile
+        self.permutations = self.__retrieve_permutations(jig_classes)
 
     def __getitem__(self, index):
-        # Get and process an image
+          # Get and process an image
         image_path = self.data_path + "/" + self.names[index]
-        img = Image.open(image_path).convert("RGB")
-        if self.image_transformer:
-            img = self.image_transformer(img)
+        img = TF.resize(Image.open(image_path).convert("RGB"), [222, 222])
 
-        if img.size[0] != 255:
-            img = self.image_resize(img)
+        tiles = [
+            TF.to_tensor(TF.crop(img, 74 * row, 74 * column, 74, 74))
+            for row, column in product(range(3), range(3))
+        ]
 
-        # 9 is number of grids
-        tiles = [None] * 9
-        for n in range(n_grids):
-            tiles[n] = self.get_tile(img, n)
+        order = np.random.randint(len(self.permutations))
+        data = [tiles[self.permutations[order][t]] for t in range(9)]
+        data1 = torch.cat(data[0:3], 2)
+        data2 = torch.cat(data[3:6], 2)
+        data3 = torch.cat(data[6:9], 2)
+        data = torch.cat((data1, data2, data3), 1)
 
-        index = random.randrange(len(self.permutations) + 1)
-        if index == 0:
-            data = tiles
-        else:
-            data = [tiles[self.permutations[index - 1][t]] for t in range(n_grids)]
-
-        data = torch.stack(data, 0)
+        img = transforms.ToTensor()(img)
 
         return img, int(self.labels[index]), data, int(index)
 
