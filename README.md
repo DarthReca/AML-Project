@@ -133,7 +133,7 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 
 **Clipart**
 
-|       | 0.1 | 0.3 | 1   | 3   | 10  | **20** | 30  | 100 |
+|       | 0.1 | 0.5 | 1   | 3   | 10  | **20** | 30  | 100 |
 | ----- | --- | --- | --- | --- | :-: | ------ | --- | --- |
 | _20_  |     |     |     |     |     |        |     |     |
 | _40_  |     |     |     |     |     |        |     |     |
@@ -145,12 +145,12 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 
 | Alpha1 | Epoch # | Class Acc | Rot Acc |
 | :----: | :-----: | :-------: | :-----: |
-|  0.1   |   20    |
-|        |   40    |
+|  0.1   |   20    |  0.8616   | 0.3593  |
+|        |   40    |  0.9099   | 0.3972  |
 |        |   60    |           |         |
 |        |   80    |           |         |
-|  0.5   |   20    |
-|        |   40    |
+|  0.5   |   20    |  0.8557   | 0.4971  |
+|        |   40    |  0.9181   | 0.6018  |
 |        |   60    |           |         |
 |        |   80    |           |         |
 |   1    |   20    |  0.8629   | 0.6165  |
@@ -181,16 +181,23 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _160_ |        |     | 0.5319 |        |        |        |
 
 | Alpha1 | Epoch # | AUCROC |
-| 0.1 | 20 | |
-| | 40 | |
-| 0.5 | 20 | |
-| | 40 | |
-| 1 | 20 | |
-| | 40 | |
-| 3 | 20 | |
-| | 40 | |
-| 10 | 20 | |
-| | 40 | 0.5578 |
+| :----: | :-----: | :----: |
+|  0.1   |   20    |        |
+|        |   40    | 0.5293 |
+|        |   80    | 0.5203 |
+|  0.5   |   20    |        |
+|        |   40    | 0.4944 |
+|        |   80    | 0.4873 |
+|   1    |   20    |        |
+|        |   40    | 0.5245 |
+|        |   80    | 0.5312 |
+|   3    |   20    | 0.5492 |
+|        |   40    | 0.5525 |
+|        |   80    | 0.5397 |
+|   10   |   20    |        |
+|        |   40    | 0.5578 |
+|        |   60    | 0.5548 |
+|        |   80    |        |
 
 **Art - Product**
 
@@ -203,16 +210,21 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _140_ |     |     |        |     |        |     |
 
 | Alpha1 | Epoch # | AUCROC |
-| 0.1 | 20 | |
-| | 40 | |
-| 0.5 | 20 | |
-| | 40 | |
-| 1 | 20 | |
-| | 40 | |
-| 3 | 20 | |
-| | 40 | |
-| 10 | 20 | |
-| | 40 | |
+| :----: | :-----: | :----: |
+|  0.1   |   20    |        |
+|        |   40    | 0.5094 |
+|        |   80    | 0.5167 |
+|  0.5   |   20    |        |
+|        |   40    | 0.5188 |
+|        |   80    | 0.4988 |
+|   1    |   20    |        |
+|        |   40    | 0.4978 |
+|        |   80    | 0.5041 |
+|   3    |   20    | 0.4896 |
+|        |   40    | 0.5073 |
+|   10   |   20    |        |
+|        |   40    | 0.5316 |
+|        |   80    |        |
 
 **Art - RealWorld**
 
@@ -225,16 +237,21 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _140_ |     |     |        |     |        |     |
 
 | Alpha1 | Epoch # | AUCROC |
-| 0.1 | 20 | |
-| | 40 | |
-| 0.5 | 20 | |
-| | 40 | |
-| 1 | 20 | |
-| | 40 | |
-| 3 | 20 | |
-| | 40 | |
-| 10 | 20 | |
-| | 40 | |
+| :----: | :-----: | :----: |
+|  0.1   |   20    |        |
+|        |   40    | 0.5153 |
+|        |   80    | 0.5131 |
+|  0.5   |   20    |        |
+|        |   40    | 0.5198 |
+|        |   80    | 0.4923 |
+|   1    |   20    |        |
+|        |   40    | 0.4842 |
+|        |   80    | 0.4762 |
+|   3    |   20    | 0.4813 |
+|        |   40    | 0.4830 |
+|   10   |   20    |        |
+|        |   40    | 0.4956 |
+|        |   80    |        |
 
 ---
 
@@ -425,6 +442,42 @@ Number of samples should be unknown: 1301
 
 Threshold of 0.75 chosen. (With alpha1 = 10 and epochs = 40)
 
+**Art - Product**
+
+Total target (Product) samples:
+
+Number of samples should be known:
+
+Number of samples should be unknown:
+
+| Threshold | Number of samples known |
+| :-------: | :---------------------: |
+|    0.3    |                         |
+|    0.5    |                         |
+|    0.7    |                         |
+|    0.8    |                         |
+
+Threshold of ? chosen.
+
+**Art - Real World**
+
+Total target (Real World) samples:
+
+Number of samples should be known:
+
+Number of samples should be unknown:
+
+| Threshold | Number of samples known |
+| :-------: | :---------------------: |
+|    0.3    |                         |
+|    0.5    |                         |
+|    0.7    |                         |
+|    0.8    |                         |
+
+Threshold of ? chosen.
+
+---
+
 **Product - Clipart**
 
 Total target (Clipart) samples: 4365
@@ -442,6 +495,42 @@ Number of samples should be unknown: 1301
 
 Threshold of ? chosen.
 
+**Product - Art**
+
+Total target (Art) samples:
+
+Number of samples should be known:
+
+Number of samples should be unknown:
+
+| Threshold | Number of samples known |
+| :-------: | :---------------------: |
+|    0.3    |                         |
+|    0.5    |                         |
+|    0.7    |                         |
+|    0.8    |                         |
+
+Threshold of ? chosen.
+
+**Product - Real World**
+
+Total target (Real World) samples:
+
+Number of samples should be known:
+
+Number of samples should be unknown:
+
+| Threshold | Number of samples known |
+| :-------: | :---------------------: |
+|    0.3    |                         |
+|    0.5    |                         |
+|    0.7    |                         |
+|    0.8    |                         |
+
+Threshold of ? chosen.
+
+---
+
 **Real World - Clipart**
 
 Total target (Clipart) samples: 4365
@@ -449,6 +538,40 @@ Total target (Clipart) samples: 4365
 Number of samples should be known: 3064
 
 Number of samples should be unknown: 1301
+
+| Threshold | Number of samples known |
+| :-------: | :---------------------: |
+|    0.3    |                         |
+|    0.5    |                         |
+|    0.7    |                         |
+|    0.8    |                         |
+
+Threshold of ? chosen.
+
+**Real World - Art**
+
+Total target (Art) samples:
+
+Number of samples should be known:
+
+Number of samples should be unknown:
+
+| Threshold | Number of samples known |
+| :-------: | :---------------------: |
+|    0.3    |                         |
+|    0.5    |                         |
+|    0.7    |                         |
+|    0.8    |                         |
+
+Threshold of ? chosen.
+
+**Real World - Product**
+
+Total target (Product) samples:
+
+Number of samples should be known:
+
+Number of samples should be unknown:
 
 | Threshold | Number of samples known |
 | :-------: | :---------------------: |
@@ -487,6 +610,16 @@ Threshold of ? chosen.
 |        |   40    | 0.3367 | 0.5743 | 0.4245 |  0.9416   | 0.9668  |
 
 Best HOS: 0.4399, with alpha1 = 10, epochs1 = 40, threshold = 0.75, alpha2 = 3 and epochs2 = 20
+
+**Art - Product**
+
+| Alpha2 | Epoch # | OS\* | UNK | HOS | Class Acc | Rot Acc |
+| :----: | :-----: | :--: | :-: | :-: | :-------: | :-----: |
+|  0.1   |         |      |     |     |           |         |
+|  0.5   |         |      |     |     |           |         |
+|   1    |         |      |     |     |           |         |
+|   3    |         |      |     |     |           |         |
+|   10   |         |      |     |     |           |         |
 
 ## DOCS
 
