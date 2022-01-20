@@ -145,12 +145,12 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 
 | Alpha1 | Epoch # | Class Acc | Rot Acc|
 | :---: | :----: | :-: | :----: |
-| 0.1 | 20 |
-|   | 40 | 
+| 0.1 | 20 | 0.8616 | 0.3593 |
+|   | 40 | 0.9099 | 0.3972 |
 |   | 60 | | |
 |   | 80 | | |
-| 0.5 | 20 |
-|   | 40 | 
+| 0.5 | 20 | 0.8557 | 0.4971 |
+|   | 40 | 0.9181 | 0.6018 |
 |   | 60 | | |
 |   | 80 | | |
 | 1 | 20 | 0.8629 | 0.6165 |
@@ -182,16 +182,23 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 | _160_ |        |     | 0.5319 |        |        |        |
 
 | Alpha1 | Epoch # | AUCROC |
+| :---: | :----: | :-: |
 | 0.1 | 20 | |
-|     | 40 |  |
+|     | 40 | 0.5293 |
+|     | 80 | 0.5203 |
 | 0.5 | 20 | |
-|     | 40 |  |
+|     | 40 | 0.4944 |
+|     | 80 | 0.4873 |
 |  1  | 20 | |
-|     | 40 |  |
-|  3  | 20 | |
-|     | 40 |  |
+|     | 40 | 0.5245 | 
+|     | 80 | 0.5312 | 
+|  3  | 20 | 0.5492 | 
+|     | 40 | 0.5525 | 
+|     | 80 | 0.5397 |
 |  10 | 20 | |
 |     | 40 | 0.5578 |
+|     | 60 | 0.5548 |
+|     | 80 | | 
 
 **Art - Product**
 
@@ -205,15 +212,19 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 
 | Alpha1 | Epoch # | AUCROC |
 | 0.1 | 20 | |
-|     | 40 |  |
+|     | 40 | 0.5094 |
+|     | 80 | 0.5167 |
 | 0.5 | 20 | |
-|     | 40 |  |
+|     | 40 | 0.5188 | 
+|     | 80 | 0.4988 | 
 |  1  | 20 | |
-|     | 40 |  |
-|  3  | 20 | |
-|     | 40 |  |
+|     | 40 | 0.4978 | 
+|     | 80 | 0.5041 | 
+|  3  | 20 | 0.4896 | 
+|     | 40 | 0.5073 |
 |  10 | 20 | |
-|     | 40 |  |
+|     | 40 | 0.5316  | 
+|     | 80 | |
 
 **Art - RealWorld**
 
@@ -227,15 +238,19 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 
 | Alpha1 | Epoch # | AUCROC |
 | 0.1 | 20 | |
-|     | 40 |  |
+|     | 40 | 0.5153 |
+|     | 80 | 0.5131 |
 | 0.5 | 20 | |
-|     | 40 |  |
+|     | 40 | 0.5198 |
+|     | 80 | 0.4923 | 
 |  1  | 20 | |
-|     | 40 |  |
-|  3  | 20 | |
-|     | 40 |  |
+|     | 40 | 0.4842 |
+|     | 80 | 0.4762 | 
+|  3  | 20 | 0.4813 | 
+|     | 40 | 0.4830 | 
 |  10 | 20 | |
-|     | 40 |  |
+|     | 40 | 0.4956 |
+|     | 80 | |
 
 ---
 
@@ -460,6 +475,40 @@ Number of samples should be unknown: 1301
 | 0.8 | 2872 |
 
 Threshold of 0.75 chosen. (With alpha1 = 10 and epochs = 40)
+
+**Art - Product**
+
+Total target (Product) samples:
+
+Number of samples should be known: 
+
+Number of samples should be unknown: 
+
+|  Threshold |  Number of samples known    |  
+|:-----:|:------:|
+| 0.3 |  | 
+| 0.5 |  | 
+| 0.7 |  | 
+| 0.8 |  |
+
+Threshold of ? chosen. 
+
+**Art - Real World**
+
+Total target (Product) samples:
+
+Number of samples should be known: 
+
+Number of samples should be unknown: 
+
+|  Threshold |  Number of samples known    |  
+|:-----:|:------:|
+| 0.3 |  | 
+| 0.5 |  | 
+| 0.7 |  | 
+| 0.8 |  |
+
+Threshold of ? chosen. 
 
 **Product - Clipart**
 
