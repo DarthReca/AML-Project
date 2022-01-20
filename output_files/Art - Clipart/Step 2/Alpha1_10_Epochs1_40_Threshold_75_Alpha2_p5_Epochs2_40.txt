@@ -1,0 +1,173 @@
+Source:  Art  Target:  Clipart
+Dataset size: source 1789, target 4365
+Target - Evaluation -- for known/unknown separation
+AUROC 0.5578
+Generated random number is : 2606
+The number of target samples selected as known is:  3019
+The number of target samples selected as unknown is:  1346
+Step 2 --------------------------------------------
+Step size: 32
+Epoch:  0
+Class Loss 0.8689, Class Accuracy 0.5662,Rot Loss 1.0152, Rot Accuracy 0.5665
+
+Evaluation: OS* 0.2151, UNK 0.8620, HOS 0.3443
+Epoch:  1
+Class Loss 0.6220, Class Accuracy 0.8204,Rot Loss 0.6224, Rot Accuracy 0.6303
+
+Evaluation: OS* 0.2708, UNK 0.7571, HOS 0.3990
+Epoch:  2
+Class Loss 0.5596, Class Accuracy 0.8447,Rot Loss 0.5513, Rot Accuracy 0.6715
+
+Evaluation: OS* 0.2980, UNK 0.6675, HOS 0.4121
+Epoch:  3
+Class Loss 0.5992, Class Accuracy 0.8686,Rot Loss 0.4151, Rot Accuracy 0.6951
+
+Evaluation: OS* 0.2883, UNK 0.6745, HOS 0.4040
+Epoch:  4
+Class Loss 0.4706, Class Accuracy 0.8826,Rot Loss 0.4704, Rot Accuracy 0.7062
+
+Evaluation: OS* 0.2971, UNK 0.6698, HOS 0.4116
+Epoch:  5
+Class Loss 0.5093, Class Accuracy 0.8944,Rot Loss 0.4510, Rot Accuracy 0.7416
+
+Evaluation: OS* 0.2902, UNK 0.6663, HOS 0.4043
+Epoch:  6
+Class Loss 0.3514, Class Accuracy 0.9014,Rot Loss 0.5559, Rot Accuracy 0.7461
+
+Evaluation: OS* 0.3118, UNK 0.6191, HOS 0.4148
+Epoch:  7
+Class Loss 0.3321, Class Accuracy 0.9049,Rot Loss 0.4003, Rot Accuracy 0.7627
+
+Evaluation: OS* 0.3003, UNK 0.6509, HOS 0.4110
+Epoch:  8
+Class Loss 0.2856, Class Accuracy 0.9158,Rot Loss 0.4119, Rot Accuracy 0.7774
+
+Evaluation: OS* 0.3045, UNK 0.6250, HOS 0.4095
+Epoch:  9
+Class Loss 0.3043, Class Accuracy 0.9219,Rot Loss 0.5132, Rot Accuracy 0.7812
+
+Evaluation: OS* 0.3068, UNK 0.6156, HOS 0.4095
+Epoch:  10
+Class Loss 0.3766, Class Accuracy 0.9247,Rot Loss 0.3472, Rot Accuracy 0.7716
+
+Evaluation: OS* 0.3187, UNK 0.6038, HOS 0.4172
+Epoch:  11
+Class Loss 0.1991, Class Accuracy 0.9285,Rot Loss 0.3575, Rot Accuracy 0.7968
+
+Evaluation: OS* 0.3151, UNK 0.6002, HOS 0.4132
+Epoch:  12
+Class Loss 0.2088, Class Accuracy 0.9375,Rot Loss 0.3617, Rot Accuracy 0.8022
+
+Evaluation: OS* 0.3155, UNK 0.6097, HOS 0.4158
+Epoch:  13
+Class Loss 0.2582, Class Accuracy 0.9394,Rot Loss 0.3851, Rot Accuracy 0.8096
+
+Evaluation: OS* 0.3141, UNK 0.6014, HOS 0.4127
+Epoch:  14
+Class Loss 0.2726, Class Accuracy 0.9359,Rot Loss 0.3591, Rot Accuracy 0.8175
+
+Evaluation: OS* 0.3266, UNK 0.5814, HOS 0.4182
+Epoch:  15
+Class Loss 0.2742, Class Accuracy 0.9474,Rot Loss 0.3143, Rot Accuracy 0.8089
+
+Evaluation: OS* 0.3257, UNK 0.5814, HOS 0.4175
+Epoch:  16
+Class Loss 0.2020, Class Accuracy 0.9458,Rot Loss 0.2788, Rot Accuracy 0.8281
+
+Evaluation: OS* 0.3307, UNK 0.5825, HOS 0.4219
+Epoch:  17
+Class Loss 0.1614, Class Accuracy 0.9515,Rot Loss 0.2865, Rot Accuracy 0.8459
+
+Evaluation: OS* 0.3432, UNK 0.5531, HOS 0.4235
+Epoch:  18
+Class Loss 0.1528, Class Accuracy 0.9528,Rot Loss 0.2636, Rot Accuracy 0.8459
+
+Evaluation: OS* 0.3344, UNK 0.5696, HOS 0.4214
+Epoch:  19
+Class Loss 0.2425, Class Accuracy 0.9522,Rot Loss 0.2524, Rot Accuracy 0.8348
+
+Evaluation: OS* 0.3280, UNK 0.5731, HOS 0.4172
+Epoch:  20
+Class Loss 0.2523, Class Accuracy 0.9557,Rot Loss 0.3347, Rot Accuracy 0.8447
+
+Evaluation: OS* 0.3441, UNK 0.5354, HOS 0.4189
+Epoch:  21
+Class Loss 0.2030, Class Accuracy 0.9547,Rot Loss 0.2795, Rot Accuracy 0.8555
+
+Evaluation: OS* 0.3418, UNK 0.5330, HOS 0.4165
+Epoch:  22
+Class Loss 0.1237, Class Accuracy 0.9614,Rot Loss 0.3533, Rot Accuracy 0.8427
+
+Evaluation: OS* 0.3464, UNK 0.5283, HOS 0.4184
+Epoch:  23
+Class Loss 0.1746, Class Accuracy 0.9611,Rot Loss 0.2492, Rot Accuracy 0.8587
+
+Evaluation: OS* 0.3551, UNK 0.5330, HOS 0.4263
+Epoch:  24
+Class Loss 0.1789, Class Accuracy 0.9636,Rot Loss 0.2641, Rot Accuracy 0.8670
+
+Evaluation: OS* 0.3312, UNK 0.5778, HOS 0.4210
+Epoch:  25
+Class Loss 0.1072, Class Accuracy 0.9614,Rot Loss 0.2334, Rot Accuracy 0.8689
+
+Evaluation: OS* 0.3482, UNK 0.5318, HOS 0.4209
+Epoch:  26
+Class Loss 0.1660, Class Accuracy 0.9659,Rot Loss 0.2151, Rot Accuracy 0.8708
+
+Evaluation: OS* 0.3533, UNK 0.5283, HOS 0.4234
+Epoch:  27
+Class Loss 0.1476, Class Accuracy 0.9646,Rot Loss 0.2318, Rot Accuracy 0.8673
+
+Evaluation: OS* 0.3473, UNK 0.5389, HOS 0.4224
+Epoch:  28
+Class Loss 0.1152, Class Accuracy 0.9707,Rot Loss 0.1445, Rot Accuracy 0.8848
+
+Evaluation: OS* 0.3372, UNK 0.5601, HOS 0.4210
+Epoch:  29
+Class Loss 0.1671, Class Accuracy 0.9678,Rot Loss 0.1624, Rot Accuracy 0.8791
+
+Evaluation: OS* 0.3445, UNK 0.5389, HOS 0.4203
+Epoch:  30
+Class Loss 0.1658, Class Accuracy 0.9678,Rot Loss 0.2407, Rot Accuracy 0.8858
+
+Evaluation: OS* 0.3450, UNK 0.5413, HOS 0.4214
+Epoch:  31
+Class Loss 0.1085, Class Accuracy 0.9697,Rot Loss 0.1790, Rot Accuracy 0.8880
+
+Evaluation: OS* 0.3478, UNK 0.5307, HOS 0.4202
+Epoch:  32
+Class Loss 0.0749, Class Accuracy 0.9703,Rot Loss 0.3417, Rot Accuracy 0.8903
+
+Evaluation: OS* 0.3519, UNK 0.5271, HOS 0.4221
+Epoch:  33
+Class Loss 0.0734, Class Accuracy 0.9687,Rot Loss 0.2263, Rot Accuracy 0.8989
+
+Evaluation: OS* 0.3478, UNK 0.5354, HOS 0.4216
+Epoch:  34
+Class Loss 0.1738, Class Accuracy 0.9710,Rot Loss 0.3257, Rot Accuracy 0.8845
+
+Evaluation: OS* 0.3455, UNK 0.5307, HOS 0.4185
+Epoch:  35
+Class Loss 0.0784, Class Accuracy 0.9697,Rot Loss 0.2849, Rot Accuracy 0.8893
+
+Evaluation: OS* 0.3496, UNK 0.5295, HOS 0.4211
+Epoch:  36
+Class Loss 0.1145, Class Accuracy 0.9707,Rot Loss 0.2678, Rot Accuracy 0.8868
+
+Evaluation: OS* 0.3432, UNK 0.5401, HOS 0.4197
+Epoch:  37
+Class Loss 0.1124, Class Accuracy 0.9703,Rot Loss 0.2664, Rot Accuracy 0.8922
+
+Evaluation: OS* 0.3491, UNK 0.5425, HOS 0.4248
+Epoch:  38
+Class Loss 0.1159, Class Accuracy 0.9694,Rot Loss 0.2806, Rot Accuracy 0.9005
+
+Evaluation: OS* 0.3468, UNK 0.5366, HOS 0.4213
+Epoch:  39
+Class Loss 0.1146, Class Accuracy 0.9707,Rot Loss 0.2865, Rot Accuracy 0.8979
+
+Evaluation: OS* 0.3478, UNK 0.5271, HOS 0.4191
+Epoch:  40
+Class Loss 0.0921, Class Accuracy 0.9697,Rot Loss 0.2780, Rot Accuracy 0.8944
+
+Evaluation: OS* 0.3404, UNK 0.5495, HOS 0.4204
