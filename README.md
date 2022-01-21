@@ -280,7 +280,6 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 **RealWorld - Clipart**
 
 | Alpha1 | Epoch # | AUCROC |
-<<<<<<< HEAD
 | ----- | --- | --- |
 | 0.1 | 20 | 0.4919 |
 |     | 40 | 0.4964 |
@@ -292,23 +291,10 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 |     | 40 | 0.5597 |
 |  10 | 20 | 0.5340 |
 |     | 40 | 0.5639 |
-=======
-| 0.1 | 20 | |
-| | 40 | |
-| 0.5 | 20 | |
-| | 40 | |
-| 1 | 20 | |
-| | 40 | |
-| 3 | 20 | |
-| | 40 | |
-| 10 | 20 | |
-| | 40 | |
->>>>>>> 738efcf57f8265ab06d87af2f60cb5ea5a83872b
 
 **RealWorld - Art**
 
 | Alpha1 | Epoch # | AUCROC |
-<<<<<<< HEAD
 | 0.1 | 20 | 0.4884 |
 |     | 40 | 0.4830 |
 | 0.5 | 20 | 0.5071 |
@@ -319,23 +305,10 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 |     | 40 | 0.5233 |
 |  10 | 20 | 0.5144 |
 |     | 40 | 0.5332 |
-=======
-| 0.1 | 20 | |
-| | 40 | |
-| 0.5 | 20 | |
-| | 40 | |
-| 1 | 20 | |
-| | 40 | |
-| 3 | 20 | |
-| | 40 | |
-| 10 | 20 | |
-| | 40 | |
->>>>>>> 738efcf57f8265ab06d87af2f60cb5ea5a83872b
 
 **RealWorld - Product**
 
 | Alpha1 | Epoch # | AUCROC |
-<<<<<<< HEAD
 | 0.1 | 20 | 0.5004 |
 |     | 40 | 0.4853 |
 | 0.5 | 20 | 0.5234 |
@@ -346,18 +319,6 @@ Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 |     | 40 | 0.5592 |
 |  10 | 20 | 0.5675 |
 |     | 40 | 0.5852 |
-=======
-| 0.1 | 20 | |
-| | 40 | |
-| 0.5 | 20 | |
-| | 40 | |
-| 1 | 20 | |
-| | 40 | |
-| 3 | 20 | |
-| | 40 | |
-| 10 | 20 | |
-| | 40 | |
->>>>>>> 738efcf57f8265ab06d87af2f60cb5ea5a83872b
 
 ---
 
