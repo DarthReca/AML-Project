@@ -509,46 +509,49 @@ Number of samples should be unknown: 1301
 
 | Threshold | Number of samples known |
 | :-------: | :---------------------: |
-|    0.3    |                         |
-|    0.5    |                         |
-|    0.7    |                         |
-|    0.8    |                         |
+|    0.3    |    3843                 |
+|    0.5    |    3625                 |
+|    0.7    |    3338                 |
+|    0.8    |    3128                 |
+|    0.9    |    2813                 |
 
-Threshold of ? chosen.
+Threshold of 0.8 chosen. (With alpha1 = 10 and epochs = 40)
 
 **Real World - Art**
 
-Total target (Art) samples:
+Total target (Art) samples: 2427
 
-Number of samples should be known:
+Number of samples should be known: 1789
 
-Number of samples should be unknown:
+Number of samples should be unknown: 638
 
 | Threshold | Number of samples known |
 | :-------: | :---------------------: |
-|    0.3    |                         |
-|    0.5    |                         |
-|    0.7    |                         |
-|    0.8    |                         |
+|    0.3    |      2294               |
+|    0.5    |      2223               |
+|    0.7    |      2142               |
+|    0.8    |      2086               |
+|    0.9    |      1974               |
 
-Threshold of ? chosen.
+Threshold of 0.9 chosen. (With alpha1 = 10 and epochs = 40)
 
 **Real World - Product**
 
-Total target (Product) samples:
+Total target (Product) samples: 4439
 
-Number of samples should be known:
+Number of samples should be known: 3143
 
-Number of samples should be unknown:
+Number of samples should be unknown: 1296
 
 | Threshold | Number of samples known |
 | :-------: | :---------------------: |
-|    0.3    |                         |
-|    0.5    |                         |
-|    0.7    |                         |
-|    0.8    |                         |
+|    0.3    |       4172              |
+|    0.5    |       4048              |
+|    0.7    |       3878              |
+|    0.8    |       3747              |
+|    0.9    |       3566              |
 
-Threshold of ? chosen.
+Threshold of 0.9 chosen. (With alpha1 = 10 and epochs = 40)
 
 ## STEP 2
 
