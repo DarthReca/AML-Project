@@ -475,6 +475,24 @@ Number of samples should be unknown:
 
 Threshold of 0.9 chosen. (With alpha1 = 10 and epochs = 80)
 
+**Clipart - Product**
+
+Total target (Product) samples: 4439
+
+Number of samples should be known: 
+
+Number of samples should be unknown: 
+
+| Threshold | Number of samples known |
+| :-------: | :---------------------: |
+|    0.3    |          3814           |
+|    0.5    |          3618           |
+|    0.7    |          3415           |
+|    0.8    |          3264           |
+|    0.9    |          3021           |
+
+Threshold of 0.9 chosen. (alpha1 = 10, epochs = 80)
+
 
 
 ---
