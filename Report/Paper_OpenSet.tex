@@ -82,7 +82,7 @@ Self-supervised learning can be used to separate the known class samples in the 
 
 Domain adaptation can then be performed between the samples in the source domain and the samples recognized as known in the target domain. When applying domain adaptation to an open-set scenario (Open-Set Domain Adapatation or OSDA) the samples classified as unknown can be treated as a separate class and incorporated into the Closed-Set Domain Adaptation (CSDA) task~\cite{Pau2020}. The self-supervised rotation task can also be used to reduce the domain shift during this step, using the Rotation-based Open Set (ROS) method developed by Bucci \etal \cite{Bucci2020}.
 
-This study investigates the use of a simplified ROS method for object classification on the \textit{Office-Home} dataset \cite{OfficeHome}. Alternative self-supervised tasks \textcolor{red}{as well as the inclusion of center-loss} are also considered and their performance on the object classification task is evaluated.
+This study investigates the use of a simplified ROS method for object classification on the \textit{Office-Home} dataset \cite{OfficeHome}. Alternative self-supervised tasks as well as the inclusion of center-loss are also considered and their performance on the object classification task is evaluated.
 
 
 %------------------------------------------------------------------------
@@ -121,7 +121,7 @@ This study aims to solve the open-set scenario by using self-supervised learning
    \label{fig:RotationFeatures}
 \end{figure}
 
-To solve the open-set domain adaptation problem a simplified version of the ROS method (Figure \ref{fig:ROS}) is used. This version uses a single-head rotation classifier and does not include the center-loss, \textcolor{red}{however the effect of the center-loss is evaluated subsequently as a variation to this method}. Alternative self-supervised tasks are also considered, including horizontal flipping, \textcolor{red}{vertical flipping} and through solving jigsaw puzzles. These variations are analyzed in Section \ref{sec:variations}.
+To solve the open-set domain adaptation problem a simplified version of the ROS method (Figure \ref{fig:ROS}) is used. This version uses a single-head rotation classifier and does not include the center-loss, however the effect of the center-loss is evaluated subsequently as a variation to this method. Alternative self-supervised tasks are also considered, including horizontal flipping and through solving jigsaw puzzles. These variations are analyzed in Section \ref{sec:variations}.
 
 \begin{figure*}[!htb]
   \centering
@@ -174,7 +174,7 @@ and provides a balanced measure of performance of the classifier at recognizing 
 \section{Experiments}
 \label{sec:experiments}
 
-The proposed method was tested on the \textit{Office-Home} dataset \cite{OfficeHome}. This dataset consists of four separate domains for image classification: Art, Clipart, Product and Real World. An example of the difference between images in these domains is shown in Figure \ref{fig:domains}. Each domain included two sets of images, one when behaving as the source domain and another as the target, where the target domain included images from a number of categories that were non existant in the source domain set.
+The proposed method was tested on the \textit{Office-Home} dataset \cite{OfficeHome}. This dataset consists of four separate domains for image classification: Art, Clipart, Product and Real World. An example of the difference between images in these domains is shown in Figure \ref{fig:domains}. For this experiment each domain included two sets of images, one when behaving as the source domain and another as the target. The dataset contained 65 classes in total.  The classes were sorted alphabetically and the first 45 classes were treated as known and formed the list of images for the source domain, the remaining 20 were considered unknown and included in the list of images for the domain when behaving as the target domain.
 
 \begin{figure}[!htbp]
   \centering
@@ -293,17 +293,108 @@ The final step of the ablation study was to tune the stage 2 weight ($\alpha_2$)
   \label{tab:tuneHOS}
 \end{table}
 
-
 Similar analyses were also conducted for the 11 other possible domain combinations, the results of which can be found in the supplementary material.
 
 
 \subsection{Results}
 
+The results for the simplified ROS model for each of the domain combinations is shown in Table \ref{tab:results}.
 
+\begin{table}[!htb]
+  \centering
+  \begin{tabular}{@{}|ll|ccc|@{}}
+    \hline
+\multicolumn{2}{|c}{\textbf{Domain}} & & & \\
+\textbf{Source} & \textbf{Target} & \textbf{OS$^*$} & \textbf{UNK} & \textbf{HOS} \\ \hline
+Art & Clipart & 35.42 & 58.02 & 43.99 \\
+& Product & & & \\
+ & Real World & & & \\ \hline
+Product & Clipart & & & \\
+& Art & & & \\
+& Real World & & & \\ \hline
+Real World & Clipart & & & \\
+ & Art & & & \\
+ & Product & & & \\ \hline
+Clipart & Real World & & & \\
+ & Art & & & \\
+& Product & & & \\
+    \hline
+  \end{tabular}
+  \caption{Accuracy (\%) for the simplified ROS model on the Office-Home dataset}
+  \label{tab:results}
+\end{table}
+
+- discussion
 
 %------------------------------------------------------------------------
 \section{Variations}
 \label{sec:variations}
+
+Two different variations to the simplified ROS method were also analysed. The first considered the use of alternative self-supervised tasks. The second considered the addition of the center-loss to the rotation recognition task.
+
+\subsection{Alternative self-supervised tasks}
+
+The simplified ROS method reported used rotation recognition as the self-supervised task, however many different self-supervised tasks are possible to be employed for use in open-set domain adaptation. This sudy investigated two alternative self-supervised tasks: hoizontal flipping; and solving jigsaw puzzles.
+
+\subsubsection*{Horizontal Flipping}
+
+Horizontal flipping is similar to image rotation however instead rotating the image it is flipped along its center y-axis, creating a mirror-image. Hoizontal flipping is shown in Figure \ref{fig:horiz}.
+
+\begin{figure}[!htb]
+  \centering
+   %\includegraphics[width=0.95\linewidth]{Figures/Jigsaw.png}
+   \caption{Horizontal flipping of an image.}
+   \label{fig:horiz}
+\end{figure}
+
+\subsubsection*{Jigsaw Puzzle}
+
+The self-supervised tasks of solving jigsaw puzzles involves being able to recognise an original image given its shuffled parts. The method involves first taking the orginal image, splitting the image into a number of sections, then creating a set of permutations with a different ordering of those sections. The method can be seen in Figure \ref{fig:jigsaw} as used by \cite{Carlucci2019}. The shuffled images (permutations) are then fed into the convolutional neural network to train the jigsaw classifier alongside the object classifier. \textcolor{red}{This study considered the images broken up into X number of sections, with X different permutations based on....}.
+
+\begin{figure*}[!htb]
+  \centering
+   \includegraphics[width=0.95\linewidth]{Figures/Jigsaw.png}
+   \caption{Jigsaw puzzle self-supervised task method \cite{Carlucci2019}.}
+   \label{fig:jigsaw}
+\end{figure*}
+
+\subsubsection*{Results}
+
+The harmonic mean results of the simplified ROS method employing different self-supervised tasks are shown in Table \ref{tab:selfs}.
+
+\begin{table}[!htb]
+\small
+  \centering
+  \begin{tabular}{@{}|ll|ccc|@{}}
+    \hline
+\multicolumn{2}{|c|}{\textbf{Domain}} & & \textbf{Horizontal} & \textbf{Jigsaw} \\
+\textbf{Source} & \textbf{Target} & \textbf{Rotation} & \textbf{Flipping} & \textbf{Puzzle} \\ \hline
+Art & Clipart & &  &  \\
+& Product & & & \\
+ & Real World & & & \\ \hline
+Product & Clipart & & & \\
+& Art & & & \\
+& Real World & & & \\ \hline
+Real World & Clipart & & & \\
+ & Art & & & \\
+ & Product & & & \\ \hline
+Clipart & Real World & & & \\
+ & Art & & & \\
+& Product & & & \\
+    \hline
+  \end{tabular}
+  \caption{Harmonic mean (\%) for the simplified ROS model with different self-supervised tasks on the Office-Home dataset}
+  \label{tab:selfs}
+\end{table}
+
+
+- discussion
+
+
+\subsection{Center-Loss}
+
+
+
 
 - describe each of the variations
 - present results of the performance of the model and compare with the baseline for each of the variations
