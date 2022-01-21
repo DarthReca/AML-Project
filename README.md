@@ -456,6 +456,30 @@ Number of samples should be unknown: 1296
 
 Threshold of 0.9 chosen. (With alpha1 = 10 and epochs = 40)
 
+---
+**Clipart - Art**
+
+Total target (Clipart) samples: 2427
+
+Number of samples should be known: 
+
+Number of samples should be unknown: 
+
+| Threshold | Number of samples known |
+| :-------: | :---------------------: |
+|    0.3    |          2072           |
+|    0.5    |          1957           |
+|    0.7    |          1822           |
+|    0.8    |          1731           |
+|    0.9    |          1582           |
+
+Threshold of 0.9 chosen. (With alpha1 = 10 and epochs = 80)
+
+
+
+---
+
+
 ## STEP 2
 
 **Art - Clipart**
