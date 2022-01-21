@@ -495,6 +495,20 @@ Best HOS: 0.4399, with alpha1 = 10, epochs1 = 40, threshold = 0.75, alpha2 = 3 a
 |   3    |         |      |     |     |           |         |
 |   10   |         |      |     |     |           |         |
 
+--- 
+
+**Product - Clipart**
+
+| Alpha2 | Epoch # | OS\* | UNK | HOS | Class Acc | Rot Acc |
+| :----: | :-----: | :--: | :-: | :-: | :-------: | :-----: |
+|  0.1   |         |      |     |     |           |         |
+|  0.5   |         |      |     |     |           |         |
+|   1    |         |      |     |     |           |         |
+|   3    |         |      |     |     |           |         |
+|   10   |         |      |     |     |           |         |
+
+Best HOS: ?, with alpha1 = 10, epochs1 = 80, threshold = 0.85, alpha2 = ? and epochs2 =? 
+
 ## DOCS
 
 https://github.com/silvia1993/ROS
