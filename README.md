@@ -356,46 +356,49 @@ Number of samples should be unknown: 1301
 
 | Threshold | Number of samples known |
 | :-------: | :---------------------: |
-|    0.3    |                         |
-|    0.5    |                         |
-|    0.7    |                         |
-|    0.8    |                         |
+|    0.3    |      3735               |
+|    0.5    |      3544               |
+|    0.7    |      3299               |
+|    0.8    |      3132               |
+|    0.85   |      3022               |
 
-Threshold of ? chosen.
+Threshold of 0.85 chosen. (With alpha1 = 10 and epochs = 80)
 
 **Product - Art**
 
-Total target (Art) samples:
+Total target (Art) samples: 2427
 
-Number of samples should be known:
+Number of samples should be known: 1789
 
-Number of samples should be unknown:
+Number of samples should be unknown: 638
 
 | Threshold | Number of samples known |
 | :-------: | :---------------------: |
-|    0.3    |                         |
-|    0.5    |                         |
-|    0.7    |                         |
-|    0.8    |                         |
+|    0.3    |        2306             |
+|    0.5    |        1798             |
+|    0.55   |        1744             |
+|    0.7    |        882              |
+|    0.8    |        526              |
 
-Threshold of ? chosen.
+Threshold of 0.5 chosen. (With alpha1 = 1 and epochs = 20)
 
 **Product - Real World**
 
 Total target (Real World) samples:
 
-Number of samples should be known:
+Number of samples should be known: 3037
 
 Number of samples should be unknown:
 
 | Threshold | Number of samples known |
 | :-------: | :---------------------: |
-|    0.3    |                         |
-|    0.5    |                         |
-|    0.7    |                         |
-|    0.8    |                         |
+|    0.3    |       4005              |
+|    0.5    |       3886              |
+|    0.7    |       3775              |
+|    0.8    |       3664              |
+|    0.9    |       3520              |
 
-Threshold of ? chosen.
+Threshold of 0.9 chosen. (With alpha1 = 10 and epochs = 80)
 
 ---
 
