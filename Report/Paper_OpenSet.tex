@@ -82,7 +82,7 @@ Self-supervised learning can be used to separate the known class samples in the 
 
 Domain adaptation can then be performed between the samples in the source domain and the samples recognized as known in the target domain. When applying domain adaptation to an open-set scenario (Open-Set Domain Adapatation or OSDA) the samples classified as unknown can be treated as a separate class and incorporated into the Closed-Set Domain Adaptation (CSDA) task~\cite{Pau2020}. The self-supervised rotation task can also be used to reduce the domain shift during this step, using the Rotation-based Open Set (ROS) method developed by Bucci \etal \cite{Bucci2020}.
 
-This study investigates the use of a simplified ROS method for object classification on the \textit{Office-Home} dataset \cite{OfficeHome}. Alternative self-supervised tasks as well as the inclusion of center-loss are also considered and their performance on the object classification task is evaluated.
+This study investigates the use of a simplified ROS method for object classification on the \textit{Office-Home} dataset \cite{OfficeHome}. Alternative self-supervised tasks as well as the inclusion of center loss are also considered and their performance on the object classification task is evaluated.
 
 
 %------------------------------------------------------------------------
@@ -98,7 +98,7 @@ This study investigates the use of a simplified ROS method for object classifica
 \textbf{Domain adaptation} techniques have advanced significantly in recent years for the closed-set scenario \cite{Pau2020}, however for real-world applications the closed-set assumption is often not applicable \cite{Ren2021}. It has become increasingly important to develop robust techniques for open-set domain adaptation to address this problem. Recent studies in this field include: the development of a generic approach to learn a linear mapping between the features of the source domain and target domain \cite{Pau2020}; the use of self-supervision to improve the generalization of models to different domains \cite{Carlucci2019}; partial domain adaptation by using a discrepancy criterion to partially align features whilst avoiding negative transfer \cite{Ren2021}. These techniques have been reported to perform well, and increase the applicability of domain adaptation methods to real-world applications \cite{Carlucci2019, Ren2021,Pau2020}.
 
 
-\textbf{Rotation-based Open Set} (ROS) is a specific technique developed by Bucci \etal \cite{Bucci2020}. ROS is a two-stage method for open-set domain adaptation. The first stage separates samples in the target domain into known and unknown categories by training the model on a multi-rotation recognition task. The rotation recognition task includes the use of the center-loss to improve performance by learning a center of the features and minimizing the distances between features and their corresponding centers \cite{Wen2016}. The second stage conducts domain alignment, training both semantic and rotation classifiers to classify known target samples. Bucci \etal \cite{Bucci2020} also propose the use of the harmonic mean of the average class accuracies  for the known and unknown classes as a more robust and balanced evaluation metric.
+\textbf{Rotation-based Open Set} (ROS) is a specific technique developed by Bucci \etal \cite{Bucci2020}. ROS is a two-stage method for open-set domain adaptation. The first stage separates samples in the target domain into known and unknown categories by training the model on a multi-rotation recognition task. The rotation recognition task includes the use of the center loss to improve performance by learning a center of the features and minimizing the distances between features and their corresponding centers \cite{Wen2016}. The second stage conducts domain alignment, training both semantic and rotation classifiers to classify known target samples. Bucci \etal \cite{Bucci2020} also propose the use of the harmonic mean of the average class accuracies  for the known and unknown classes as a more robust and balanced evaluation metric.
 
 
 %------------------------------------------------------------------------
@@ -121,7 +121,7 @@ This study aims to solve the open-set scenario by using self-supervised learning
    \label{fig:RotationFeatures}
 \end{figure}
 
-To solve the open-set domain adaptation problem a simplified version of the ROS method (Figure \ref{fig:ROS}) is used. This version uses a single-head rotation classifier and does not include the center-loss, however the effect of the center-loss is evaluated subsequently as a variation to this method. Alternative self-supervised tasks are also considered, including horizontal flipping and through solving jigsaw puzzles. These variations are analyzed in Section \ref{sec:variations}.
+To solve the open-set domain adaptation problem a simplified version of the ROS method (Figure \ref{fig:ROS}) is used. This version uses a single-head rotation classifier and does not include the center loss, however the effect of the center loss is evaluated subsequently as a variation to this method. Alternative self-supervised tasks are also considered, including horizontal flipping and through solving jigsaw puzzles. These variations are analyzed in Section \ref{sec:variations}.
 
 \begin{figure*}[!htb]
   \centering
@@ -307,10 +307,10 @@ The results for the simplified ROS model for each of the domain combinations is 
 \multicolumn{2}{|c}{\textbf{Domain}} & & & \\
 \textbf{Source} & \textbf{Target} & \textbf{OS$^*$} & \textbf{UNK} & \textbf{HOS} \\ \hline
 Art & Clipart & 35.42 & 58.02 & 43.99 \\
-& Product & & & \\
- & Real World & & & \\ \hline
-Product & Clipart & & & \\
-& Art & & & \\
+& Product & 42.27 & 46.21 & 44.15 \\
+ & Real World & 42.50 & 77.01 & 54.77 \\ \hline
+Product & Clipart & 38.05 & 55.94 & 45.29 \\
+& Art & 33.53 & 46.24 & 38.87 \\
 & Real World & & & \\ \hline
 Real World & Clipart & & & \\
  & Art & & & \\
@@ -330,7 +330,7 @@ Clipart & Real World & & & \\
 \section{Variations}
 \label{sec:variations}
 
-Two different variations to the simplified ROS method were also analysed. The first considered the use of alternative self-supervised tasks. The second considered the addition of the center-loss to the rotation recognition task.
+Two different variations to the simplified ROS method were also analysed. The first considered the use of alternative self-supervised tasks. The second considered the addition of the center loss to the rotation recognition task.
 
 \subsection{Alternative self-supervised tasks}
 
@@ -340,11 +340,24 @@ The simplified ROS method reported used rotation recognition as the self-supervi
 
 Horizontal flipping is similar to image rotation however instead rotating the image it is flipped along its center y-axis, creating a mirror-image. Hoizontal flipping is shown in Figure \ref{fig:horiz}.
 
-\begin{figure}[!htb]
+\begin{figure}[!htbp]
   \centering
-   %\includegraphics[width=0.95\linewidth]{Figures/Jigsaw.png}
-   \caption{Horizontal flipping of an image.}
-   \label{fig:horiz}
+  %\begin{adjustbox}{minipage=\linewidth,scale=0.8}
+  \begin{subfigure}[b]{0.4\columnwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/FlipRaw.png}
+    \caption{Raw image}
+    \label{fig:short-a}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\columnwidth}
+\centering
+    \includegraphics[width=\linewidth]{Figures/FlipHoriz.png}
+    \caption{Horizontally flipped}
+    \label{fig:short-b}
+  \end{subfigure}
+%\end{adjustbox}
+  \caption{Horizontal flipping of an image, adapted from \cite{Xu22019}.}
+  \label{fig:centerloss}
 \end{figure}
 
 \subsubsection*{Jigsaw Puzzle}
@@ -391,9 +404,32 @@ Clipart & Real World & & & \\
 - discussion
 
 
-\subsection{Center-Loss}
+\subsection{Center Loss}
 
+The center loss was introduced by Wen \etal \cite{Wen2016} as an additional objective function for enhancing the discriminative power of learned deep features. It involves learning the center of the deep features for each class, prioritizing features that are close to the center and adding a penalty to the distance between the deep features and their corresponding centers \cite{Wen2016}. The center loss function is optimised alongisde the soft max loss, with the two losses jointly supervised. A hyperparameter is introduced representing the weight of the center loss contribution, and is tuned to balance the two loss functions.The difference between the features learned by a classifier training with the soft max loss function on the MNIST dataset \cite{MNIST}, compared with the inclusion of the center loss during training is shown in Figure \ref{fig:centerloss}. The features learned with the inclusion of center loss can clearly be seen to provide greater discriminative power.
 
+\begin{figure}[!htbp]
+  \centering
+  %\begin{adjustbox}{minipage=\linewidth,scale=0.8}
+  \begin{subfigure}[b]{0.45\columnwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/SoftMaxLoss.png}
+    \caption{Soft Max Loss}
+    \label{fig:short-a}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\columnwidth}
+\centering
+    \includegraphics[width=\linewidth]{Figures/CenterLoss.png}
+    \caption{Center Loss}
+    \label{fig:short-b}
+  \end{subfigure}
+%\end{adjustbox}
+  \caption{Comparison of features learned when including the center loss on the MNIST dataset, adapted from \cite{Wen2016}.}
+  \label{fig:centerloss}
+\end{figure}
+
+An ablation study was performed to select the most appropriate weight of the center loss contribution.
 
 
 - describe each of the variations
