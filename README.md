@@ -635,6 +635,7 @@ Best HOS: 4.876, with alpha1 = 10, epochs1 = 40, threshold = 0.8, alpha2 = 3 and
 |        |   20    | 0.4721 | 0.4113 | 0.4396 |  0.9338   | 0.9649  |
 |        |   30    | 0.4818 | 0.4019 | 0.4382 |  0.9509   | 0.9677  |
 |        |   40    | 0.4787 | 0.4089 | 0.4411 |  0.9672   | 0.9810  |
+
 Best HOS: 0.4567, with alpha1 = 10, epochs1 = 40, threshold = 0.9, alpha2 = 10 and epochs2 = 10
 
 **Realworld - Product**
@@ -651,6 +652,7 @@ Best HOS: 0.4567, with alpha1 = 10, epochs1 = 40, threshold = 0.9, alpha2 = 10 a
 |        |   20    | 0.7073 | 0.2435 | 0.3622 |  0.9614   | 0.9686  |
 |   10   |   10    | 0.6823 | 0.3327 | 0.4473 |  0.8646   | 0.9252  |
 |        |   20    | 0.6874 | 0.2949 | 0.4127 |  0.9673   | 0.9153  |
+
 Best HOS: 0.4560, with alpha1 = 10, epochs1 = 40, threshold = 0.9, alpha2 = 0.5 and epochs2 = 10
 
 --- 
