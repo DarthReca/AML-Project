@@ -1,0 +1,133 @@
+Source:  RealWorld  Target:  Product
+Dataset size: source 3037, target 4439
+Step 1 --------------------------------------------
+Step size: 32
+Epoch:  0
+Class Loss 3.3978, Class Accuracy 0.0606,Flip Loss 1.2348, Flip Accuracy 0.5752
+Epoch:  1
+Class Loss 2.9861, Class Accuracy 0.2707,Flip Loss 0.6966, Flip Accuracy 0.7425
+Epoch:  2
+Class Loss 2.6096, Class Accuracy 0.4020,Flip Loss 0.2753, Flip Accuracy 0.8080
+Epoch:  3
+Class Loss 2.4082, Class Accuracy 0.5130,Flip Loss 0.2378, Flip Accuracy 0.8528
+Epoch:  4
+Class Loss 1.9479, Class Accuracy 0.5996,Flip Loss 0.2537, Flip Accuracy 0.8821
+Epoch:  5
+Class Loss 1.7358, Class Accuracy 0.6480,Flip Loss 0.1778, Flip Accuracy 0.9114
+Epoch:  6
+Class Loss 1.5232, Class Accuracy 0.6717,Flip Loss 0.2203, Flip Accuracy 0.9183
+Epoch:  7
+Class Loss 1.4015, Class Accuracy 0.6987,Flip Loss 0.0872, Flip Accuracy 0.9295
+Epoch:  8
+Class Loss 1.3708, Class Accuracy 0.7214,Flip Loss 0.1174, Flip Accuracy 0.9289
+Epoch:  9
+Class Loss 1.0765, Class Accuracy 0.7498,Flip Loss 0.0644, Flip Accuracy 0.9203
+Epoch:  10
+Class Loss 1.1644, Class Accuracy 0.7554,Flip Loss 0.0675, Flip Accuracy 0.9305
+Epoch:  11
+Class Loss 0.9661, Class Accuracy 0.7626,Flip Loss 0.0536, Flip Accuracy 0.9467
+Epoch:  12
+Class Loss 1.0020, Class Accuracy 0.7721,Flip Loss 0.0912, Flip Accuracy 0.9476
+Epoch:  13
+Class Loss 0.9442, Class Accuracy 0.7929,Flip Loss 0.0336, Flip Accuracy 0.9467
+Epoch:  14
+Class Loss 0.8808, Class Accuracy 0.7975,Flip Loss 0.1275, Flip Accuracy 0.9523
+Epoch:  15
+Class Loss 0.7595, Class Accuracy 0.8080,Flip Loss 0.0478, Flip Accuracy 0.9523
+Epoch:  16
+Class Loss 0.8754, Class Accuracy 0.8182,Flip Loss 0.0917, Flip Accuracy 0.9572
+Epoch:  17
+Class Loss 0.8001, Class Accuracy 0.8222,Flip Loss 0.0273, Flip Accuracy 0.9532
+Epoch:  18
+Class Loss 0.7656, Class Accuracy 0.8317,Flip Loss 0.0331, Flip Accuracy 0.9579
+Epoch:  19
+Class Loss 0.6633, Class Accuracy 0.8304,Flip Loss 0.0588, Flip Accuracy 0.9582
+Epoch:  20
+Class Loss 0.6301, Class Accuracy 0.8449,Flip Loss 0.0369, Flip Accuracy 0.9569
+Epoch:  21
+Class Loss 0.7665, Class Accuracy 0.8410,Flip Loss 0.0531, Flip Accuracy 0.9529
+Epoch:  22
+Class Loss 0.7691, Class Accuracy 0.8383,Flip Loss 0.0649, Flip Accuracy 0.9506
+Epoch:  23
+Class Loss 0.4584, Class Accuracy 0.8429,Flip Loss 0.0569, Flip Accuracy 0.9532
+Epoch:  24
+Class Loss 0.5521, Class Accuracy 0.8541,Flip Loss 0.0036, Flip Accuracy 0.9585
+Epoch:  25
+Class Loss 0.5853, Class Accuracy 0.8548,Flip Loss 0.0645, Flip Accuracy 0.9602
+Epoch:  26
+Class Loss 0.5372, Class Accuracy 0.8634,Flip Loss 0.0265, Flip Accuracy 0.9588
+Epoch:  27
+Class Loss 0.4224, Class Accuracy 0.8627,Flip Loss 0.0375, Flip Accuracy 0.9618
+Epoch:  28
+Class Loss 0.4000, Class Accuracy 0.8709,Flip Loss 0.0327, Flip Accuracy 0.9618
+Epoch:  29
+Class Loss 0.3832, Class Accuracy 0.8729,Flip Loss 0.0028, Flip Accuracy 0.9628
+Epoch:  30
+Class Loss 0.4872, Class Accuracy 0.8736,Flip Loss 0.0126, Flip Accuracy 0.9592
+Epoch:  31
+Class Loss 0.4389, Class Accuracy 0.8745,Flip Loss 0.0523, Flip Accuracy 0.9582
+Epoch:  32
+Class Loss 0.4459, Class Accuracy 0.8821,Flip Loss 0.0415, Flip Accuracy 0.9631
+Epoch:  33
+Class Loss 0.4393, Class Accuracy 0.8884,Flip Loss 0.0249, Flip Accuracy 0.9638
+Epoch:  34
+Class Loss 0.4933, Class Accuracy 0.8940,Flip Loss 0.0875, Flip Accuracy 0.9641
+Epoch:  35
+Class Loss 0.4015, Class Accuracy 0.8910,Flip Loss 0.0038, Flip Accuracy 0.9671
+Epoch:  36
+Class Loss 0.4820, Class Accuracy 0.8936,Flip Loss 0.0033, Flip Accuracy 0.9667
+Epoch:  37
+Class Loss 0.4219, Class Accuracy 0.8956,Flip Loss 0.0030, Flip Accuracy 0.9674
+Epoch:  38
+Class Loss 0.3846, Class Accuracy 0.9002,Flip Loss 0.0013, Flip Accuracy 0.9677
+Epoch:  39
+Class Loss 0.4253, Class Accuracy 0.8969,Flip Loss 0.0161, Flip Accuracy 0.9658
+Target - Evaluation -- for known/unknown separation
+AUROC 0.3994
+Generated random number is : 19755
+The number of target samples selected as known is:  3786
+The number of target samples selected as unknown is:  653
+Reading target path file: new_txt_list/Product_known_19755.txt
+Step 2 --------------------------------------------
+Step size: 8
+Epoch:  0
+Class Loss 0.8946, Class Accuracy 0.7187,Flip Loss 1.2065, Flip Accuracy 0.8060
+
+Evaluation: OS* 0.3407, UNK 0.8853, HOS 0.4921
+Epoch:  1
+Class Loss 0.7565, Class Accuracy 0.7333,Flip Loss 0.5895, Flip Accuracy 0.8220
+
+Evaluation: OS* 0.4293, UNK 0.7800, HOS 0.5538
+Epoch:  2
+Class Loss 0.5720, Class Accuracy 0.7881,Flip Loss 0.2322, Flip Accuracy 0.8550
+
+Evaluation: OS* 0.4183, UNK 0.7800, HOS 0.5445
+Epoch:  3
+Class Loss 0.5498, Class Accuracy 0.7995,Flip Loss 0.4286, Flip Accuracy 0.8805
+
+Evaluation: OS* 0.4259, UNK 0.7491, HOS 0.5431
+Epoch:  4
+Class Loss 0.5977, Class Accuracy 0.8173,Flip Loss 0.1681, Flip Accuracy 0.8745
+
+Evaluation: OS* 0.4328, UNK 0.7320, HOS 0.5440
+Epoch:  5
+Class Loss 0.4907, Class Accuracy 0.8241,Flip Loss 0.3818, Flip Accuracy 0.8902
+
+Evaluation: OS* 0.4469, UNK 0.6943, HOS 0.5438
+Epoch:  6
+Class Loss 0.4341, Class Accuracy 0.8407,Flip Loss 0.1710, Flip Accuracy 0.9057
+
+Evaluation: OS* 0.4458, UNK 0.6858, HOS 0.5403
+Epoch:  7
+Class Loss 0.3562, Class Accuracy 0.8520,Flip Loss 0.1241, Flip Accuracy 0.8984
+
+Evaluation: OS* 0.4267, UNK 0.7012, HOS 0.5305
+Epoch:  8
+Class Loss 0.3454, Class Accuracy 0.8672,Flip Loss 0.1769, Flip Accuracy 0.9111
+
+Evaluation: OS* 0.4339, UNK 0.6918, HOS 0.5333
+Epoch:  9
+Class Loss 0.3693, Class Accuracy 0.8621,Flip Loss 0.2205, Flip Accuracy 0.9051
+
+Evaluation: OS* 0.4400, UNK 0.6849, HOS 0.5358
+<------End
