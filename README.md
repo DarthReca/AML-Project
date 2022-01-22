@@ -602,7 +602,6 @@ Best HOS: 0.4415 Epochs: 40 alpha1: 10 threshold: 0.9 alpha2: 1
 
 **Realworld - Clipart**
 
-hos = 2 * acc_known * acc_unknown / (acc_known + acc_unknown)
 | Alpha2 | Epoch # |  OS\*  |  UNK   |  HOS   | Class Acc | Rot Acc |
 | :----: | :-----: | :----: | :----: | :----: | :-------: | :-----: |
 |  0.01  |   10    | 0.4040 | 0.4877 | 0.4419 |  0.9525   | 0.6247  |
