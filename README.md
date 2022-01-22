@@ -8,6 +8,8 @@ In new_txt_list you can find some mockup data to test step two
 
 Too heavy for github: https://mega.nz/folder/Dd50HDqb#RTR0tPVztY23TdVBff_hLA
 
+**REMEMBER CENTER LOSS IS AFFECTING ONLY STEP1**
+
 ## Tables
 
 _For 40 epochs_
@@ -27,6 +29,16 @@ _For 40 epochs_
 | :--: | :----: | :----: |
 | _10_ | 0.5302 | 0.5486 |
 | _1_  | 0.4953 | 0.5520 |
+
+**Threshold**
+
+Known objective: 3064
+
+|      | Knowns |
+| :--: | :----: |
+| 0.3  |  3968  |
+| 0.5  |  2720  |
+| 0.75 |  778   |
 
 ### Product - Art
 
