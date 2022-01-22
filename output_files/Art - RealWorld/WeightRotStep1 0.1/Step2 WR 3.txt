@@ -1,0 +1,142 @@
+Source:  Art  Target:  RealWorld
+Dataset size: source 1789, target 4357
+Step 2 --------------------------------------------
+Step size: 32
+Epoch:  0
+Class Loss 0.9568, Class Accuracy 0.5918,Rot Loss 0.8989, Rot Accuracy 0.4743
+
+Evaluation: OS* 0.5953, UNK 0.5273, HOS 0.5592
+Epoch:  1
+Class Loss 0.6076, Class Accuracy 0.7344,Rot Loss 0.6615, Rot Accuracy 0.5675
+
+Evaluation: OS* 0.4398, UNK 0.7618, HOS 0.5577
+Epoch:  2
+Class Loss 0.4956, Class Accuracy 0.7621,Rot Loss 0.5009, Rot Accuracy 0.6470
+
+Evaluation: OS* 0.4329, UNK 0.7607, HOS 0.5518
+Epoch:  3
+Class Loss 0.6010, Class Accuracy 0.7920,Rot Loss 0.4335, Rot Accuracy 0.6616
+
+Evaluation: OS* 0.4200, UNK 0.7796, HOS 0.5459
+Epoch:  4
+Class Loss 0.6721, Class Accuracy 0.7987,Rot Loss 0.3673, Rot Accuracy 0.7210
+
+Evaluation: OS* 0.4220, UNK 0.7583, HOS 0.5422
+Epoch:  5
+Class Loss 0.5387, Class Accuracy 0.8139,Rot Loss 0.4079, Rot Accuracy 0.7712
+
+Evaluation: OS* 0.4121, UNK 0.7879, HOS 0.5411
+Epoch:  6
+Class Loss 0.4488, Class Accuracy 0.8261,Rot Loss 0.2964, Rot Accuracy 0.7871
+
+Evaluation: OS* 0.4131, UNK 0.7571, HOS 0.5345
+Epoch:  7
+Class Loss 0.4753, Class Accuracy 0.8389,Rot Loss 0.2274, Rot Accuracy 0.8145
+
+Evaluation: OS* 0.4111, UNK 0.7737, HOS 0.5369
+Epoch:  8
+Class Loss 0.5072, Class Accuracy 0.8477,Rot Loss 0.1479, Rot Accuracy 0.8395
+
+Evaluation: OS* 0.3947, UNK 0.7784, HOS 0.5239
+Epoch:  9
+Class Loss 0.4182, Class Accuracy 0.8605,Rot Loss 0.1470, Rot Accuracy 0.8383
+
+Evaluation: OS* 0.4240, UNK 0.7382, HOS 0.5386
+Epoch:  10
+Class Loss 0.3044, Class Accuracy 0.8733,Rot Loss 0.0951, Rot Accuracy 0.8596
+
+Evaluation: OS* 0.4170, UNK 0.7334, HOS 0.5317
+Epoch:  11
+Class Loss 0.4061, Class Accuracy 0.8745,Rot Loss 0.1116, Rot Accuracy 0.8626
+
+Evaluation: OS* 0.3918, UNK 0.7808, HOS 0.5218
+Epoch:  12
+Class Loss 0.5597, Class Accuracy 0.8852,Rot Loss 0.0890, Rot Accuracy 0.8769
+
+Evaluation: OS* 0.4131, UNK 0.7559, HOS 0.5342
+Epoch:  13
+Class Loss 0.3271, Class Accuracy 0.8925,Rot Loss 0.0944, Rot Accuracy 0.8760
+
+Evaluation: OS* 0.4453, UNK 0.7145, HOS 0.5486
+Epoch:  14
+Class Loss 0.2301, Class Accuracy 0.9089,Rot Loss 0.0796, Rot Accuracy 0.8946
+
+Evaluation: OS* 0.3992, UNK 0.7761, HOS 0.5272
+Epoch:  15
+Class Loss 0.2626, Class Accuracy 0.9083,Rot Loss 0.0692, Rot Accuracy 0.8940
+
+Evaluation: OS* 0.4131, UNK 0.7536, HOS 0.5336
+Epoch:  16
+Class Loss 0.3368, Class Accuracy 0.9101,Rot Loss 0.0600, Rot Accuracy 0.9047
+
+Evaluation: OS* 0.3992, UNK 0.7749, HOS 0.5269
+Epoch:  17
+Class Loss 0.2326, Class Accuracy 0.9254,Rot Loss 0.1082, Rot Accuracy 0.9028
+
+Evaluation: OS* 0.3997, UNK 0.7820, HOS 0.5290
+Epoch:  18
+Class Loss 0.2413, Class Accuracy 0.9293,Rot Loss 0.0822, Rot Accuracy 0.9132
+
+Evaluation: OS* 0.4141, UNK 0.7358, HOS 0.5299
+Epoch:  19
+Class Loss 0.1997, Class Accuracy 0.9284,Rot Loss 0.0581, Rot Accuracy 0.9184
+
+Evaluation: OS* 0.4017, UNK 0.7761, HOS 0.5294
+Epoch:  20
+Class Loss 0.2594, Class Accuracy 0.9354,Rot Loss 0.0312, Rot Accuracy 0.9284
+
+Evaluation: OS* 0.4126, UNK 0.7512, HOS 0.5326
+Epoch:  21
+Class Loss 0.2065, Class Accuracy 0.9379,Rot Loss 0.0535, Rot Accuracy 0.9248
+
+Evaluation: OS* 0.4042, UNK 0.7488, HOS 0.5250
+Epoch:  22
+Class Loss 0.2394, Class Accuracy 0.9421,Rot Loss 0.0320, Rot Accuracy 0.9318
+
+Evaluation: OS* 0.3992, UNK 0.7713, HOS 0.5261
+Epoch:  23
+Class Loss 0.2041, Class Accuracy 0.9473,Rot Loss 0.0588, Rot Accuracy 0.9299
+
+Evaluation: OS* 0.4071, UNK 0.7370, HOS 0.5245
+Epoch:  24
+Class Loss 0.2311, Class Accuracy 0.9494,Rot Loss 0.0269, Rot Accuracy 0.9406
+
+Evaluation: OS* 0.3987, UNK 0.7618, HOS 0.5235
+Epoch:  25
+Class Loss 0.1382, Class Accuracy 0.9516,Rot Loss 0.0231, Rot Accuracy 0.9421
+
+Evaluation: OS* 0.4294, UNK 0.7085, HOS 0.5347
+Epoch:  26
+Class Loss 0.1522, Class Accuracy 0.9510,Rot Loss 0.0337, Rot Accuracy 0.9379
+
+Evaluation: OS* 0.4309, UNK 0.7085, HOS 0.5359
+Epoch:  27
+Class Loss 0.2189, Class Accuracy 0.9528,Rot Loss 0.0434, Rot Accuracy 0.9348
+
+Evaluation: OS* 0.4076, UNK 0.7322, HOS 0.5237
+Epoch:  28
+Class Loss 0.1640, Class Accuracy 0.9595,Rot Loss 0.0224, Rot Accuracy 0.9412
+
+Evaluation: OS* 0.3938, UNK 0.7678, HOS 0.5205
+Epoch:  29
+Class Loss 0.1251, Class Accuracy 0.9592,Rot Loss 0.0482, Rot Accuracy 0.9440
+
+Evaluation: OS* 0.4175, UNK 0.7322, HOS 0.5318
+Epoch:  30
+Class Loss 0.0946, Class Accuracy 0.9601,Rot Loss 0.0158, Rot Accuracy 0.9476
+
+Evaluation: OS* 0.4215, UNK 0.7216, HOS 0.5321
+Epoch:  31
+Class Loss 0.1474, Class Accuracy 0.9631,Rot Loss 0.0184, Rot Accuracy 0.9476
+
+Evaluation: OS* 0.3952, UNK 0.7571, HOS 0.5194
+Epoch:  32
+Class Loss 0.1211, Class Accuracy 0.9604,Rot Loss 0.0565, Rot Accuracy 0.9519
+
+Evaluation: OS* 0.3952, UNK 0.7524, HOS 0.5182
+Epoch:  33
+Class Loss 0.0939, Class Accuracy 0.9631,Rot Loss 0.0400, Rot Accuracy 0.9537
+
+Evaluation: OS* 0.4220, UNK 0.7251, HOS 0.5335
+Epoch:  34
+Class Loss 0.0900, Class Accuracy 0.9631,Rot Loss 0.0421, Rot Accuracy 0.9531
