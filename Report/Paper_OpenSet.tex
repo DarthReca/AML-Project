@@ -429,7 +429,39 @@ The center loss was introduced by Wen \etal \cite{Wen2016} as an additional obje
   \label{fig:centerloss}
 \end{figure}
 
-An ablation study was performed to select the most appropriate weight of the center loss contribution.
+The implementation of this loss affects only the first step of the model, so we have tried to understand the effect of center loss on the separation phase.
+
+An ablation study was performed to select the most appropriate weight ($\alpha_w$) of the center loss contribution.
+
+\subsection*{Results}
+
+Starting from the paper of Bucci \etal \cite{Bucci2020} we used the weights they tried in their research for Office-Home and Office31 datasets. Higher values give too much importance to center loss and the model is converging too much slow, so it is reasonable to test only values lower or equal to $0.01$.
+
+In the Table \ref{tab:center_loss} it is possible to see a comparison of the AUCROCs with and without the introduction of center loss with $\alpha_1 = 10$ trained for 40 epochs. Although we can reach better accuracy faster and get a little improvement in the model, but it is clear that more investigation is necessary to understand if in this case it is convenient to apply it. 
+
+\begin{table}
+	\centering
+	\small
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Domains & Metric & Standard & $\alpha_w = 0.001$ & $\alpha_w = 0.01$\\
+		\hline
+		\multirow{2}{*}{Art $\to$ Clipart}
+		& Aucroc & \textbf{0.5590} & 0.5486 & 0.5302\\ 
+		& Accuracy & 0.8988 & 0.9150 & 0.9150\\
+		\hline
+		\multirow{2}{*}{Product $\to$ Art}
+		& Aucroc & 0.4997 & \textbf{0.5077} & 0.5023\\ 
+		& Accuracy & 0.9513 & 0.9612 & 0.9631\\
+		\hline
+		\multirow{2}{*}{Art $\to$ RealWorld}
+		& Aucroc & 0.4956 & \textbf{0.5000} & 0.4967\\ 
+		& Accuracy & 0.8988 & 0.9128 & 0.9139\\
+		\hline
+	\end{tabular}
+	\caption{Comparison of center loss model with standard model}
+	\label{tab:center_loss}
+\end{table}
 
 
 - describe each of the variations
