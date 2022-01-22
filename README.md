@@ -704,6 +704,58 @@ Best HOS: 0.3887, with alpha1 = 1, epochs1 = 20, threshold = 0.5, alpha2 = 0.1 a
 
 Best HOS: ?, with alpha1 = , epochs1 = , threshold = , alpha2 = ? and epochs2 =? 
 
+---
+**Clipart - Art**
+
+| Alpha2 | Epoch # | OS\*   | UNK    | HOS    | Class Acc | Rot Acc |
+| :----: | :-----: | :----: | :----: | :----: | :-------: | :-----: |
+|  0.1   |   10    |  |  |  |  |  |
+|        |   20    |  |  |  |  |  |
+|  0.5   |   10    |  |  |  |  |  |
+|        |   20    |  |  |  |  |  |
+|   1    |   10    |  |  |  |  |  |
+|        |   20    |  |  |  |  |  |
+|   3    |   10    |  |  |  |  |  |
+|        |   20    |  |  |  |  |  |
+|   10   |   10    |  |  |  |  |  |
+|        |   20    |  |  |  |  |  |
+
+Best HOS: ?, with alpha1 = , epochs1 = , threshold = , alpha2 = ? and epochs2 =? 
+
+**Clipart - Product**
+
+| Alpha2 | Epoch # | OS\*   | UNK    | HOS    | Class Acc | Rot Acc |
+| :----: | :-----: | :----: | :----: | :----: | :-------: | :-----: |
+|  0.1   |   10    |  |  |  |  |  |
+|        |   20    |  |  |  |  |  |
+|  0.5   |   10    |  |  |  |  |  |
+|        |   20    |  |  |  |  |  |
+|   1    |   10    |  |  |  |  |  |
+|        |   20    |  |  |  |  |  |
+|   3    |   10    |  |  |  |  |  |
+|        |   20    |  |  |  |  |  |
+|   10   |   10    |  |  |  |  |  |
+|        |   20    |  |  |  |  |  |
+
+Best HOS: ?, with alpha1 = , epochs1 = , threshold = , alpha2 = ? and epochs2 =? 
+
+**Clipart - Real World**
+
+| Alpha2 | Epoch # | OS\*   | UNK    | HOS    | Class Acc | Rot Acc |
+| :----: | :-----: | :----: | :----: | :----: | :-------: | :-----: |
+|  0.1   |   10    |  |  |  |  |  |
+|        |   20    |  |  |  |  |  |
+|  0.5   |   10    |  |  |  |  |  |
+|        |   20    |  |  |  |  |  |
+|   1    |   10    |  |  |  |  |  |
+|        |   20    |  |  |  |  |  |
+|   3    |   10    |  |  |  |  |  |
+|        |   20    |  |  |  |  |  |
+|   10   |   10    |  |  |  |  |  |
+|        |   20    |  |  |  |  |  |
+
+Best HOS: ?, with alpha1 = , epochs1 = , threshold = , alpha2 = ? and epochs2 =? 
+
 
 ## DOCS
 
