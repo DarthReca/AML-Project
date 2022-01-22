@@ -326,6 +326,7 @@ Clipart & Real World & & & \\
 
 - discussion
 
+
 %------------------------------------------------------------------------
 \section{Variations}
 \label{sec:variations}
@@ -345,26 +346,27 @@ Horizontal flipping is similar to image rotation however instead rotating the im
   %\begin{adjustbox}{minipage=\linewidth,scale=0.8}
   \begin{subfigure}[b]{0.4\columnwidth}
     \centering
-    \includegraphics[width=\linewidth]{Figures/FlipRaw.png}
+    \includegraphics[width=\linewidth]{Figures/FlipRaw.jpg}
     \caption{Raw image}
     \label{fig:short-a}
   \end{subfigure}
+\hspace{0.01\textwidth}
   \begin{subfigure}[b]{0.4\columnwidth}
 \centering
-    \includegraphics[width=\linewidth]{Figures/FlipHoriz.png}
+    \includegraphics[width=\linewidth]{Figures/FlipHoriz.jpg}
     \caption{Horizontally flipped}
     \label{fig:short-b}
   \end{subfigure}
 %\end{adjustbox}
-  \caption{Horizontal flipping of an image, adapted from \cite{Xu22019}.}
-  \label{fig:centerloss}
+  \caption{Horizontal flipping of an image, adapted from \cite{OfficeHome}.}
+  \label{fig:horiz}
 \end{figure}
 
 \subsubsection*{Jigsaw Puzzle}
 
 The self-supervised tasks of solving jigsaw puzzles involves being able to recognise an original image given its shuffled parts. The method involves first taking the orginal image, splitting the image into a number of sections, then creating a set of permutations with a different ordering of those sections. The method can be seen in Figure \ref{fig:jigsaw} as used by \cite{Carlucci2019}. The shuffled images (permutations) are then fed into the convolutional neural network to train the jigsaw classifier alongside the object classifier. \textcolor{red}{This study considered the images broken up into X number of sections, with X different permutations based on....}.
 
-\begin{figure*}[!htb]
+\begin{figure*}[!htbp]
   \centering
    \includegraphics[width=0.95\linewidth]{Figures/Jigsaw.png}
    \caption{Jigsaw puzzle self-supervised task method \cite{Carlucci2019}.}
@@ -403,7 +405,6 @@ Clipart & Real World & & & \\
 
 - discussion
 
-
 \subsection{Center Loss}
 
 The center loss was introduced by Wen \etal \cite{Wen2016} as an additional objective function for enhancing the discriminative power of learned deep features. It involves learning the center of the deep features for each class, prioritizing features that are close to the center and adding a penalty to the distance between the deep features and their corresponding centers \cite{Wen2016}. The center loss function is optimised alongisde the soft max loss, with the two losses jointly supervised. A hyperparameter is introduced representing the weight of the center loss contribution, and is tuned to balance the two loss functions.The difference between the features learned by a classifier training with the soft max loss function on the MNIST dataset \cite{MNIST}, compared with the inclusion of the center loss during training is shown in Figure \ref{fig:centerloss}. The features learned with the inclusion of center loss can clearly be seen to provide greater discriminative power.
@@ -429,33 +430,32 @@ The center loss was introduced by Wen \etal \cite{Wen2016} as an additional obje
   \label{fig:centerloss}
 \end{figure}
 
-The implementation of this loss affects only the first step of the model, so we have tried to understand the effect of center loss on the separation phase.
+The center loss has been implemented during the first step of the model, and used to understand the effect of this loss on the separation phase.
 
-An ablation study was performed to select the most appropriate weight ($\alpha_w$) of the center loss contribution.
+\subsubsection*{Results}
 
-\subsection*{Results}
+An ablation study was performed to select the most appropriate weight ($\alpha_w$) of the center loss contribution. The initial weights considered were based on those reported by Bucci \etal \cite{Bucci2020} in their research on the Office-Home \cite{OfficeHome} and Office31 datasets \cite{Office31}. High values of $\alpha_w$ were found to give too much importance to the center loss at the expense of the soft max loss, and the model converged extremely slowly. For this reason the results analysed here consider only weight values lower or equal to $0.01$.
 
-Starting from the paper of Bucci \etal \cite{Bucci2020} we used the weights they tried in their research for Office-Home and Office31 datasets. Higher values give too much importance to center loss and the model is converging too much slow, so it is reasonable to test only values lower or equal to $0.01$.
-
-In the Table \ref{tab:center_loss} it is possible to see a comparison of the AUCROCs with and without the introduction of center loss with $\alpha_1 = 10$ trained for 40 epochs. Although we can reach better accuracy faster and get a little improvement in the model, but it is clear that more investigation is necessary to understand if in this case it is convenient to apply it. 
+Table \ref{tab:center_loss} shows a comparison of the AUC values with and without the introduction of center loss, with $\alpha_1 = 10$ trained for 40 epochs. The inclusion of center loss was able to improve the accuracy for all domain configurations considered. It also improved the AUC metric for the second two domain configurations, however was detrimental in the first configuration. Due to the similarity of the results presented in \ref{tab:center_loss} the findings are inconclusive, and further investigations would be necessary to understand if the center loss could be used effectively in this scenario.
 
 \begin{table}
 	\centering
 	\small
-	\begin{tabular}{|c|c|c|c|c|}
+	\begin{tabular}{|l|c|c|c|c|}
 		\hline
-		Domains & Metric & Standard & $\alpha_w = 0.001$ & $\alpha_w = 0.01$\\
+		 & & & \multicolumn{2}{c|}{\textbf{Weight  $\alpha_w$}} \\
+		Domains & Metric & Standard & 0.001 & 0.01\\
 		\hline
 		\multirow{2}{*}{Art $\to$ Clipart}
-		& Aucroc & \textbf{0.5590} & 0.5486 & 0.5302\\ 
+		& AUC & \textbf{0.5590} & 0.5486 & 0.5302\\ 
 		& Accuracy & 0.8988 & 0.9150 & 0.9150\\
 		\hline
 		\multirow{2}{*}{Product $\to$ Art}
-		& Aucroc & 0.4997 & \textbf{0.5077} & 0.5023\\ 
+		& AUC & 0.4997 & \textbf{0.5077} & 0.5023\\ 
 		& Accuracy & 0.9513 & 0.9612 & 0.9631\\
 		\hline
 		\multirow{2}{*}{Art $\to$ RealWorld}
-		& Aucroc & 0.4956 & \textbf{0.5000} & 0.4967\\ 
+		& AUC & 0.4956 & \textbf{0.5000} & 0.4967\\ 
 		& Accuracy & 0.8988 & 0.9128 & 0.9139\\
 		\hline
 	\end{tabular}
@@ -463,9 +463,6 @@ In the Table \ref{tab:center_loss} it is possible to see a comparison of the AUC
 	\label{tab:center_loss}
 \end{table}
 
-
-- describe each of the variations
-- present results of the performance of the model and compare with the baseline for each of the variations
 
 %------------------------------------------------------------------------
 \section{Conclusions}
