@@ -471,9 +471,9 @@ Number of samples should be unknown: 638
 |    0.5    |          1957           |
 |    0.7    |          1822           |
 |    0.8    |          1731           |
-|           |                         |
+|    0.75   |          1774           |
 
- (With alpha1 = 10 and epochs = 80)
+ Threshold of 0.75 chosen. (With alpha1 = 10 and epochs = 80)
 
 **Clipart - Product**
 
@@ -489,10 +489,27 @@ Number of samples should be unknown: 1296
 |    0.5    |          3618           |
 |    0.7    |          3415           |
 |    0.8    |          3264           |
-|           |                         |
+|    0.85   |          3145           |
 
- (alpha1 = 10, epochs = 80)
+ Threshold of 0.85 chosen. (alpha1 = 10, epochs = 80)
 
+**Clipart - Real World**
+
+Total target (Clipart) samples: 4357
+
+Number of samples should be known: 3037
+
+Number of samples should be unknown: 1320
+
+| Threshold | Number of samples known |
+| :-------: | :---------------------: |
+|    0.3    |          3741           |
+|    0.5    |          3554           |
+|    0.7    |          3366           |
+|    0.8    |          3214           |
+|    0.9    |          2970           |
+
+ Threshold of 0.9 chosen. (With alpha1 = 10 and epochs = 80)
 
 
 ---
