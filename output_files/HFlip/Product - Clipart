@@ -1,0 +1,137 @@
+!cd "./AML-Project" && python "main.py" --epochs_step2 21 --path_dataset "data" --source "Product" --target "Clipart" --weight_RotTask_step1 10 --epochs_step1 40 --weight_RotTask_step2 0.5 --threshold 0.7  --epochs_step2 10
+
+Downloading: "https://download.pytorch.org/models/resnet18-5c106cde.pth" to /root/.cache/torch/hub/checkpoints/resnet18-5c106cde.pth
+100% 44.7M/44.7M [00:00<00:00, 309MB/s]
+Source:  Product  Target:  Clipart
+Dataset size: source 3143, target 4365
+Step 1 --------------------------------------------
+Step size: 32
+Epoch:  0
+Class Loss 3.3584, Class Accuracy 0.0751,Flip Loss 0.5993, Flip Accuracy 0.5638
+Epoch:  1
+Class Loss 2.8743, Class Accuracy 0.3274,Flip Loss 0.3983, Flip Accuracy 0.7687
+Epoch:  2
+Class Loss 2.2274, Class Accuracy 0.5269,Flip Loss 0.3108, Flip Accuracy 0.8180
+Epoch:  3
+Class Loss 2.0084, Class Accuracy 0.5972,Flip Loss 0.3778, Flip Accuracy 0.8498
+Epoch:  4
+Class Loss 1.8279, Class Accuracy 0.6303,Flip Loss 0.2820, Flip Accuracy 0.8816
+Epoch:  5
+Class Loss 1.6069, Class Accuracy 0.6538,Flip Loss 0.3275, Flip Accuracy 0.8874
+Epoch:  6
+Class Loss 1.3975, Class Accuracy 0.7022,Flip Loss 0.1541, Flip Accuracy 0.9249
+Epoch:  7
+Class Loss 1.4903, Class Accuracy 0.7359,Flip Loss 0.1349, Flip Accuracy 0.9300
+Epoch:  8
+Class Loss 1.2520, Class Accuracy 0.7585,Flip Loss 0.0647, Flip Accuracy 0.9354
+Epoch:  9
+Class Loss 0.9901, Class Accuracy 0.7789,Flip Loss 0.0706, Flip Accuracy 0.9399
+Epoch:  10
+Class Loss 1.0122, Class Accuracy 0.7881,Flip Loss 0.0297, Flip Accuracy 0.9418
+Epoch:  11
+Class Loss 0.8978, Class Accuracy 0.8027,Flip Loss 0.1166, Flip Accuracy 0.9577
+Epoch:  12
+Class Loss 0.7224, Class Accuracy 0.8116,Flip Loss 0.0423, Flip Accuracy 0.9570
+Epoch:  13
+Class Loss 0.7685, Class Accuracy 0.8247,Flip Loss 0.0898, Flip Accuracy 0.9475
+Epoch:  14
+Class Loss 0.7210, Class Accuracy 0.8339,Flip Loss 0.1040, Flip Accuracy 0.9590
+Epoch:  15
+Class Loss 0.6910, Class Accuracy 0.8377,Flip Loss 0.0518, Flip Accuracy 0.9621
+Epoch:  16
+Class Loss 0.6004, Class Accuracy 0.8457,Flip Loss 0.0366, Flip Accuracy 0.9548
+Epoch:  17
+Class Loss 0.7203, Class Accuracy 0.8530,Flip Loss 0.0439, Flip Accuracy 0.9539
+Epoch:  18
+Class Loss 0.6195, Class Accuracy 0.8622,Flip Loss 0.0055, Flip Accuracy 0.9586
+Epoch:  19
+Class Loss 0.6359, Class Accuracy 0.8619,Flip Loss 0.0133, Flip Accuracy 0.9656
+Epoch:  20
+Class Loss 0.5847, Class Accuracy 0.8683,Flip Loss 0.1122, Flip Accuracy 0.9653
+Epoch:  21
+Class Loss 0.4829, Class Accuracy 0.8762,Flip Loss 0.0034, Flip Accuracy 0.9666
+Epoch:  22
+Class Loss 0.5260, Class Accuracy 0.8836,Flip Loss 0.0192, Flip Accuracy 0.9679
+Epoch:  23
+Class Loss 0.4786, Class Accuracy 0.8909,Flip Loss 0.0285, Flip Accuracy 0.9679
+Epoch:  24
+Class Loss 0.4666, Class Accuracy 0.8931,Flip Loss 0.0271, Flip Accuracy 0.9663
+Epoch:  25
+Class Loss 0.4393, Class Accuracy 0.8995,Flip Loss 0.0264, Flip Accuracy 0.9701
+Epoch:  26
+Class Loss 0.3410, Class Accuracy 0.9052,Flip Loss 0.0146, Flip Accuracy 0.9707
+Epoch:  27
+Class Loss 0.3341, Class Accuracy 0.8995,Flip Loss 0.0547, Flip Accuracy 0.9714
+Epoch:  28
+Class Loss 0.4009, Class Accuracy 0.9131,Flip Loss 0.0170, Flip Accuracy 0.9717
+Epoch:  29
+Class Loss 0.2936, Class Accuracy 0.9084,Flip Loss 0.0071, Flip Accuracy 0.9720
+Epoch:  30
+Class Loss 0.3802, Class Accuracy 0.9138,Flip Loss 0.0026, Flip Accuracy 0.9704
+Epoch:  31
+Class Loss 0.3504, Class Accuracy 0.9208,Flip Loss 0.0301, Flip Accuracy 0.9701
+Epoch:  32
+Class Loss 0.3519, Class Accuracy 0.9227,Flip Loss 0.0283, Flip Accuracy 0.9688
+Epoch:  33
+Class Loss 0.3002, Class Accuracy 0.9205,Flip Loss 0.0068, Flip Accuracy 0.9739
+Epoch:  34
+Class Loss 0.2837, Class Accuracy 0.9275,Flip Loss 0.0092, Flip Accuracy 0.9742
+Epoch:  35
+Class Loss 0.3376, Class Accuracy 0.9220,Flip Loss 0.0045, Flip Accuracy 0.9736
+Epoch:  36
+Class Loss 0.2734, Class Accuracy 0.9220,Flip Loss 0.0022, Flip Accuracy 0.9726
+Epoch:  37
+Class Loss 0.3235, Class Accuracy 0.9236,Flip Loss 0.0221, Flip Accuracy 0.9717
+Epoch:  38
+Class Loss 0.3528, Class Accuracy 0.9271,Flip Loss 0.0235, Flip Accuracy 0.9720
+Epoch:  39
+Class Loss 0.2909, Class Accuracy 0.9246,Flip Loss 0.0042, Flip Accuracy 0.9742
+Target - Evaluation -- for known/unknown separation
+AUROC 0.4185
+Generated random number is : 61246
+The number of target samples selected as known is:  4207
+The number of target samples selected as unknown is:  158
+Reading target path file: new_txt_list/Clipart_known_61246.txt
+Step 2 --------------------------------------------
+Step size: 8
+Epoch:  0
+Class Loss 0.5788, Class Accuracy 0.8722,Flip Loss 1.3465, Flip Accuracy 0.6919
+
+Evaluation: OS* 0.4270, UNK 0.0000, HOS 0.0000
+Epoch:  1
+Class Loss 0.4203, Class Accuracy 0.8803,Flip Loss 0.6892, Flip Accuracy 0.7661
+
+Evaluation: OS* 0.4120, UNK 0.2447, HOS 0.3070
+Epoch:  2
+Class Loss 0.3971, Class Accuracy 0.8888,Flip Loss 0.6532, Flip Accuracy 0.7779
+
+Evaluation: OS* 0.3798, UNK 0.4521, HOS 0.4128
+Epoch:  3
+Class Loss 0.2775, Class Accuracy 0.9025,Flip Loss 0.4254, Flip Accuracy 0.8104
+
+Evaluation: OS* 0.3726, UNK 0.4663, HOS 0.4143
+Epoch:  4
+Class Loss 0.3188, Class Accuracy 0.9028,Flip Loss 0.2361, Flip Accuracy 0.8428
+
+Evaluation: OS* 0.3808, UNK 0.4038, HOS 0.3919
+Epoch:  5
+Class Loss 0.2648, Class Accuracy 0.9131,Flip Loss 0.2980, Flip Accuracy 0.8606
+
+Evaluation: OS* 0.3543, UNK 0.4846, HOS 0.4093
+Epoch:  6
+Class Loss 0.2907, Class Accuracy 0.9182,Flip Loss 0.5748, Flip Accuracy 0.8619
+
+Evaluation: OS* 0.3713, UNK 0.4196, HOS 0.3940
+Epoch:  7
+Class Loss 0.1896, Class Accuracy 0.9234,Flip Loss 0.2699, Flip Accuracy 0.8652
+
+Evaluation: OS* 0.3618, UNK 0.4347, HOS 0.3949
+Epoch:  8
+Class Loss 0.2413, Class Accuracy 0.9252,Flip Loss 0.2250, Flip Accuracy 0.8870
+
+Evaluation: OS* 0.3672, UNK 0.4426, HOS 0.4014
+Epoch:  9
+Class Loss 0.2869, Class Accuracy 0.9264,Flip Loss 0.3046, Flip Accuracy 0.8800
+
+Evaluation: OS* 0.3665, UNK 0.4244, HOS 0.3933
+<------End
