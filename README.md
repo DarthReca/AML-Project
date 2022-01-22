@@ -717,10 +717,10 @@ Best HOS: ?, with alpha1 = 10, epochs1 = 80, threshold = 0.9, alpha2 = ? and epo
 |        |   20    |  |  |  |  |  |
 |   3    |   10    |  |  |  |  |  |
 |        |   20    |  |  |  |  |  |
-|   10   |   10    |  |  |  |  |  |
-|        |   20    |  |  |  |  |  |
+|   10   |   10    | 0.3207 | 0.4930 | 0.3886 | 0.9056 | 0.9696 |
+|        |   20    | 0.3237 | 0.5070 | 0.3951 | 0.9432 | 0.9906 |
 
-Best HOS: ?, with alpha1 = , epochs1 = , threshold = , alpha2 = ? and epochs2 =? 
+Best HOS: ?, with alpha1 = , epochs1 = 80, threshold = 0.75 , alpha2 = ? and epochs2 =? 
 
 **Clipart - Product**
 
@@ -737,7 +737,7 @@ Best HOS: ?, with alpha1 = , epochs1 = , threshold = , alpha2 = ? and epochs2 =?
 |   10   |   10    | 0.4239 | 0.6855 | 0.5238 | 0.9043 | 0.9624 |
 |        |   20    | 0.4356 | 0.6495 | 0.5214 | 0.9348 | 0.9865 |
 
-Best HOS: ?, with alpha1 = , epochs1 = , threshold = , alpha2 = ? and epochs2 =? 
+Best HOS: ?, with alpha1 = , epochs1 = 80 , threshold = 0.85, alpha2 = ? and epochs2 =? 
 
 **Clipart - Real World**
 
