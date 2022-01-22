@@ -80,7 +80,7 @@ In the computer vision research area large amounts of unlabeled data are availab
 
 Self-supervised learning can be used to separate the known class samples in the target domain from the unknown samples. Self-supervised learning involves the transformation of data using a known transform (for example by using image rotation), then training a model to predict the transformation~\cite{Xu2019}. When used in an object classification task and considering the image rotation transformation, the correct orientation of an object is domain-invariant. In this way the model can be trained to predict the correct orientation of the image using data from the source domain, then applied to the images of the target domain. If the orientation of a sample in the target domain is predicted correctly then it is considered to be of a \textit{known} class. Contrarily if the orientation is not prediction correctly it is labelled as \textit{unknown}. 
 
-Domain adaptation can then be performed between the samples in the source domain and the samples recognized as known in the target domain. When applying domain adaptation to an open-set scenario (Open-Set Domain Adapatation or OSDA) the samples classified as unknown can be treated as a separate class and incorporated into the Closed-Set Domain Adaptation (CSDA) task~\cite{Pau2020}. The self-supervised rotation task can also be used to reduce the domain shift during this step, using the Rotation-based Open Set (ROS) method developed by Bucci \etal \cite{Bucci2020}.
+Domain adaptation can then be performed between the samples in the source domain and the samples recognized as known in the target domain. When applying domain adaptation to an open-set scenario (Open-Set Domain Adaptation or OSDA) the samples classified as unknown can be treated as a separate class and incorporated into the Closed-Set Domain Adaptation (CSDA) task~\cite{Pau2020}. The self-supervised rotation task can also be used to reduce the domain shift during this step, using the Rotation-based Open Set (ROS) method developed by Bucci \etal \cite{Bucci2020}.
 
 This study investigates the use of a simplified ROS method for object classification on the \textit{Office-Home} dataset \cite{OfficeHome}. Alternative self-supervised tasks as well as the inclusion of center loss are also considered and their performance on the object classification task is evaluated.
 
@@ -89,7 +89,7 @@ This study investigates the use of a simplified ROS method for object classifica
 \section{Related Work}
 \label{sec:relatedWork}
 
-\textbf{Anomaly detection}, or outlier/novelty detection, in an open-set scenario can be used to detect samples belonging to the unknown or unseen class. Various different approaches for anomaly detection have been used in the literature as applied to the open-set scenario. Golan and El-Yanic \cite{Golan2018} present a method for using geometric transformations to create a self-labeled dataset. In this way the neural classifier learns features that are effective for the detection of anomalies.  Sakurada and Yairi \cite{Sakurada2014} on the other hand make use of autoencoders with dimensionality reduction. This method assumes the data have correlations that can clearly separate normal and anomalous samples when reduced to a lower dimensional subspace. After the test data is projected into the subspace it is then reconstructed and the corresponding reconstruction error is used to identify the anomalous samples.
+\textbf{Anomaly detection}, or outlier/novelty detection, in an open-set scenario can be used to detect samples belonging to the unknown or unseen class. Various different approaches for anomaly detection have been used in the literature as applied to the open-set scenario. Golan and El-Yanic \cite{Golan2018} present a method for using geometric transformations to create a self-labeled dataset. In this way the neural classifier learns features that are effective for the detection of anomalies.  Sakurada and Yairi \cite{Sakurada2014} on the other hand make use of auto-encoders with dimensionality reduction. This method assumes the data have correlations that can clearly separate normal and anomalous samples when reduced to a lower dimensional subspace. After the test data is projected into the subspace it is then reconstructed and the corresponding reconstruction error is used to identify the anomalous samples.
 
 
 \textbf{Self-supervised learning} has been a key concept aimed at reducing the need for human labeling of data. It has also created opportunities for the use of data in problems where supervision is not possible \cite{Yaman2020}. Self-supervised learning consists of choosing a self-supervised task (or pretext task) to train alongside the main classification task. One possible self-supervised task is image rotation prediction, which is reported to perform best for visual representation learning \cite{Xu2019, Gidaris2018}. However many options are available, including image-patch based methods \cite{Mundhenk2018, Kim2018}, horizontal flipping \cite{Golan2018}, or by solving jigsaw puzzles \cite{Carlucci2019, Kim2018}. 
@@ -105,7 +105,7 @@ This study investigates the use of a simplified ROS method for object classifica
 \section{Method}
 \label{sec:method}
 
-This study aims to solve the open-set scenario by using self-supervised learning with domain adaptation. Image rotation recognition has been chosen as the self-supervised task due to it's good performance for visual representation learning \cite{Xu2019, Gidaris2018}. The rotation recognition task involves taking the original image sample from the source domain and rotating it clockwise a set amount (for example by 0$^{\circ}$, 90$^{\circ}$, 180$^{\circ}$ or 270$^{\circ}$). A rotation classifier is then trained to predict the correct orientation of the object. The correct orientation of the object, however, is not an inherent property of an image, for example consider the pens in Figure \ref{fig:RotatedPens}. When analysing a rotated image of a pen it is not possible to infer the original rotation. The original image is therefore included in the rotation classifier and the relative rotation analysed instead. In training the rotation classifier the features of the original sample are concatenated with the features of the rotated sample. By including the original samples the network is also able to learn features that are more discriminative between class labels, focussing more on the shape of the object and less on the texture \cite{Bucci2020}, as shown in Figure \ref{fig:RotationFeatures}.
+This study aims to solve the open-set scenario by using self-supervised learning with domain adaptation. Image rotation recognition has been chosen as the self-supervised task due to it's good performance for visual representation learning \cite{Xu2019, Gidaris2018}. The rotation recognition task involves taking the original image sample from the source domain and rotating it clockwise a set amount (for example by 0$^{\circ}$, 90$^{\circ}$, 180$^{\circ}$ or 270$^{\circ}$). A rotation classifier is then trained to predict the correct orientation of the object. The correct orientation of the object, however, is not an inherent property of an image, for example consider the pens in Figure \ref{fig:RotatedPens}. When analyzing a rotated image of a pen it is not possible to infer the original rotation. The original image is therefore included in the rotation classifier and the relative rotation analysed instead. In training the rotation classifier the features of the original sample are concatenated with the features of the rotated sample. By including the original samples the network is also able to learn features that are more discriminative between class labels, focusing more on the shape of the object and less on the texture \cite{Bucci2020}, as shown in Figure \ref{fig:RotationFeatures}.
 
 \begin{figure}[!htb]
   \centering
@@ -152,7 +152,7 @@ If the AUC is $> 0.5$ then the normality score can be used to conduct the known/
 \subsection{Stage II - domain alignment}
 \label{sec:stage2}
 
-In stage 2 of the simplified ROS method the unknown dataset created from the target domain $D_t^{unk}$ is combined with the samples from the source domain $D_s$, with the unknown samples representing an additional `unknown' class. The object classifier $C_2$ is thus trained to recognise samples belonging to the unknown class. Concurrently, the known target samples  $D^{knw}_t$ are used for the source-target adaptation by training the rotation recognition task $R_2$. The method is shown on the right side of Figure \ref{fig:ROS}. As in stage I, the object classification and rotation recognition tasks are trained simultaneously to minimize the total loss objective function given by:
+In stage 2 of the simplified ROS method the unknown dataset created from the target domain $D_t^{unk}$ is combined with the samples from the source domain $D_s$, with the unknown samples representing an additional `unknown' class. The object classifier $C_2$ is thus trained to recognize samples belonging to the unknown class. Concurrently, the known target samples  $D^{knw}_t$ are used for the source-target adaptation by training the rotation recognition task $R_2$. The method is shown on the right side of Figure \ref{fig:ROS}. As in stage I, the object classification and rotation recognition tasks are trained simultaneously to minimize the total loss objective function given by:
 \begin{equation}
   L_{tot} = L_{cls} + \alpha_2 L_{rot} ,
   \label{eq:totalloss}
@@ -162,7 +162,7 @@ where $\alpha_2$ is the weight assigned to the rotation recognition task of stag
 
 \subsubsection*{Final evaluation}
 
-Once the classifiers have been trained the final evaluation can be completed. Three metrics are considered for the evalutation: the accuracy of the object classifier in correctly classifying objects of the known category $OS^*$; the accuracy of the object classifier in correctly identifying objects of the unknown category $UNK$; and the harmonic mean $HOS$ between the two accuracys $OS^*$ and $UNK$, as defined in \cite{Bucci2020}. The harmonic mean is calculated as:
+Once the classifiers have been trained the final evaluation can be completed. Three metrics are considered for the evaluation: the accuracy of the object classifier in correctly classifying objects of the known category $OS^*$; the accuracy of the object classifier in correctly identifying objects of the unknown category $UNK$; and the harmonic mean $HOS$ between the two accuracies $OS^*$ and $UNK$, as defined in \cite{Bucci2020}. The harmonic mean is calculated as:
 \begin{equation}
  HOS = 2\, \frac{OS^* \times UNK}{OS^* + UNK} ,
  \label{eq:hos}
@@ -211,13 +211,13 @@ The proposed method was tested on the \textit{Office-Home} dataset \cite{OfficeH
   \label{fig:domains}
 \end{figure}
 
-The experiments were conducted using a ResNet18 convolutional neural network architecture, employing a learning rate of 0.001, a batch size of 128. Image data augmentation techniques were also emploted to improve performance of the model, these included random resized crop, color jitter and random grayscale. 
+The experiments were conducted using a ResNet18 convolutional neural network architecture, employing a learning rate of 0.001, a batch size of 128. Image data augmentation techniques were also employed to improve performance of the model, these included random resized crop, color jitter and random grayscale. 
 
 
 \subsection{Ablation study}
 \label{sec:ablation}
 
-The simplified ROS method includes three hyperparameters that need to be tuned according to the network: the weight assigned to the rotation recognition tasks in stage 1 ($\alpha_1$); the threshold of normality score for considering a target sample as belong to a known category; and the weight assigned to the rotation recognition tasks in stage 2 ($\alpha_2$). The $\alpha_1$ parameter of stage 1 was tuned first. Figure \ref{fig:ClassAcc} shows the class accuracy of stage 1 when trained on the \textit{Art} source domain for a number of epochs and different $\alpha_1$ values, and Figure \ref{fig:RotAcc} shows the corresponding rotation recognition accuracy. As expected the accuracy of both increases with increasing number of epochs, however lower weights take much longer to converge for the rotation recognition tasks. Since the two classifiers are trained simultaneously a balance needs to be sought to reduce over-fitting of either task.
+The simplified ROS method includes three hyper-parameters that need to be tuned according to the network: the weight assigned to the rotation recognition tasks in stage 1 ($\alpha_1$); the threshold of normality score for considering a target sample as belong to a known category; and the weight assigned to the rotation recognition tasks in stage 2 ($\alpha_2$). The $\alpha_1$ parameter of stage 1 was tuned first. Figure \ref{fig:ClassAcc} shows the class accuracy of stage 1 when trained on the \textit{Art} source domain for a number of epochs and different $\alpha_1$ values, and Figure \ref{fig:RotAcc} shows the corresponding rotation recognition accuracy. As expected the accuracy of both increases with increasing number of epochs, however lower weights take much longer to converge for the rotation recognition tasks. Since the two classifiers are trained simultaneously a balance needs to be sought to reduce over-fitting of either task.
 
 \begin{figure}[!htb]
   \centering
@@ -250,7 +250,7 @@ The AUC metric was then used to compare the performance of the various weights. 
   \label{tab:auc}
 \end{table}
 
-The next step involed tuning the threshold. The threshold should be chosen such that the number of samples recognised as known is similar to the number of samples that are expected to be recognised as known. Considering again the \textit{Art} as source and \textit{Clipart} as target domain combination as an example, the total number of samples in the \textit{Clipart} target domain is 4365, and 3064 of those samples share the same category as those in the \textit{Art} source domain. The model was thus evaluated with different thresholds and the number of samples identified as known analysed. Table \ref{tab:threshold} shows the results of the analysis on the \textit{Art}--\textit{Clipart} domain combination. A threshold of 0.75 results in the number of known samples being most similar to the expected number of known samples of 3064, and so 0.75 was chosen as the threshold for that combination.
+The next step involved tuning the threshold. The threshold should be chosen such that the number of samples recognized as known is similar to the number of samples that are expected to be recognized as known. Considering again the \textit{Art} as source and \textit{Clipart} as target domain combination as an example, the total number of samples in the \textit{Clipart} target domain is 4365, and 3064 of those samples share the same category as those in the \textit{Art} source domain. The model was thus evaluated with different thresholds and the number of samples identified as known analysed. Table \ref{tab:threshold} shows the results of the analysis on the \textit{Art}--\textit{Clipart} domain combination. A threshold of 0.75 results in the number of known samples being most similar to the expected number of known samples of 3064, and so 0.75 was chosen as the threshold for that combination.
 
 \begin{table}[!htb]
   \centering
@@ -269,7 +269,7 @@ The next step involed tuning the threshold. The threshold should be chosen such 
   \label{tab:threshold}
 \end{table}
 
-The final step of the ablation study was to tune the stage 2 weight ($\alpha_2$). The evaluation metrics for stage 2 involve the harmonic mean between the accuracy of the known classes and the abiility of the classifier to recognize the unknown category, as discussed in \ref{sec:stage2}. The results of stage 2 for the \textit{Art}--\textit{Clipart} domain combination are shown in Table \ref{tab:tuneHOS}. The highest harmonic mean value is 0.4399, for a weight of 3 at 20 epochs.
+The final step of the ablation study was to tune the stage 2 weight ($\alpha_2$). The evaluation metrics for stage 2 involve the harmonic mean between the accuracy of the known classes and the ability of the classifier to recognize the unknown category, as discussed in \ref{sec:stage2}. The results of stage 2 for the \textit{Art}--\textit{Clipart} domain combination are shown in Table \ref{tab:tuneHOS}. The highest harmonic mean value is 0.4399, for a weight of 3 at 20 epochs.
 
 \begin{table}[!htb]
   \centering
@@ -293,12 +293,12 @@ The final step of the ablation study was to tune the stage 2 weight ($\alpha_2$)
   \label{tab:tuneHOS}
 \end{table}
 
-Similar analyses were also conducted for the 11 other possible domain combinations, the results of which can be found in the supplementary material.
+Similar analyses were also conducted for the 11 other possible domain combinations, the results of which can be found in the supplementary material\footnote{Additional results and the complete code is available at \url{https://github.com/DarthReca/AML-Project}.}.
 
 
 \subsection{Results}
 
-The results for the simplified ROS model for each of the domain combinations is shown in Table \ref{tab:results}.
+The results for the simplified ROS model for each of the domain combinations is shown in Table \ref{tab:results}. The harmonic mean for each of the different domain combinations lies approximately between 40\% and 55\%. Different combinations performed better than others, however the results were sensitive to the input parameters. Depending on the application, prioritizing the accuracy of the categorization of the known class may prove beneficial and further training would be required.  Results for the complete ROS method were published in \cite{Bucci2020} and reported a harmonic mean between approximately 55\% and 75\%. As expected the complete method performs better than the simplified method adopted in this study, however the simplified method could be employed in situations where a less complex approach is desired.
 
 \begin{table}[!htb]
   \centering
@@ -311,20 +311,21 @@ Art & Clipart & 35.42 & 58.02 & 43.99 \\
  & Real World & 42.50 & 77.01 & 54.77 \\ \hline
 Product & Clipart & 38.05 & 55.94 & 45.29 \\
 & Art & 33.53 & 46.24 & 38.87 \\
-& Real World & & & \\ \hline
-Real World & Clipart & & & \\
- & Art & & & \\
- & Product & & & \\ \hline
-Clipart & Real World & & & \\
- & Art & & & \\
-& Product & & & \\
+& Real World & 56.50 & 37.72 & 45.24 \\ \hline
+Real World & Clipart &43.87 & 50.76 & 47.07 \\
+ & Art & 46.86 & 44.54 & 45.67\\
+ & Product & 69.44 & 33.95 & 45.60 \\ \hline
+Clipart & Real World & 45.46 & 69.06 & 54.83\\
+ & Art & 33.71 & 58.14 & 42.67 \\
+& Product & 47.75 & 60.02 & 53.19 \\
     \hline
   \end{tabular}
   \caption{Accuracy (\%) for the simplified ROS model on the Office-Home dataset}
   \label{tab:results}
 \end{table}
 
-- discussion
+
+
 
 
 %------------------------------------------------------------------------
@@ -335,11 +336,11 @@ Two different variations to the simplified ROS method were also analysed. The fi
 
 \subsection{Alternative self-supervised tasks}
 
-The simplified ROS method reported used rotation recognition as the self-supervised task, however many different self-supervised tasks are possible to be employed for use in open-set domain adaptation. This sudy investigated two alternative self-supervised tasks: hoizontal flipping; and solving jigsaw puzzles.
+The simplified ROS method reported used rotation recognition as the self-supervised task, however many different self-supervised tasks are possible to be employed for use in open-set domain adaptation. This sudy investigated two alternative self-supervised tasks: horizontal flipping; and solving jigsaw puzzles.
 
 \subsubsection*{Horizontal Flipping}
 
-Horizontal flipping is similar to image rotation however instead rotating the image it is flipped along its center y-axis, creating a mirror-image. Hoizontal flipping is shown in Figure \ref{fig:horiz}.
+Horizontal flipping is similar to image rotation however instead rotating the image it is flipped along its center y-axis, creating a mirror-image. Horizontal flipping is shown in Figure \ref{fig:horiz}.
 
 \begin{figure}[!htbp]
   \centering
@@ -364,18 +365,18 @@ Horizontal flipping is similar to image rotation however instead rotating the im
 
 \subsubsection*{Jigsaw Puzzle}
 
-The self-supervised tasks of solving jigsaw puzzles involves being able to recognise an original image given its shuffled parts. The method involves first taking the orginal image, splitting the image into a number of sections, then creating a set of permutations with a different ordering of those sections. The method can be seen in Figure \ref{fig:jigsaw} as used by \cite{Carlucci2019}. The shuffled images (permutations) are then fed into the convolutional neural network to train the jigsaw classifier alongside the object classifier. \textcolor{red}{This study considered the images broken up into X number of sections, with X different permutations based on....}.
+The self-supervised tasks of solving jigsaw puzzles involves being able to recognize an original image given its shuffled parts. The method involves first taking the original image, splitting the image into a number of sections, then creating a set of permutations with a different ordering of those sections. The method can be seen in Figure \ref{fig:jigsaw} as used by \cite{Carlucci2019}. The shuffled images (permutations) are then fed into the convolutional neural network to train the jigsaw classifier alongside the object classifier. This study considered the images broken up into 9 sections, and then recombined based on a random permutation among 30 available permutations. For each image a shuffled one is generated and allocated an index. The convolutional neural network is then trained to predict its index. The Jigsaw puzzle task is formalized as a classification problem over recomposed images with the same dimension of the original one. In this way object recognition and patch reordering can share the same network backbone.
 
-\begin{figure*}[!htbp]
+\begin{figure}[!htbp]
   \centering
-   \includegraphics[width=0.95\linewidth]{Figures/Jigsaw.png}
-   \caption{Jigsaw puzzle self-supervised task method \cite{Carlucci2019}.}
+   \includegraphics[width=\linewidth]{Figures/Jigsaw2.png}
+   \caption{Jigsaw puzzle self-supervised task method, adapted from \cite{Carlucci2019}.}
    \label{fig:jigsaw}
-\end{figure*}
+\end{figure}
 
 \subsubsection*{Results}
 
-The harmonic mean results of the simplified ROS method employing different self-supervised tasks are shown in Table \ref{tab:selfs}.
+The harmonic mean results of the simplified ROS method employing different self-supervised tasks for a subset of domain configurations are shown in Table \ref{tab:selfs}. The first two configurations show the best performance using rotation recognition as the self-supervised task, however the third configuration performs best with horizontal flipping. It should be noted that in calculating these results the threshold parameter needed to be tuned independently for each self-supervised task, as this would have a significant effect on the results. The rotation recognition task seems to be the most robust method for conducting open-set domain adaption, in agreeance with the findings from Xu \etal \cite{Xu2019} and Gidaris \etal \cite{Gidaris2018}. As shown by this short study alternative self-supervised tasks may however perform better for some domain configurations.
 
 \begin{table}[!htb]
 \small
@@ -384,18 +385,9 @@ The harmonic mean results of the simplified ROS method employing different self-
     \hline
 \multicolumn{2}{|c|}{\textbf{Domain}} & & \textbf{Horizontal} & \textbf{Jigsaw} \\
 \textbf{Source} & \textbf{Target} & \textbf{Rotation} & \textbf{Flipping} & \textbf{Puzzle} \\ \hline
-Art & Clipart & &  &  \\
-& Product & & & \\
- & Real World & & & \\ \hline
-Product & Clipart & & & \\
-& Art & & & \\
-& Real World & & & \\ \hline
-Real World & Clipart & & & \\
- & Art & & & \\
- & Product & & & \\ \hline
-Clipart & Real World & & & \\
- & Art & & & \\
-& Product & & & \\
+Art & Clipart & 43.99 & 35.11 & 18.64 \\
+Product & Art & 38.87 & 25.01 & 36.17\\
+Real World & Product  & 45.60 & 53.58 & 49.46\\
     \hline
   \end{tabular}
   \caption{Harmonic mean (\%) for the simplified ROS model with different self-supervised tasks on the Office-Home dataset}
@@ -403,11 +395,9 @@ Clipart & Real World & & & \\
 \end{table}
 
 
-- discussion
-
 \subsection{Center Loss}
 
-The center loss was introduced by Wen \etal \cite{Wen2016} as an additional objective function for enhancing the discriminative power of learned deep features. It involves learning the center of the deep features for each class, prioritizing features that are close to the center and adding a penalty to the distance between the deep features and their corresponding centers \cite{Wen2016}. The center loss function is optimised alongisde the soft max loss, with the two losses jointly supervised. A hyperparameter is introduced representing the weight of the center loss contribution, and is tuned to balance the two loss functions.The difference between the features learned by a classifier training with the soft max loss function on the MNIST dataset \cite{MNIST}, compared with the inclusion of the center loss during training is shown in Figure \ref{fig:centerloss}. The features learned with the inclusion of center loss can clearly be seen to provide greater discriminative power.
+The center loss was introduced by Wen \etal \cite{Wen2016} as an additional objective function for enhancing the discriminative power of learned deep features. It involves learning the center of the deep features for each class, prioritizing features that are close to the center and adding a penalty to the distance between the deep features and their corresponding centers \cite{Wen2016}. The center loss function is optimized alongside the soft max loss, with the two losses jointly supervised. A hyper-parameter is introduced representing the weight of the center loss contribution, and is tuned to balance the two loss functions. The difference between the features learned by a classifier training with the soft max loss function on the MNIST dataset \cite{MNIST}, compared with the inclusion of the center loss during training is shown in Figure \ref{fig:centerloss}. The features learned with the inclusion of center loss can clearly be seen to provide greater discriminative power.
 
 \begin{figure}[!htbp]
   \centering
