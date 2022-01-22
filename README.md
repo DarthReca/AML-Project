@@ -751,10 +751,10 @@ Best HOS: ?, with alpha1 = , epochs1 = 80 , threshold = 0.85, alpha2 = ? and epo
 |        |   20    |  |  |  |  |  |
 |   3    |   10    |  |  |  |  |  |
 |        |   20    |  |  |  |  |  |
-|   10   |   10    |  |  |  |  |  |
+|   10   |   10    |  0.4518| 0.6439 | 0.5310 | 0.8892 | 0.9436 |
 |        |   20    |  |  |  |  |  |
 
-Best HOS: ?, with alpha1 = , epochs1 = , threshold = , alpha2 = ? and epochs2 =? 
+Best HOS: ?, with alpha1 = , epochs1 = 80, threshold = 0.9 , alpha2 = ? and epochs2 =? 
 
 
 ## DOCS
