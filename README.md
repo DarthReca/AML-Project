@@ -691,18 +691,18 @@ Best HOS: 0.3887, with alpha1 = 1, epochs1 = 20, threshold = 0.5, alpha2 = 0.1 a
 
 | Alpha2 | Epoch # | OS\*   | UNK    | HOS    | Class Acc | Rot Acc |
 | :----: | :-----: | :----: | :----: | :----: | :-------: | :-----: |
-|  0.1   |   10    |  |  |  |  |  |
-|        |   20    |  |  |  |  |  |
-|  0.5   |   10    |  |  |  |  |  |
-|        |   20    |  |  |  |  |  |
-|   1    |   10    |  |  |  |  |  |
-|        |   20    |  |  |  |  |  |
-|   3    |   10    |  |  |  |  |  |
-|        |   20    |  |  |  |  |  |
+|  0.1   |   10    | 0.5650 | 0.3772 | 0.4524 | 0.9786 | 0.8349 |
+|        |   20    | 0.5758 | 0.3489 | 0.4345 | 0.9874 | 0.8457 |
+|  0.5   |   10    | 0.5666 | 0.3509 | 0.4334 | 0.9744 | 0.8874 |
+|        |   20    | 0.5874 | 0.3236 | 0.4173 | 0.9834 | 0.9136 |
+|   1    |   10    | 0.5762 | 0.3538 | 0.4384 | 0.9709 | 0.9191 |
+|        |   20    | 0.5938 | 0.3031 | 0.4014 | 0.9834 | 0.9470 |
+|   3    |   10    | 0.5902 | 0.3080 | 0.4048 | 0.9633 | 0.9480 |
+|        |   20    | 0.5926 | 0.2788 | 0.3792 | 0.9796 | 0.9726 |
 |   10   |   10    |  |  |  |  |  |
 |        |   20    |  |  |  |  |  |
 
-Best HOS: ?, with alpha1 = , epochs1 = , threshold = , alpha2 = ? and epochs2 =? 
+Best HOS: ?, with alpha1 = 10, epochs1 = 80, threshold = 0.9, alpha2 = ? and epochs2 =? 
 
 ---
 **Clipart - Art**
@@ -717,10 +717,10 @@ Best HOS: ?, with alpha1 = , epochs1 = , threshold = , alpha2 = ? and epochs2 =?
 |        |   20    |  |  |  |  |  |
 |   3    |   10    |  |  |  |  |  |
 |        |   20    |  |  |  |  |  |
-|   10   |   10    |  |  |  |  |  |
-|        |   20    |  |  |  |  |  |
+|   10   |   10    | 0.3207 | 0.4930 | 0.3886 | 0.9056 | 0.9696 |
+|        |   20    | 0.3237 | 0.5070 | 0.3951 | 0.9432 | 0.9906 |
 
-Best HOS: ?, with alpha1 = , epochs1 = , threshold = , alpha2 = ? and epochs2 =? 
+Best HOS: ?, with alpha1 = , epochs1 = 80, threshold = 0.75 , alpha2 = ? and epochs2 =? 
 
 **Clipart - Product**
 
@@ -734,10 +734,10 @@ Best HOS: ?, with alpha1 = , epochs1 = , threshold = , alpha2 = ? and epochs2 =?
 |        |   20    |  |  |  |  |  |
 |   3    |   10    |  |  |  |  |  |
 |        |   20    |  |  |  |  |  |
-|   10   |   10    |  |  |  |  |  |
-|        |   20    |  |  |  |  |  |
+|   10   |   10    | 0.4239 | 0.6855 | 0.5238 | 0.9043 | 0.9624 |
+|        |   20    | 0.4356 | 0.6495 | 0.5214 | 0.9348 | 0.9865 |
 
-Best HOS: ?, with alpha1 = , epochs1 = , threshold = , alpha2 = ? and epochs2 =? 
+Best HOS: ?, with alpha1 = , epochs1 = 80 , threshold = 0.85, alpha2 = ? and epochs2 =? 
 
 **Clipart - Real World**
 

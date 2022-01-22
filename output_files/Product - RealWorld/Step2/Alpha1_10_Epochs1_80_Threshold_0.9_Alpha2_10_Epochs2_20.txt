@@ -1,0 +1,23 @@
+Source:  Product  Target:  RealWorld
+Dataset size: source 3143, target 4357
+Target - Evaluation -- for known/unknown separation
+AUROC 0.5382
+Generated random number is : 46090
+The number of target samples selected as known is:  3520
+The number of target samples selected as unknown is:  837
+Step 2 --------------------------------------------
+Step size: 16
+Epoch:  0
+Class Loss 0.8909, Class Accuracy 0.7553,Rot Loss 0.6887, Rot Accuracy 0.7693
+
+Evaluation: OS* 0.3292, UNK 0.7271, HOS 0.4532
+Epoch:  1
+Class Loss 0.6081, Class Accuracy 0.7930,Rot Loss 0.2485, Rot Accuracy 0.7925
+
+Evaluation: OS* 0.4896, UNK 0.4961, HOS 0.4928
+Epoch:  2
+Class Loss 0.5541, Class Accuracy 0.8261,Rot Loss 0.2372, Rot Accuracy 0.8186
+
+Evaluation: OS* 0.4920, UNK 0.5107, HOS 0.5012
+Epoch:  3
+Class Loss 0.5126, Class Accuracy 0.8430,Rot Loss 0.1650, Rot Accuracy 0.8538
