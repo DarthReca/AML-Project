@@ -77,7 +77,6 @@ def _do_epoch(
 
         # Now we can check the losses
         class_loss = criterion(class_scores, class_label)
-        # TODO: This needs CenterLoss to work better (see variation 3)
         rot_loss = criterion(rotation_scores, rotated_label)
 
         loss = class_loss + args.weight_RotTask_step1 * rot_loss

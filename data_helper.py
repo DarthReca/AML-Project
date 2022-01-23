@@ -1,23 +1,8 @@
 import torch
-import torch.utils.data as data
 from torchvision import transforms
 
 from dataset import FlipDataset, TestFlipDataset, _dataset_info
 
-"""
-get_train_dataloader(args,txt_file) 
-Combines a dataset and a sampler, and provides an iterable over the given dataset. 
-Parameters:
-A dataset object (map style)
-args:
-path_dataset
-batch_size
-
-txt_file:
-(source_path_file/target_path_file)
-
-
-"""
 # Iteration ovetr test_dataset
 def get_train_dataloader(args, txt_file):
     """
@@ -40,8 +25,7 @@ def get_train_dataloader(args, txt_file):
     train_dataset = FlipDataset(
         name_train, labels_train, args.path_dataset, img_transformer=img_transformer
     )
-    
-    
+
     loader = torch.utils.data.DataLoader(
         train_dataset,
         batch_size=args.batch_size,
@@ -59,8 +43,10 @@ def get_val_dataloader(args, txt_file):
 
     names, labels = _dataset_info(txt_file)
     img_tr = get_test_transformer(args)
-    
-    test_dataset = TestFlipDataset(names, labels, args.path_dataset, img_transformer=img_tr)
+
+    test_dataset = TestFlipDataset(
+        names, labels, args.path_dataset, img_transformer=img_tr
+    )
     loader = torch.utils.data.DataLoader(
         test_dataset,
         batch_size=1,
