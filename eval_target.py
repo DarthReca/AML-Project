@@ -18,22 +18,19 @@ def evaluation(
     device: torch.device,
 ):
     """
-    Method is to be completed. It's supposed to do evaluation of the target domain:
-    if I can predict the orientation of the target image => image is from known category
-    results are returned in a file under the "new_txt_list" folder
-
+    Implement the evaluation on the target for the known/unknown separation
     Parameters
     ---------
-        args : data-type -> {source : str, target : str}
-            source and target fields contain the name of a class of images (such as "Clipart" or "RealWorld") (? maybe)
-        feature_extractor
-            only used for calling it's eval() method
-        rot_cls
-            stands for rotation classifier. Only used for calling it's eval() method
-        target_loader_eval : list<data-type> -> {data, class_l, data_rot, rot_l}
+        args : Namespace
+            All various arguments
+        feature_extractor: ResNet
+            feature extractor
+        rot_cls: Classifier
+            stands for rotation classifier.
+        target_loader_eval : Dataloader
             Is an iterable wrapping the dataset containing images of target domain and their labels. for each image contains: image, label for the image, rotated image, label for the rotated image
         device
-            CPU or GPU ?
+            CPU or GPU
     Returns
     -------
         rand : number
@@ -49,17 +46,9 @@ def evaluation(
         size=[len(target_loader_eval.dataset)], dtype=torch.int32
     )
 
-    # DEBUG VERSION
-    # normality_score = torch.empty(size=[512], dtype=torch.float32)
-    # ground_truth = torch.empty(size=[512], dtype=torch.int32)
-
     with torch.no_grad():
         # iterate over the target images to compute normality scores (i.e. how sure we are of the predicted rotation)
         for index, (data, class_l, _, _) in enumerate(target_loader_eval):
-            # DEBUG VERSION
-            # if index == 512:
-            #    break
-
             data, class_l = (
                 data.to(device),
                 class_l.to(device),
@@ -119,9 +108,6 @@ def evaluation(
     number_of_unknown_samples = 0
     with torch.no_grad():
         for img_id, (_, class_l, _, _) in enumerate(target_loader_eval):
-            # DEBUG VERSION
-            # if img_id == 512:
-            #    break
             if normality_score[img_id] >= args.threshold:
                 # we consider the domain of the image as known
                 target_known.write(

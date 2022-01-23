@@ -4,20 +4,6 @@ from torchvision import transforms
 
 from dataset import Dataset, TestDataset, _dataset_info
 
-"""
-get_train_dataloader(args,txt_file) 
-Combines a dataset and a sampler, and provides an iterable over the given dataset. 
-Parameters:
-A dataset object (map style)
-args:
-path_dataset
-batch_size
-
-txt_file:
-(source_path_file/target_path_file)
-
-
-"""
 # Iteration ovetr test_dataset
 def get_train_dataloader(args, txt_file):
     """
