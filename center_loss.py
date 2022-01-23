@@ -1,3 +1,5 @@
+# CenterLoss by KaiyangZhou (see CENTER_LOSS_LICENSE)
+
 import torch
 import torch.nn as nn
 

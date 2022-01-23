@@ -178,10 +178,6 @@ class Trainer:
         # Initiate rotation classifier with input_size=512*2 and 4 classes: [0, 90, 180, 270]
         self.rot_classifier = Classifier(512 * 2, 4)
 
-        # firs param =supervised * known
-        # center_loss = CenterLoss(num_classes=self.ss_classes*self.n_classes, feat_dim=256*self.n_classes, use_gpu=True,device=self.device)
-        # f second params=eat_dim=256*self.n_classes
-
         self.center_loss = CenterLoss(4, 512 * 2, True)
 
         if args.load_weights:
@@ -211,7 +207,6 @@ class Trainer:
         # Path to the file with the list of target images (from command line argument, default is Clipart)
         target_path_file = "txt_list/" + args.target + ".txt"
         # Create two data loaders for the target dataset, one for training and one for evaluation.
-        # (Probably this is a typo and the first one should be .get_train_dataloader as in step 2 below)
         self.target_loader_train = data_helper.get_val_dataloader(
             args, target_path_file
         )
@@ -224,10 +219,7 @@ class Trainer:
         )
 
     def do_training(self):
-        """
-        Runs the training
-
-        """
+        """Runs the training"""
 
         # Run step 1: train the object and rotation classifier
         if "step1" in self.args.steps:

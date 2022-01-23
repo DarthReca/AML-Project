@@ -22,7 +22,6 @@ def _dataset_info(txt_labels) -> Tuple[List[str], List[int]]:
     return file_names, labels
 
 
-# It returns train_dataset
 class Dataset(data.Dataset):
     def __init__(
         self,
@@ -60,7 +59,6 @@ class Dataset(data.Dataset):
         return len(self.names)
 
 
-# It returns test_dataset
 class TestDataset(data.Dataset):
     def __init__(
         self,
