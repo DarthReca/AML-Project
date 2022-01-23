@@ -1,17 +1,11 @@
-import enum
 import numpy as np
 import torch
 import torch.utils.data as data
-import torchvision
 import torchvision.transforms as transforms
 from PIL import Image
-import random
-from random import sample, random
 import torchvision.transforms.functional as TF
 import matplotlib.pyplot as plt
 from typing import List, Optional
-import torchvision.transforms.functional as F
-import os
 from itertools import product
 
 
@@ -30,6 +24,8 @@ def _dataset_info(txt_labels):
 
 
 class JigsawDataset(data.Dataset):
+    """This version works only with size 222, 222"""
+
     def __init__(
         self,
         names: List[str],
@@ -41,7 +37,7 @@ class JigsawDataset(data.Dataset):
         self.data_path = path_dataset
         self.names = names
         self.labels = labels
-        self.image_transformer = transforms.Resize(216)
+        self.image_transformer = img_transformer
 
         self.permutations = self.__retrieve_permutations(jig_classes)
 
@@ -79,6 +75,8 @@ class JigsawDataset(data.Dataset):
 
 
 class JigsawTestDataset(data.Dataset):
+    """This version works only with size 222, 222"""
+
     def __init__(
         self,
         names: List[str],
@@ -90,12 +88,12 @@ class JigsawTestDataset(data.Dataset):
         self.data_path = path_dataset
         self.names = names
         self.labels = labels
-        self.image_transformer = transforms.Resize(216)
+        self.image_transformer = img_transformer
 
         self.permutations = self.__retrieve_permutations(jig_classes)
 
     def __getitem__(self, index):
-          # Get and process an image
+        # Get and process an image
         image_path = self.data_path + "/" + self.names[index]
         img = TF.resize(Image.open(image_path).convert("RGB"), [222, 222])
 
@@ -127,19 +125,13 @@ class JigsawTestDataset(data.Dataset):
         return all_perm
 
 
-# sphinx_gallery_thumbnail_path = "../../gallery/assets/visualization_utils_thumbnail.png"
-
-
-# plt.rcParams["savefig.bbox"] = 'tight'
-
-
 def show(imgs):
     if not isinstance(imgs, list):
         imgs = [imgs]
     fix, axs = plt.subplots(ncols=len(imgs), squeeze=False)
     for i, img in enumerate(imgs):
         img = img.detach()
-        img = F.to_pil_image(img)
+        img = TF.to_pil_image(img)
         img = transforms.ToTensor()(img)
         img = torch.squeeze(img)
         axs[0, i].imshow(np.asarray(img))

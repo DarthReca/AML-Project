@@ -73,12 +73,10 @@ def _do_epoch(
         # Pass features to classifiers
         class_scores = obj_cls(original_features)
         # Here we have to concatenate tensors as suggested by the architecture
-        rotation_scores = rot_cls(
-            torch.cat([original_features, rotated_features], 1))
+        rotation_scores = rot_cls(torch.cat([original_features, rotated_features], 1))
 
         # Now we can check the losses
         class_loss = criterion(class_scores, class_label)
-        # TODO: This needs CenterLoss to work better (see variation 3)
         rot_loss = criterion(rotation_scores, rotated_label)
 
         loss = class_loss + args.weight_RotTask_step1 * rot_loss
@@ -93,8 +91,7 @@ def _do_epoch(
 
         # Update counters
         correct_classes += torch.sum(class_prediction == class_label).item()
-        correct_rotations += torch.sum(rotation_prediction ==
-                                       rotated_label).item()
+        correct_rotations += torch.sum(rotation_prediction == rotated_label).item()
 
     acc_cls = correct_classes / len(source_loader.dataset)
     acc_rot = correct_rotations / len(source_loader.dataset)
@@ -132,11 +129,8 @@ def step1(
             if not os.path.isdir("weights"):
                 os.mkdir("weights")
             torch.save(
-                feature_extractor.state_dict(
-                ), f"weights/feature_extractor_{epoch}.pth"
+                feature_extractor.state_dict(), f"weights/feature_extractor_{epoch}.pth"
             )
-            torch.save(obj_cls.state_dict(),
-                       f"weights/object_classifier_{epoch}.pth")
-            torch.save(rot_cls.state_dict(),
-                       f"weights/rotation_classifier_{epoch}.pth")
+            torch.save(obj_cls.state_dict(), f"weights/object_classifier_{epoch}.pth")
+            torch.save(rot_cls.state_dict(), f"weights/rotation_classifier_{epoch}.pth")
         scheduler.step()
