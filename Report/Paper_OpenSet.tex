@@ -65,11 +65,7 @@ Corso Duca degli Abruzzi, 24\\
 
 %%%%%%%%% ABSTRACT
 \begin{abstract}
-   - sentence describing the problem
- - sentence describing our proposed method
- - sentence summarising the results
- - sentence about the variations
- - sentence about the variation results
+Large amounts of data are available for use in computer vision research however the costs of labeling the data is high. Self-supervision techniques can be used to address this problem. This study investigates the use of self-supervision in an open-set domain adaptation scenario. A self-supervised tasks is trained alongside a classification task to separate known classes from unknown classes in the target domain. The technique investigated was a simplification of the Rotation-based Open Set (ROS) method, and was found to be less accurate but applicable to simplified scenarios. Various self-supervised tasks were also compared and the rotation recognition task was found to be the most robust compared to horizontal flipping or solving jigsaw puzzles. The inclusion of center loss during training was also investigated but the results were deemed inconclusive.
 \end{abstract}
 
 %%%%%%%%% BODY TEXT
@@ -325,9 +321,6 @@ Clipart & Real World & 45.46 & 69.06 & 54.83\\
 \end{table}
 
 
-
-
-
 %------------------------------------------------------------------------
 \section{Variations}
 \label{sec:variations}
@@ -428,7 +421,7 @@ An ablation study was performed to select the most appropriate weight ($\alpha_w
 
 Table \ref{tab:center_loss} shows a comparison of the AUC values with and without the introduction of center loss, with $\alpha_1 = 10$ trained for 40 epochs. The inclusion of center loss was able to improve the accuracy for all domain configurations considered. It also improved the AUC metric for the second two domain configurations, however was detrimental in the first configuration. Due to the similarity of the results presented in \ref{tab:center_loss} the findings are inconclusive, and further investigations would be necessary to understand if the center loss could be used effectively in this scenario.
 
-\begin{table}
+\begin{table}[!htbp]
 	\centering
 	\small
 	\begin{tabular}{|l|c|c|c|c|}
@@ -458,8 +451,10 @@ Table \ref{tab:center_loss} shows a comparison of the AUC values with and withou
 \section{Conclusions}
 \label{sec:conclusion}
 
-- summarise the results
-- add future recommendations
+This study investigated the use of a simplified ROS method for conducting open-set domain adaptation. The method was a simplified version of the ROS method reported in \cite{Bucci2020} by removing the center loss and using only a single-head rotation classifier. Results of the simplified version performed worse than the complete version when comparing the harmonic mean between the accuracy of the classification of known categories and the accuracy of identifying the unknown class. The simplified method however could be improved with further investigation into the effect of different input parameters, and could prove beneficial in situations where a less complex approach is desired. 
+
+Variations to the simplified ROS method were also investigated, including the use of alternative self-supervised tasks and the addition of the center loss to the training of stage 1 of the model. Rotation recognition was found to be the most robust method for conducting self-supervision, however the alternative techniques could perform well in specific scenarios.  The addition of the center loss to stage 1 in some instances was able to improve the performance of the model, and increase the pace at which appropriate features were identified. Further investigation into the utility of center loss is however recommended to better understand its application to open-set domain adaptation problems.
+
 
 \subsection{Acknowledgements}
 The authors would like to thank Silvia Bucci for her assistance and guidance in completing this study.
