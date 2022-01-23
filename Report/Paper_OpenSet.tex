@@ -65,7 +65,7 @@ Corso Duca degli Abruzzi, 24\\
 
 %%%%%%%%% ABSTRACT
 \begin{abstract}
-Large amounts of data are available for use in computer vision research however the costs of labeling the data is high. Self-supervision techniques can be used to address this problem. This study investigates the use of self-supervision in an open-set domain adaptation scenario. A self-supervised tasks is trained alongside a classification task to separate known classes from unknown classes in the target domain. The technique investigated was a simplification of the Rotation-based Open Set (ROS) method, and was found to be less accurate but applicable to simplified scenarios. Various self-supervised tasks were also compared and the rotation recognition task was found to be the most robust compared to horizontal flipping or solving jigsaw puzzles. The inclusion of center loss during training was also investigated but the results were deemed inconclusive.
+Large amounts of data are available for use in computer vision research however the cost of labeling the data is high. Self-supervision techniques can be used to address this problem. This study investigates the use of self-supervision in an open-set domain adaptation scenario. A self-supervised task is trained alongside a classification task to separate known classes from unknown classes in the target domain. The technique investigated was a simplification of the Rotation-based Open Set (ROS) method, and was found to be less accurate but applicable to simplified scenarios. Various self-supervised tasks were also compared and the rotation recognition task was found to be the most robust when compared to horizontal flipping or solving jigsaw puzzles. The inclusion of center loss during training was also investigated but the results were deemed inconclusive due to the similarity among the results.
 \end{abstract}
 
 %%%%%%%%% BODY TEXT
@@ -261,7 +261,7 @@ The next step involved tuning the threshold. The threshold should be chosen such
  0.8 & 2872 \\
     \hline
   \end{tabular}
-  \caption{Samples recognised as known for various thresholds for the Art -- Clipart domain combination}
+  \caption{Samples recognized as known for various thresholds for the Art -- Clipart domain combination}
   \label{tab:threshold}
 \end{table}
 
@@ -329,7 +329,7 @@ Two different variations to the simplified ROS method were also analysed. The fi
 
 \subsection{Alternative self-supervised tasks}
 
-The simplified ROS method reported used rotation recognition as the self-supervised task, however many different self-supervised tasks are possible to be employed for use in open-set domain adaptation. This sudy investigated two alternative self-supervised tasks: horizontal flipping; and solving jigsaw puzzles.
+The simplified ROS method reported used rotation recognition as the self-supervised task, however many different self-supervised tasks are possible to be employed for use in open-set domain adaptation. This study investigated two alternative self-supervised tasks: horizontal flipping; and solving jigsaw puzzles.
 
 \subsubsection*{Horizontal Flipping}
 
