@@ -1,6 +1,6 @@
 # Advanced Machine Learning Project - ROS
 
-This branch is a simplified ROS version for solving rotation recognition task.
+This branch is a simplified ROS version for solving rotation recognition task. Switch to the other branches to see variations of this version.
 
 ## Weights
 
