@@ -1,7 +1,0 @@
-Source:  Clipart  Target:  Product
-Dataset size: source 3064, target 4439
-Target - Evaluation -- for known/unknown separation
-AUROC 0.5791
-Generated random number is : 66358
-The number of target samples selected as known is:  3145
-The number of target samples selected as unknown is:  1294

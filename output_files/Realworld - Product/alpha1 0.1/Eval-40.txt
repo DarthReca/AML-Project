@@ -1,7 +1,0 @@
-Source:  RealWorld  Target:  Product
-Dataset size: source 3037, target 4439
-Target - Evaluation -- for known/unknown separation
-AUROC 0.4853
-Generated random number is : 5394
-The number of target samples selected as known is:  1586
-The number of target samples selected as unknown is:  2853

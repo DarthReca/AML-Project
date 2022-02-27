@@ -1,7 +1,0 @@
-Source:  Art  Target:  RealWorld
-Dataset size: source 1789, target 4357
-Target - Evaluation -- for known/unknown separation
-AUROC 0.4923
-Generated random number is : 38909
-The number of target samples selected as known is:  3299
-The number of target samples selected as unknown is:  1058
