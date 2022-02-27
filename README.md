@@ -16,8 +16,7 @@
 
 - [About](#about)
 - [Getting Started](#getting-started)
-- - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
+  - [Prerequisites](#prerequisites)
 - [Usage](#usage)
 - [Authors & contributors](#authors--contributors)
 - [License](#license)
