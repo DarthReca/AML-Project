@@ -69,7 +69,7 @@ For a full list of all authors and contributors, see [the contributors page](htt
 
 This project is licensed under the **MIT license**
 
-See [LICENSE](LICENSE) for more information, while `center_loss.py` look at [CENTER_LOSS_LICENSE](CENTER_LOSS_LICENSE).
+See [LICENSE](LICENSE) for more information, while for `center_loss.py` look at [CENTER_LOSS_LICENSE](CENTER_LOSS_LICENSE).
 
 ## Acknowledgements
 
