@@ -7,8 +7,8 @@
 
 <div align="center">
 <br />
-
-[![Project license](https://img.shields.io/github/license/DarthReca/AML-Project.svg)](LICENSE)
+  
+[![Project license](https://img.shields.io/github/license/DarthReca/AML-Project)](LICENSE)
 </div>
 
 <details open="open">
@@ -27,7 +27,7 @@
 
 ## About
 
-The project is a simplified version of Rotation Based Open Set model [1](#acknowledgements). It was built for the course Advanced Machine Learning attended at Polytechnic University of Turin.
+The project is a simplified version of Rotation Based Open Set model \[[1](#acknowledgements)\]. It was built for the course Advanced Machine Learning attended at Polytechnic University of Turin.
 
 ## Getting Started
 
